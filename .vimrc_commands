@@ -16,7 +16,7 @@ endif
 
 com! FormatHTML %!tidy --indent auto --indent-spaces 4 --wrap 200 --quiet yes --show-body-only auto --show-errors 0 --tidy-mark no --fix-uri no --drop-empty-elements no
 com! FormatJS   %!js-beautify --indent-size=4
-com! FormatJSON %!python -m json.tool
+" com! FormatJSON %!python -m json.tool
 com! ToggleCssColor :call css_color#toggle()
 
 command! -bang -nargs=* FindUnderCursor

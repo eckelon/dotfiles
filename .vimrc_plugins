@@ -7,9 +7,10 @@ Plug 'tpope/vim-git', { 'for': 'gitcommit' } "Git runtime files
 
 " gui
 Plug 'Yggdroot/indentLine' "highlighting 4sp indenting
-Plug 'ap/vim-css-color', { 'for': 'css' } "Preview colours in source code while editing
+Plug 'ap/vim-css-color', { 'for': ['scss', 'css'] } "Preview colours in source code while editing
 Plug 'itchyny/lightline.vim' "A light and configurable statusline/tabline plugin for Vim
 Plug 'arcticicestudio/nord-vim' " nice colorscheme
+Plug 'doums/darcula'
 
 "programming
 Plug 'nestorsalceda/vim-strip-trailing-whitespaces'
@@ -19,8 +20,10 @@ Plug 'editorconfig/editorconfig-vim' "editorconfig support
 Plug 'alvan/vim-closetag', { 'for': ['html', 'xml'] }
 Plug 'elzr/vim-json', { 'for': 'json'}
 Plug '~/.vim/npm-test-plugin', { 'for': 'javascript' }
+Plug '~/.vim/json-format-plugin', { 'for': 'json' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs', {'for': ['javascript', 'vimscript']}
 
 " better navigation
 Plug 'andymass/vim-matchup' "even better %. Navigate and highlight matching words
@@ -29,6 +32,7 @@ Plug 'junegunn/fzf.vim'
 
 " better vim
 Plug 'tpope/vim-vinegar' "Combine with netrw to create a delicious salad dressing
+Plug 'tpope/vim-eunuch' "Helpers for UNIX
 Plug 'junegunn/vim-slash' "Enhancing in-buffer search experience
 Plug 'tpope/vim-sensible' "Defaults everyone can agree on
 Plug 'tpope/vim-sleuth' "Heuristically set buffer options
@@ -39,7 +43,7 @@ Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'digitaltoad/vim-pug', {'for': 'jade'}
 Plug 'burner/vim-svelte', {'for': 'svelte'}
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'typescript']}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'typescript', 'scss', 'css']}
 
 call plug#end()
 
@@ -48,4 +52,5 @@ let g:coc_global_extensions = [
 			\ 'coc-tsserver',
 			\ 'coc-eslint',
 			\ 'coc-snippets',
+			\ 'coc-css',
 			\ ]
