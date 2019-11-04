@@ -81,7 +81,7 @@ autocmd FileType sql                  setlocal commentstring=--\ %s
 autocmd FileType xdefaults            setlocal commentstring=!%s
 autocmd FileType git,gitcommit        setlocal foldmethod=syntax foldlevel=1
 
-
+let g:vue_pre_processors = 'detect_on_enter'
 
 let g:fzf_action = {
             \ 'ctrl-t': 'tab split',

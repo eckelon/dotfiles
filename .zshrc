@@ -20,9 +20,9 @@ export GEM_HOME=~/.gem
 export GEM_PATH=~/.gem
 
 #nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -33,4 +33,22 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+alias vim="nvim -i NONE"
+alias ivm="vim"
+alias weather='curl -4 wttr.in/Zaragoza?lang=es'
 alias git-clean-local-branches="git branch -vv | grep -E \"desaparecido|gone\" | awk '{print $1}' | xargs -n1 git branch -d"
+alias killNode="ps aux | grep ' node' | awk '{print $2}' | xargs kill"
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles_update='dotfiles push origin master'
+alias lockscreen='open -a ScreenSaverEngine'
+alias grep='grep --color'
+alias kdiff3='/Applications/kdiff3.app/Contents/MacOS/kdiff3'
+alias mergetool='git mergetool --tool kdiff3'
+alias difftool='git difftool --tool kdiff3'
+alias diff="diff-so-fancy"
+alias cat="bat"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+alias ls="exa"
+alias l="exa -lahF"
+alias find="fd"
+

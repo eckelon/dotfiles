@@ -6,8 +6,7 @@ Foo.java
 update-notifier-npm.json
 node_modules/
 .history/
-fuge_ja.yml
-fuge/fuge_*yml
+fuge-*-ja.yml
 localEnvs.sh
 tags
 tags.lock

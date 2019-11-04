@@ -24,6 +24,8 @@ Plug '~/.vim/json-format-plugin', { 'for': 'json' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs', {'for': ['javascript', 'vimscript']}
+Plug 'ruanyl/vim-fixmyjs' "auto fix your javascript using fixmyjs/eslint/tslint/jscs
+Plug 'posva/vim-vue' "vue hightlight
 
 " better navigation
 Plug 'andymass/vim-matchup' "even better %. Navigate and highlight matching words
@@ -43,7 +45,7 @@ Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'digitaltoad/vim-pug', {'for': 'jade'}
 Plug 'burner/vim-svelte', {'for': 'svelte'}
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'typescript', 'scss', 'css']}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'typescript', 'scss', 'css', 'vue']}
 
 call plug#end()
 
@@ -53,4 +55,5 @@ let g:coc_global_extensions = [
 			\ 'coc-eslint',
 			\ 'coc-snippets',
 			\ 'coc-css',
+			\ 'coc-vetur'
 			\ ]
