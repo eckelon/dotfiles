@@ -14,6 +14,7 @@ export PATH="$HOME/nvim-osx64/bin:$PATH"
 source ${ZSH_HOME}/aliases.zsh
 source ${ZSH_HOME}/case-environments.zsh
 source ~/forgit/forgit.plugin.zsh
+source ~/zsh-utils/spaceship-prompt/spaceship.zsh
 
 source ${AUTOJUMP_HOME}/bin/autojump.zsh
 

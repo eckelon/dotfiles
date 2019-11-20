@@ -19,3 +19,6 @@
 [submodule "forgit"]
 	path = forgit
 	url = https://github.com/wfxr/forgit.git
+[submodule "zsh-utils/spaceship-prompt"]
+	path = zsh-utils/spaceship-prompt
+	url = https://github.com/denysdovhan/spaceship-prompt.git
