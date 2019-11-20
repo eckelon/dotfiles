@@ -44,8 +44,8 @@ Plug 'skywind3000/asyncrun.vim' "Run Async Shell Commands in Vim 8.0 / NeoVim an
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'digitaltoad/vim-pug', {'for': 'jade'}
-Plug 'burner/vim-svelte', {'for': 'svelte'}
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'typescript', 'scss', 'css', 'vue']}
+Plug 'evanleck/vim-svelte', {'for': 'svelte'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'typescript', 'scss', 'css', 'vue', 'svelte']}
 
 call plug#end()
 
@@ -55,5 +55,6 @@ let g:coc_global_extensions = [
 			\ 'coc-eslint',
 			\ 'coc-snippets',
 			\ 'coc-css',
-			\ 'coc-vetur'
+			\ 'coc-vetur',
+			\ 'coc-svelte'
 			\ ]

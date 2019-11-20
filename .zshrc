@@ -13,6 +13,7 @@ export AUTOJUMP_HOME=${ZDOTDIR:-${HOME}}/.autojump
 export PATH="$HOME/nvim-osx64/bin:$PATH"
 source ${ZSH_HOME}/aliases.zsh
 source ${ZSH_HOME}/case-environments.zsh
+source ~/forgit/forgit.plugin.zsh
 
 source ${AUTOJUMP_HOME}/bin/autojump.zsh
 
@@ -45,7 +46,7 @@ alias grep='grep --color'
 alias kdiff3='/Applications/kdiff3.app/Contents/MacOS/kdiff3'
 alias mergetool='git mergetool --tool kdiff3'
 alias difftool='git difftool --tool kdiff3'
-alias diff="diff-so-fancy"
+# alias diff="diff-so-fancy"
 alias cat="bat"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 alias ls="exa"
