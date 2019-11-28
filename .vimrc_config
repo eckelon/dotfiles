@@ -6,7 +6,9 @@ if has("gui_running")
 endif
 
 set termguicolors
-colorscheme darcula
+let g:material_theme_style = 'oceanic' "'default' | 'palenight' | 'ocean' | 'lighter' | 'darker'
+let g:material_terminal_italics = 1
+colorscheme material
 
 if exists(':CocActionAsync')
   " Highlight symbol under cursor on CursorHold
@@ -154,7 +156,7 @@ augroup END
 " Gui
 set noshowmode
 let g:lightline = {
-      \ 'colorscheme': 'darcula',
+      \ 'colorscheme': 'material_vim',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'absolutepath', 'modified' ] ]
@@ -191,3 +193,5 @@ let g:coc_snippet_prev = '<c-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+let g:inline_edit_new_buffer_command = "vertical new"
+let g:inline_edit_html_like_filetypes = ['svelte']
