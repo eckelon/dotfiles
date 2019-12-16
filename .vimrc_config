@@ -48,7 +48,9 @@ set noswapfile
 set backspace=indent,eol,start
 set hidden
 
-let g:netrw_localrmdir='rm -r'
+" let g:netrw_localrmdir='rm -r'
+let g:dirvish_mode = ':sort ,^.*[\/],'
+autocmd FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
 
 set splitright
 
@@ -85,11 +87,7 @@ autocmd FileType git,gitcommit        setlocal foldmethod=syntax foldlevel=1
 
 let g:vue_pre_processors = 'detect_on_enter'
 
-let g:fzf_action = {
-            \ 'ctrl-t': 'tab split',
-            \ 'ctrl-i': 'split',
-            \ 'ctrl-v': 'vsplit' }
-let g:fzf_layout = { 'down': '~20%' }
+
 let g:rg_command = '
             \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
             \ -g "*.{js,php,phtml,styl,pug,jade,html,config,py,cpp,c,go,hs,rb,conf,fa,lst}"
@@ -195,3 +193,22 @@ let g:coc_snippet_prev = '<c-k>'
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 let g:inline_edit_new_buffer_command = "vertical new"
 let g:inline_edit_html_like_filetypes = ['svelte']
+
+" don't show the help in normal mode
+let g:Lf_HideHelp = 1
+let g:Lf_UseCache = 0
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_IgnoreCurrentBufferName = 1
+" popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+let g:Lf_ShortcutF = "<leader>,"
+let g:Lf_ShortcutB = "<leader>b"
+" let g:Lf_WildIgnore = { 'dir':  ['.git', 'node_modules'] }
+
+let g:fzf_action = {
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-i': 'split',
+            \ 'ctrl-v': 'vsplit' }
+let g:fzf_layout = { 'down': '~20%' }

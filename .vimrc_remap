@@ -42,8 +42,8 @@ imap jj <Esc>
 " fzf config
 nmap <C-S-F> :Rg<space>
 imap <c-x><c-l> <plug>(fzf-complete-line)
-nmap <leader>, :Files<cr>
-nmap <leader>b :Buffers<CR>
+" nmap <leader>, :Files<cr>
+" nmap <leader>b :Buffers<CR>
 nmap <leader>bd :bd<CR>
 nmap <leader>sf :!open %:p:h<CR>
 nmap <leader>bn :bn<CR>
@@ -51,8 +51,9 @@ nmap <leader>bp :bp<CR>
 "nmap <leader>q :q<CR>
 "nmap <leader>s :w<CR>
 "nmap <leader>sa :wa<CR>
-nmap <leader>t :BTags<CR>
-nmap <C-P> :Tags<CR>
+" nmap <leader>t :BTags<CR>
+" nmap <C-P> :Tags<CR>
+nmap <C-P> :LeaderfTag<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
