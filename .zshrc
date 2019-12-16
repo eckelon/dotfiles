@@ -2,6 +2,11 @@
 # User configuration sourced by interactive shells
 #
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+[ -z "$TMUX"  ] && { tmux -u attach || exec tmux -u new-session && exit;}
+
 # Define zim location
 export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 export ZSH_HOME=${ZDOTDIR:-${HOME}}/.zsh
@@ -53,4 +58,17 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 alias ls="exa"
 alias l="exa -lahF"
 alias find="fd"
+alias tmux="tmux -u"
+
+SPACESHIP_PROMPT_ORDER=(
+  time          # Time stamps section
+  user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  hg            # Mercurial section (hg_branch  + hg_status)
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
 
