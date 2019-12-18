@@ -29,9 +29,9 @@ Plug 'AndrewRadev/inline_edit.vim' "Edit code that's embedded within other code
 Plug 'andymass/vim-matchup' "even better %. Navigate and highlight matching words
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } "Install fzf for user
 Plug 'junegunn/fzf.vim'
+Plug 'justinmk/vim-dirvish' "Directory viewer for Vim
 
 " better vim
-Plug 'justinmk/vim-dirvish' "Directory viewer for Vim
 Plug 'tpope/vim-eunuch' "Helpers for UNIX - works nice with vim-dirvish
 Plug 'junegunn/vim-slash' "Enhancing in-buffer search experience
 Plug 'tpope/vim-sleuth' "Heuristically set buffer options
