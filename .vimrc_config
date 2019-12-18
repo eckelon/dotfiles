@@ -6,9 +6,7 @@ if has("gui_running")
 endif
 
 set termguicolors
-let g:material_theme_style = 'oceanic' "'default' | 'palenight' | 'ocean' | 'lighter' | 'darker'
-let g:material_terminal_italics = 1
-colorscheme material
+colorscheme nord
 
 
 let s:uname = system("uname -s")
@@ -143,7 +141,7 @@ augroup END
 " Gui
 set noshowmode
 let g:lightline = {
-      \ 'colorscheme': 'material_vim',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'absolutepath', 'modified' ] ]
