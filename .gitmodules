@@ -22,6 +22,6 @@
 [submodule "zsh-utils/spaceship-prompt"]
 	path = zsh-utils/spaceship-prompt
 	url = https://github.com/denysdovhan/spaceship-prompt.git
-[submodule "/Users/jesus/.tmux/plugins/tpm"]
-	path = /Users/jesus/.tmux/plugins/tpm
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
