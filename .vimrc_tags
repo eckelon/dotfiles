@@ -61,5 +61,5 @@ let g:gutentags_ctags_exclude = [
       \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
       \ ]
 
-set statusline+=%{gutentags#statusline()}
+" set statusline+=%{gutentags#statusline()}
 command! -nargs=0 GutentagsClearCache call system('rm ' . g:gutentags_cache_dir . '/*')

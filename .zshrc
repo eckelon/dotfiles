@@ -16,6 +16,7 @@ export AUTOJUMP_HOME=${ZDOTDIR:-${HOME}}/.autojump
 [[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
 
 export PATH="$HOME/nvim-osx64/bin:$PATH"
+export PATH="$HOME/vimr:$PATH"
 source ${ZSH_HOME}/aliases.zsh
 source ${ZSH_HOME}/case-environments.zsh
 source ~/forgit/forgit.plugin.zsh
@@ -40,7 +41,11 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-alias vim="nvim -i NONE"
+#Java
+export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
+
+alias vim="vimr -s"
+# alias vim="nvim -i NONE"
 alias ivm="vim"
 alias weather='curl -4 wttr.in/Zaragoza?lang=es'
 alias git-clean-local-branches="git branch -vv | grep -E \"desaparecido|gone\" | awk '{print $1}' | xargs -n1 git branch -d"

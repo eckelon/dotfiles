@@ -41,20 +41,15 @@ autocmd FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
 
 set splitright
 
-
-
-" disable folding by default...
-" set nofoldenable
 set nowb
 set number
 set relativenumber
-set sessionoptions-=options  " Don't save options
 set statusline+=%#warningmsg#
 set statusline+=%*
 set wildignore+=*.pyc,node_modules,*.egg-info,*/*session.vim
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,*/dist/*
 set wildignore+=*.rar,*.war,*/target/*
-set wildignore+=**/*/node_modules/**/*
+set wildignore+=**/*/node_modules/**/*,.bloop/*
 set path+=**
 set wildmenu
 " set wildmode=list:longest
@@ -257,10 +252,8 @@ let g:coc_snippet_prev = '<c-k>'
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+au BufRead,BufNewFile *.sbt set filetype=scala
 
-let g:coc_snippet_next = '<tab>'
+" vim-auto-save
+let g:auto_save = 1
+let g:auto_save_silent = 1

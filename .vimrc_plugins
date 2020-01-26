@@ -19,11 +19,12 @@ Plug 'alvan/vim-closetag', { 'for': ['html', 'xml'] }
 Plug 'elzr/vim-json', { 'for': 'json'}
 Plug '~/.vim/npm-test-plugin', { 'for': 'javascript' }
 Plug '~/.vim/json-format-plugin', { 'for': 'json' }
-Plug 'ludovicchabant/vim-gutentags', { 'for': ['javascript', 'vue', 'svelte', 'typescript']}
+Plug 'ludovicchabant/vim-gutentags', { 'for': ['javascript', 'vue', 'svelte', 'typescript', 'scala']}
 Plug 'jiangmiao/auto-pairs', {'for': ['javascript', 'vimscript']}
 Plug 'ruanyl/vim-fixmyjs' "auto fix your javascript using fixmyjs/eslint/tslint/jscs
 Plug 'posva/vim-vue' "vue hightlight
 Plug 'AndrewRadev/inline_edit.vim' "Edit code that's embedded within other code
+Plug 'derekwyatt/vim-scala', {'for': ['scala', 'sbt']}
 
 " better navigation
 Plug 'andymass/vim-matchup' "even better %. Navigate and highlight matching words
@@ -36,14 +37,15 @@ Plug 'tpope/vim-eunuch' "Helpers for UNIX - works nice with vim-dirvish
 Plug 'junegunn/vim-slash' "Enhancing in-buffer search experience
 Plug 'tpope/vim-sleuth' "Heuristically set buffer options
 Plug 'skywind3000/asyncrun.vim' "Run Async Shell Commands in Vim 8.0 / NeoVim and Output to Quickfix Window
-Plug 'tpope/vim-obsession' "continuously updated session files
+Plug 'machakann/vim-highlightedyank' "Make the yanked region apparent!
 
 " javascript
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'digitaltoad/vim-pug', {'for': 'jade'}
 Plug 'evanleck/vim-svelte', {'for': 'svelte'}
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'typescript', 'scss', 'css', 'vue', 'svelte']}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'typescript', 'scss', 'css', 'vue', 'svelte', 'scala']}
+Plug '907th/vim-auto-save'
 
 call plug#end()
 
@@ -54,5 +56,6 @@ let g:coc_global_extensions = [
 			\ 'coc-snippets',
 			\ 'coc-css',
 			\ 'coc-vetur',
-			\ 'coc-svelte'
+			\ 'coc-svelte',
+			\ 'coc-metals'
 			\ ]

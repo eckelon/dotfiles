@@ -30,7 +30,7 @@
 	tool = kdiff3
 [user]
 	name = JA Samitier
-	email = email@jasamitier.com
+	email = jesus.samitier@caseonit.com
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
