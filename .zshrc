@@ -44,7 +44,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 #Java
 export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
 
-# alias vim="vimr -s"
+alias vim="vimr -s"
 # alias vim="nvim -i NONE"
 alias ivm="vim"
 alias weather='curl -4 wttr.in/Zaragoza?lang=es'
@@ -77,3 +77,4 @@ SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
 )
 
+if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi

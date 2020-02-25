@@ -1,13 +1,12 @@
 set encoding=UTF-8
 set completeopt-=noselect
 
-if has("gui_running")
-    set guifont=Fura\ Code:h14
-endif
+" if has("gui_running")
+"     set guifont=Consolas:h12
+" endif
 
 set termguicolors
 colorscheme nord
-
 
 let s:uname = system("uname -s")
   if s:uname == "Darwin"
@@ -37,7 +36,7 @@ set hidden
 
 " let g:netrw_localrmdir='rm -r'
 let g:dirvish_mode = ':sort ,^.*[\/],'
-autocmd FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
+" autocmd FileType dirvish call fugitive#detect(@%) " Enable fugitive's :Gstatus
 
 set splitright
 
@@ -257,3 +256,6 @@ au BufRead,BufNewFile *.sbt set filetype=scala
 " vim-auto-save
 let g:auto_save = 1
 let g:auto_save_silent = 1
+
+"christoomey/vim-sort-motion
+let g:sort_motion_flags = "ui" "To make all sorts case insensitive and remove duplicates.

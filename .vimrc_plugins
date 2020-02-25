@@ -1,7 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " git
-Plug 'tpope/vim-fugitive' "A Git wrapper so awesome, it should be illegal
+" Plug 'tpope/vim-fugitive' "A Git wrapper so awesome, it should be illegal
 Plug 'airblade/vim-gitgutter' "shows a git diff in the gutter (sign column) and stages/undoes hunks
 
 " gui
@@ -20,7 +20,7 @@ Plug 'elzr/vim-json', { 'for': 'json'}
 Plug '~/.vim/npm-test-plugin', { 'for': 'javascript' }
 Plug '~/.vim/json-format-plugin', { 'for': 'json' }
 Plug 'ludovicchabant/vim-gutentags', { 'for': ['javascript', 'vue', 'svelte', 'typescript', 'scala']}
-Plug 'jiangmiao/auto-pairs', {'for': ['javascript', 'vimscript']}
+" Plug 'jiangmiao/auto-pairs', {'for': ['javascript', 'vimscript']}
 Plug 'ruanyl/vim-fixmyjs' "auto fix your javascript using fixmyjs/eslint/tslint/jscs
 Plug 'posva/vim-vue' "vue hightlight
 Plug 'AndrewRadev/inline_edit.vim' "Edit code that's embedded within other code
@@ -38,6 +38,7 @@ Plug 'junegunn/vim-slash' "Enhancing in-buffer search experience
 Plug 'tpope/vim-sleuth' "Heuristically set buffer options
 Plug 'skywind3000/asyncrun.vim' "Run Async Shell Commands in Vim 8.0 / NeoVim and Output to Quickfix Window
 Plug 'machakann/vim-highlightedyank' "Make the yanked region apparent!
+Plug 'christoomey/vim-sort-motion' "Vim mapping for sorting a range of text
 
 " javascript
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
