@@ -34,3 +34,6 @@
 [submodule ".zsh/pure"]
 	path = .zsh/pure
 	url = https://github.com/sindresorhus/pure.git
+[submodule ".config/iterm2"]
+	path = .config/iterm2
+	url = git@github.com:eckelon/iterm2config.git
