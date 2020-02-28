@@ -1,43 +1,45 @@
-#
-# User configuration sourced by interactive shells
-#
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
+
+fpath+=$HOME/.zsh/pure
+autoload -U promptinit; promptinit
+prompt pure
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 [ -z "$TMUX"  ] && { tmux -u attach || exec tmux -u new-session && exit;}
 
-# Define zim location
-export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
-export ZSH_HOME=${ZDOTDIR:-${HOME}}/.zsh
-export AUTOJUMP_HOME=${ZDOTDIR:-${HOME}}/.autojump
+source $HOME/.zsh/nvm.zsh
+source $HOME/.zsh/completions.zsh
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 
-# Start zim
-[[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+setopt histignorealldups sharehistory
+
+HISTSIZE=100000
+SAVEHIST=100000
+HISTFILE=~/.zsh_history
 
 export PATH="$HOME/nvim-osx64/bin:$PATH"
 export PATH="$HOME/vimr:$PATH"
-source ${ZSH_HOME}/aliases.zsh
-source ${ZSH_HOME}/case-environments.zsh
-source ~/forgit/forgit.plugin.zsh
-source ~/zsh-utils/spaceship-prompt/spaceship.zsh
 
+export AUTOJUMP_HOME=$HOME/.autojump
 source ${AUTOJUMP_HOME}/bin/autojump.zsh
 
-export GEM_HOME=~/.gem
-export GEM_PATH=~/.gem
+source $HOME/forgit/forgit.plugin.zsh
+source $HOME/.zsh/zsh-private-config/init.zsh
 
-#nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-#export FZF_DEFAULT_COMMAND='rg --files --hidden'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
@@ -58,11 +60,11 @@ alias kdiff3='/Applications/kdiff3.app/Contents/MacOS/kdiff3'
 alias mergetool='git mergetool --tool kdiff3'
 alias difftool='git difftool --tool kdiff3'
 # alias diff="diff-so-fancy"
-alias cat="bat"
+# alias cat="bat"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-alias ls="exa"
-alias l="exa -lahF"
-alias find="fd"
+#alias ls="exa"
+#alias l="exa -lahF"
+#alias find="fd"
 alias tmux="tmux -u"
 
 SPACESHIP_PROMPT_ORDER=(
@@ -76,5 +78,3 @@ SPACESHIP_PROMPT_ORDER=(
   exit_code     # Exit code section
   char          # Prompt character
 )
-
-if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi

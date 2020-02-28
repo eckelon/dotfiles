@@ -1,6 +1,3 @@
-[submodule ".zim"]
-	path = .zim
-	url = https://github.com/zimfw/zimfw.git
 [submodule ".nvm"]
 	path = .nvm
 	url = https://github.com/creationix/nvm.git
@@ -10,18 +7,33 @@
 [submodule ".autojump"]
 	path = .autojump
 	url = https://github.com/wting/autojump.git
-[submodule ".zsh"]
-	path = .zsh
-	url = git@github.com:eckelon/zsh-private-config.git
 [submodule ".vim/vim-plug"]
 	path = .vim/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
 [submodule "forgit"]
 	path = forgit
 	url = https://github.com/wfxr/forgit.git
-[submodule "zsh-utils/spaceship-prompt"]
-	path = zsh-utils/spaceship-prompt
-	url = https://github.com/denysdovhan/spaceship-prompt.git
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule ".zsh/spaceship-prompt"]
+	path = .zsh/spaceship-prompt
+	url = https://github.com/denysdovhan/spaceship-prompt.git
+[submodule ".zsh/zsh-autosuggestions"]
+	path = .zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule ".zsh/zsh-completions"]
+	path = .zsh/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
+[submodule ".zsh/zsh-history-substring-search"]
+	path = .zsh/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search.git
+[submodule ".zsh/zsh-syntax-highlighting"]
+	path = .zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule ".zsh/zsh-private-config"]
+	path = .zsh/zsh-private-config
+	url = git@github.com:eckelon/zsh-private-config.git
+[submodule ".zsh/pure"]
+	path = .zsh/pure
+	url = https://github.com/sindresorhus/pure.git
