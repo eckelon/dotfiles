@@ -1,6 +1,6 @@
-source ~/.vimrc_plugins
-source ~/.vimrc_commands
-source ~/.vimrc_remap
-source ~/.vimrc_config
-source ~/.vimrc_tags
-source ~/.vimrc_coc
+source ~/.config/vim/vimrc_plugins
+source ~/.config/vim/vimrc_commands
+source ~/.config/vim/vimrc_remap
+source ~/.config/vim/vimrc_config
+source ~/.config/vim/vimrc_tags
+source ~/.config/vim/vimrc_coc
