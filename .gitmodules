@@ -7,9 +7,6 @@
 [submodule ".vim/vim-plug"]
 	path = .vim/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
-[submodule "forgit"]
-	path = forgit
-	url = https://github.com/wfxr/forgit.git
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm

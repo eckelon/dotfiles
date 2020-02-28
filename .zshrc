@@ -33,8 +33,6 @@ export PATH="$HOME/vimr:$PATH"
 
 export AUTOJUMP_HOME=$HOME/.autojump
 source ${AUTOJUMP_HOME}/bin/autojump.zsh
-
-source $HOME/forgit/forgit.plugin.zsh
 source $HOME/.zsh/zsh-private-config/init.zsh
 
 
