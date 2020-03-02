@@ -47,15 +47,4 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 #Java
 export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
 
-
-SPACESHIP_PROMPT_ORDER=(
-  time          # Time stamps section
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  hg            # Mercurial section (hg_branch  + hg_status)
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
+PURE_PROMPT_SYMBOL=λ
