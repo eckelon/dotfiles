@@ -34,3 +34,6 @@
 [submodule ".config/iterm2"]
 	path = .config/iterm2
 	url = git@github.com:eckelon/iterm2config.git
+[submodule ".config/alfred-config"]
+	path = .config/alfred-config
+	url = git@gitlab.com:jasamitier/alfred-config.git
