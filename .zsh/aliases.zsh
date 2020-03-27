@@ -1,5 +1,5 @@
-#alias vim="vimr -s"
-alias vim="nvim -i NONE"
+# alias vim="vimr -s"
+alias vim="nvim"
 alias ivm="vim"
 alias weather='curl -4 wttr.in/Zaragoza?lang=es'
 alias git-clean-local-branches="git branch -vv | grep -E \"desaparecido|gone\" | awk '{print $1}' | xargs -n1 git branch -d"
