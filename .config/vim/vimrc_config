@@ -77,12 +77,10 @@ let g:rg_command = '
 " nnoremap <F3> :Rg! "\b<C-R><C-W>\b"<CR>:cw<CR>
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
-let g:myLang = 0
-let g:myLangList = ['nospell', 'en_us', 'es_es']
-
 set conceallevel=0
 let g:vim_json_syntax_conceal = 0
 let g:vim_markdown_conceal = 0
+"save on focus lost https://vim.fandom.com/wiki/Auto_save_files_when_focus_is_lost
 au FocusLost * silent! wa
 
 " https://github.com/cfenollosa/dotfiles/blob/master/.vimrc
@@ -253,9 +251,10 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 au BufRead,BufNewFile *.sbt set filetype=scala
 
-" vim-auto-save
-let g:auto_save = 1
-let g:auto_save_silent = 1
-
 "christoomey/vim-sort-motion
 let g:sort_motion_flags = "ui" "To make all sorts case insensitive and remove duplicates.
+
+if has('persistent_undo')      "check if your vim version supports it
+  set undofile                 "turn on the feature
+  set undodir=$HOME/.vim/undo  "directory where the undo files will be stored
+  endif
