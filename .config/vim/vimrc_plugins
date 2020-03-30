@@ -20,10 +20,8 @@ Plug 'alvan/vim-closetag', { 'for': ['html', 'xml'] }
 Plug 'elzr/vim-json', { 'for': 'json'}
 Plug '~/.vim/npm-test-plugin', { 'for': 'javascript' }
 Plug '~/.vim/json-format-plugin', { 'for': 'json' }
-Plug 'ludovicchabant/vim-gutentags', { 'for': ['javascript', 'vue', 'svelte', 'typescript', 'scala']}
-" Plug 'jiangmiao/auto-pairs', {'for': ['javascript', 'vimscript']}
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'ruanyl/vim-fixmyjs' "auto fix your javascript using fixmyjs/eslint/tslint/jscs
-" Plug 'posva/vim-vue' "vue hightlight
 Plug 'storyn26383/vim-vue' "Vim syntax highlighting for Vue components.
 Plug 'derekwyatt/vim-scala', {'for': ['scala', 'sbt']}
 
