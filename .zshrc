@@ -48,6 +48,9 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
 
 PURE_PROMPT_SYMBOL=λ
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black'
+
 
 function timeout() { perl -e 'alarm shift; exec @ARGV' "$@"; }
 

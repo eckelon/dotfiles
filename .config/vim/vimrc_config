@@ -1,12 +1,10 @@
 set encoding=UTF-8
 set completeopt-=noselect
 
-" if has("gui_running")
-"     set guifont=Consolas:h12
-" endif
-
 set termguicolors
-colorscheme nord
+let g:material_terminal_italics = 1
+let g:material_theme_style = 'palenight'
+colorscheme material
 
 let s:uname = system("uname -s")
   if s:uname == "Darwin"
@@ -133,7 +131,7 @@ augroup END
 " Gui
 set noshowmode
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'material_vim',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'absolutepath', 'modified' ] ]
