@@ -13,6 +13,11 @@ export LANG=en_US.UTF-8
 
 [ -z "$TMUX"  ] && { tmux -u attach || exec tmux -u new-session && exit;}
 
+# for having italics inside tmux:
+# tic -x xterm-256color-italic.terminfo
+# tic -x tmux-256color.terminfo
+export TERM=xterm-256color-italic
+
 source $HOME/.zsh/nvm.zsh
 source $HOME/.zsh/completions.zsh
 source $HOME/.zsh/aliases.zsh

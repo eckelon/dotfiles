@@ -1,6 +1,10 @@
 set encoding=UTF-8
 set completeopt-=noselect
 
+" fix italics inside tmux
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+
 set termguicolors
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'palenight'
