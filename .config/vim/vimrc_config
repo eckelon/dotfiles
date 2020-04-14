@@ -24,7 +24,7 @@ let s:uname = system("uname -s")
 set clipboard=unnamed
 set gcr=a:blinkon0              "Disable cursor blink
 set hlsearch
-set ignorecase
+set smartcase
 set mouse=a
 set nobackup
 set nowritebackup
@@ -249,10 +249,9 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 au BufRead,BufNewFile *.sbt set filetype=scala
 
-"christoomey/vim-sort-motion
-let g:sort_motion_flags = "ui" "To make all sorts case insensitive and remove duplicates.
-
 if has('persistent_undo')      "check if your vim version supports it
   set undofile                 "turn on the feature
   set undodir=$HOME/.vim/undo  "directory where the undo files will be stored
   endif
+
+set inccommand=split
