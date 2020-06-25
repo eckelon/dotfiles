@@ -235,22 +235,6 @@ if exists(':CocActionAsync')
   augroup end
 endif
 
-
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
-
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-
 au BufRead,BufNewFile *.sbt set filetype=scala
 
 if has('persistent_undo')      "check if your vim version supports it
@@ -259,3 +243,7 @@ if has('persistent_undo')      "check if your vim version supports it
   endif
 
 set inccommand=split
+
+"svelte
+let g:vim_svelte_plugin_use_sass = 1
+let g:vim_vue_plugin_use_sass = 1
