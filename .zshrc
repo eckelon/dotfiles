@@ -1,8 +1,8 @@
 autoload -Uz compinit
 for dump in ~/.zcompdump(N.mh+24); do
-  compinit
+  compinit -i
 done
-compinit -C
+compinit -i -C
 
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
