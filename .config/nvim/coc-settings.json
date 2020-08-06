@@ -1,5 +1,8 @@
 {
-	"tsserver.npm": "/usr/local/bin/npm",
 	"eslint.autoFixOnSave": true,
-	"eslint.nodePath": "/Users/jesussamitier/Development/experiments/defaultNpmProject"
+	"eslint.nodePath": "/Users/jesussamitier/Development/experiments/defaultNpmProject",
+	"eslint.filetypes": ["javascript", "vue"],
+	"javascript.format.enabled": true,
+	"javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+	"coc.preferences.formatOnSaveFiletypes": ["css", "javascript", "vue"]
 }

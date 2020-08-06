@@ -19,7 +19,6 @@ endif
 set clipboard=unnamed
 set gcr=a:blinkon0              "Disable cursor blink
 set hlsearch
-set smartcase
 set mouse=a
 set nobackup
 set nowritebackup
@@ -27,11 +26,18 @@ set noswapfile
 set backspace=indent,eol,start
 set hidden
 
+"indentation
+set autoindent
+set cindent
+set smartindent
 
+set noerrorbells visualbell t_vb=
 set splitright
 set nowb
 set number
-set relativenumber
+" set relativenumber
+set numberwidth=4
+set ruler
 set statusline+=%#warningmsg#
 set statusline+=%*
 set wildignore+=*.pyc,node_modules,*.egg-info,*/*session.vim
@@ -40,11 +46,17 @@ set wildignore+=*.rar,*.war,*/target/*
 set wildignore+=**/*/node_modules/**/*,.bloop/*
 set path+=**
 set wildmenu
-" set wildmode=list:longest
+set ttyfast
+set lazyredraw
+set updatetime=300
 set cmdheight=2
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
+
+set ignorecase " Ignore case when searching
+set smartcase  " When searching try to be smart about cases
+set incsearch  " Jumping search
 
 "quickfix window to open after any grep invocation
 autocmd QuickFixCmdPost *grep* cwindow
@@ -54,7 +66,6 @@ autocmd FileType desktop              setlocal commentstring=#\ %s
 autocmd FileType sql                  setlocal commentstring=--\ %s
 autocmd FileType xdefaults            setlocal commentstring=!%s
 autocmd FileType git,gitcommit        setlocal foldmethod=syntax foldlevel=1
-
 
 let g:rg_command = '
       \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
@@ -137,3 +148,4 @@ let g:dirvish_mode = ':sort ,^.*[\/],'
 "vue
 
 let g:vue_pre_processors = 'detect_on_enter'
+
