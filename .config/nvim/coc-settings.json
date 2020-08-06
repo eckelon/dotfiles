@@ -1,0 +1,5 @@
+{
+	"tsserver.npm": "/usr/local/bin/npm",
+	"eslint.autoFixOnSave": true,
+	"eslint.nodePath": "/Users/jesussamitier/Development/experiments/defaultNpmProject"
+}
