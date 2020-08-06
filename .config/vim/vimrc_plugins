@@ -7,17 +7,16 @@ Plug 'airblade/vim-gitgutter' "shows a git diff in the gutter (sign column) and 
 " gui
 Plug 'ap/vim-css-color', { 'for': ['scss', 'css'] } "Preview colours in source code while editing
 Plug 'itchyny/lightline.vim' "A light and configurable statusline/tabline plugin for Vim
-Plug 'kaicataldo/material.vim' "A port of the Material color scheme for Vim/Neovim
+Plug 'kaicataldo/material.vim', { 'branch': 'main' } "A port of the Material color scheme for Vim/Neovim
 
 "programming
 Plug 'nestorsalceda/vim-strip-trailing-whitespaces'
 Plug 'tpope/vim-commentary' "comment stuff out
-Plug 'editorconfig/editorconfig-vim' "editorconfig support
+"Plug 'editorconfig/editorconfig-vim' "editorconfig support
 Plug 'elzr/vim-json', { 'for': 'json'}
 Plug '~/.vim/npm-test-plugin', { 'for': 'javascript' }
 Plug '~/.vim/json-format-plugin', { 'for': 'json' }
 Plug 'leafOfTree/vim-vue-plugin' "Vim syntax and indent plugin for .vue files.
-Plug 'derekwyatt/vim-scala', {'for': ['scala', 'sbt']}
 
 " better navigation
 Plug 'andymass/vim-matchup' "even better %. Navigate and highlight matching words
@@ -32,18 +31,25 @@ Plug 'tpope/vim-sleuth' "Heuristically set buffer options
 Plug 'skywind3000/asyncrun.vim' "Run Async Shell Commands in Vim 8.0 / NeoVim and Output to Quickfix Window
 
 " javascript
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+"Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'evanleck/vim-svelte', {'for': 'svelte'}
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'typescript', 'scss', 'css', 'vue', 'svelte', 'scala']}
+Plug 'evanleck/vim-svelte', {'branch': 'main', 'for': 'svelte'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'typescript', 'scss', 'css', 'vue', 'svelte']}
 
 call plug#end()
-
 let g:coc_global_extensions = [
 			\ 'coc-json',
 			\ 'coc-tsserver',
-			\ 'coc-eslint',
 			\ 'coc-css',
-			\ 'coc-svelte',
-			\ 'coc-metals'
+			\ 'coc-svelte'
 			\ ]
+
+" Add CoC ESLint if ESLint is installed
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
+
+" Add CoC Prettier if prettier is installed
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
