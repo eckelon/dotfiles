@@ -1,19 +1,3 @@
-
-if exists('CocAction')
-  " Use `:Format` to format current buffer
-  command! -nargs=0 Format :call CocAction('format')
-  " Use `:Fold` to fold current buffer
-  command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-  function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-      execute 'h '.expand('<cword>')
-    else
-      call CocAction('doHover')
-    endif
-  endfunction
-endif
-
 com! FormatHTML %!tidy --indent auto --indent-spaces 4 --wrap 200 --quiet yes --show-body-only auto --show-errors 0 --tidy-mark no --fix-uri no --drop-empty-elements no
 com! FormatJS   %!js-beautify --indent-size=4
 " com! FormatJSON %!python -m json.tool
@@ -25,3 +9,4 @@ command! -bang -nargs=* FindUnderCursor
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
+
