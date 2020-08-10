@@ -25,6 +25,8 @@ set nowritebackup
 set noswapfile
 set backspace=indent,eol,start
 set hidden
+set autoread      " Reload the files if they changed on disk!
+set cpt-=t "don't scan ctags
 
 "indentation
 set autoindent
@@ -146,6 +148,12 @@ let g:vim_vue_plugin_use_sass = 1
 "dirvish
 let g:dirvish_mode = ':sort ,^.*[\/],'
 "vue
-
 let g:vue_pre_processors = 'detect_on_enter'
+
+" automatically leave insert mode after 'updatetime' milliseconds of inaction
+au CursorHoldI * stopinsert
+" set 'updatetime' to 1 second when in insert mode
+au InsertEnter * let updaterestore=&updatetime | set updatetime=1000
+au InsertLeave * let &updatetime=updaterestore
+
 

@@ -11,15 +11,6 @@ vnoremap p "_dP
 cmap w!! w !sudo tee % >/dev/null
 imap jj <Esc>
 nnoremap <silent><leader>, :Files<cr>
-nnoremap <silent><C-\> :Buffers<CR>
-nnoremap <silent><leader>sf :!open %:p:h<CR>
-nnoremap <silent><leader>s :wa<CR>
-
-" Easier movement between split windows CTRL + {h, j, k, l}
-nnoremap <c-h> <c-w>h
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
 
 function! s:ToggleBlame()
     if &l:filetype ==# 'fugitiveblame'
@@ -30,3 +21,6 @@ function! s:ToggleBlame()
 endfunction
 
 nnoremap gb :call <SID>ToggleBlame()<CR>
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
