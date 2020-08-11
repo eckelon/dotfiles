@@ -1,9 +1,9 @@
 let mapleader=","
 
 xmap <leader>c<space> <Plug>Commentary
-nnoremap <leader>c<space> <Plug>Commentary
+nmap <leader>c<space> <Plug>Commentary
 omap <leader>c<space> <Plug>Commentary
-nnoremap <leader>c<space> <Plug>CommentaryLine
+nmap <leader>c<space> <Plug>CommentaryLine
 
 " I don't want to yank deleted lines when I'm replacing text in visual mode
 vnoremap p "_dP
