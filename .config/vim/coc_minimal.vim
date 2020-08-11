@@ -14,7 +14,6 @@ nnoremap <leader>qf  <Plug>(coc-fix-current)
 "	imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 command! SortImports call CocAction('runCommand', 'editor.action.organizeImport')
-inoremap <leader>si :SortImports<CR>
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :

@@ -63,7 +63,7 @@ set incsearch  " Jumping search
 "quickfix window to open after any grep invocation
 autocmd QuickFixCmdPost *grep* cwindow
 
-autocmd FileType c,cpp,cs,java,jade   setlocal commentstring=//\ %s
+autocmd FileType c,cpp,cs,java,jade,javascript   setlocal commentstring=//\ %s
 autocmd FileType desktop              setlocal commentstring=#\ %s
 autocmd FileType sql                  setlocal commentstring=--\ %s
 autocmd FileType xdefaults            setlocal commentstring=!%s
@@ -152,8 +152,8 @@ let g:vue_pre_processors = 'detect_on_enter'
 
 " automatically leave insert mode after 'updatetime' milliseconds of inaction
 au CursorHoldI * stopinsert
-" set 'updatetime' to 1 second when in insert mode
-au InsertEnter * let updaterestore=&updatetime | set updatetime=1000
+" set 'updatetime' to 10s when in insert mode
+au InsertEnter * let updaterestore=&updatetime | set updatetime=10000
 au InsertLeave * let &updatetime=updaterestore
 
 
