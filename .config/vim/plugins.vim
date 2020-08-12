@@ -28,9 +28,9 @@ Plug 'tpope/vim-eunuch' "Helpers for UNIX - works nice with vim-dirvish
 Plug 'junegunn/vim-slash' "Enhancing in-buffer search experience
 Plug 'tpope/vim-sleuth' "Heuristically set buffer options
 Plug 'skywind3000/asyncrun.vim' "Run Async Shell Commands in Vim 8.0 / NeoVim and Output to Quickfix Window
+Plug 'wincent/terminus' "Enhanced terminal integration for Vim
 
 " javascript
-"Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'evanleck/vim-svelte', {'branch': 'main', 'for': 'svelte'}
 Plug '~/.vim/npm-test-plugin', { 'for': 'javascript' }
