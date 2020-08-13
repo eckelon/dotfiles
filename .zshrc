@@ -6,6 +6,7 @@ compinit -i -C
 ulimit -Sn 4096
 
 fpath+=$HOME/.zsh/pure
+# fpath+=$HOME/.zsh/tmuxinator
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -21,7 +22,7 @@ export LANG=en_US.UTF-8
 # tic -x tmux-256color.terminfo
 export TERM=xterm-256color-italic
 export EDITOR='nvim'
-export DISABLE_AUTO_TITLE=true
+export PATH="$HOME/nvim-osx64/bin:$PATH"
 
 source $HOME/.zsh/nvm.zsh
 source $HOME/.zsh/completions.zsh
@@ -43,16 +44,16 @@ HISTSIZE=100000
 SAVEHIST=100000
 HISTFILE=~/.zsh_history
 
-export PATH="$HOME/nvim-osx64/bin:$PATH"
 
 export AUTOJUMP_HOME=$HOME/.autojump
 source ${AUTOJUMP_HOME}/bin/autojump.zsh
 source $HOME/.zsh/zsh-private-config/init.zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+if [ -f ~/.fzf.zsh ]; then
+  source $HOME/.fzf.zsh
+  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
 
 PURE_PROMPT_SYMBOL=λ
 ZSH_AUTOSUGGEST_USE_ASYNC=1

@@ -34,3 +34,6 @@
 [submodule ".config/alfred-config"]
 	path = .config/alfred-config
 	url = git@gitlab.com:jasamitier/alfred-config.git
+[submodule ".config/tmuxinator"]
+	path = .config/tmuxinator
+	url = git@github.com:eckelon/tmuxinator-config.git
