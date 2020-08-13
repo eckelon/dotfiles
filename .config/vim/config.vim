@@ -25,7 +25,6 @@ set nowritebackup
 set noswapfile
 set backspace=indent,eol,start
 set hidden
-set autoread      " Reload the files if they changed on disk!
 set cpt-=t "don't scan ctags
 
 "indentation
