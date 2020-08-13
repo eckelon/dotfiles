@@ -1,0 +1,5 @@
+shell:
+  program: /bin/zsh
+  args:
+    - -c
+    - export PATH="/usr/local/bin:$PATH" && tmuxinator start nanoservices && exec zsh
