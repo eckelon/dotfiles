@@ -8,6 +8,7 @@ Plug 'airblade/vim-gitgutter' "shows a git diff in the gutter (sign column) and 
 Plug 'ap/vim-css-color', { 'for': ['vue', 'scss', 'css'] } "Preview colours in source code while editing
 Plug 'itchyny/lightline.vim' "A light and configurable statusline/tabline plugin for Vim
 Plug 'kaicataldo/material.vim', { 'branch': 'main' } "A port of the Material color scheme for Vim/Neovim
+Plug 'itchyny/vim-highlighturl' "URL highlight everywhere
 
 "programming
 Plug 'nestorsalceda/vim-strip-trailing-whitespaces'
@@ -22,6 +23,8 @@ Plug 'andymass/vim-matchup' "even better %. Navigate and highlight matching word
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } "Install fzf for user
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-dirvish' "Directory viewer for Vim
+Plug 'psliwka/vim-smoothie' "Smooth scrolling for Vim done right
+Plug 'mengelbrecht/lightline-bufferline' "A lightweight plugin to display the list of buffers in the lightline vim plugin
 
 " better vim
 Plug 'tpope/vim-eunuch' "Helpers for UNIX - works nice with vim-dirvish

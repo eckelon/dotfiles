@@ -24,3 +24,7 @@ nnoremap gb :call <SID>ToggleBlame()<CR>
 " Space to toggle folds.
 nnoremap <Space> za
 vnoremap <Space> za
+
+nnoremap ; :
+nmap bn :bn<CR>
+nmap bd :bd<CR>
