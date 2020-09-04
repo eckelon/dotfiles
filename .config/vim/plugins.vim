@@ -17,13 +17,13 @@ Plug 'editorconfig/editorconfig-vim' "editorconfig support
 Plug 'elzr/vim-json', { 'for': 'json'}
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'typescript', 'scss', 'css', 'vue', 'svelte']}
 Plug 'honza/vim-snippets', { 'for': ['javascript', 'vue']}
+Plug 'RRethy/vim-illuminate' "automatically highlighting other uses of the word under the cursor
 
 " better navigation
 Plug 'andymass/vim-matchup' "even better %. Navigate and highlight matching words
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } "Install fzf for user
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-dirvish' "Directory viewer for Vim
-Plug 'psliwka/vim-smoothie' "Smooth scrolling for Vim done right
 Plug 'mengelbrecht/lightline-bufferline' "A lightweight plugin to display the list of buffers in the lightline vim plugin
 
 " better vim

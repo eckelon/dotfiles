@@ -35,6 +35,13 @@ let g:lightline.component_raw = {'buffers': 1}
 let g:lightline#bufferline#show_number  = 1
 set showtabline=2
 
+" let g:Illuminate_highlightUnderCursor = 0
+let g:Illuminate_ftwhitelist = ['vim', 'sh', 'javascript', 'vue', 'css', 'scss', 'pcss']
+augroup illuminate_augroup
+    autocmd!
+    autocmd VimEnter * hi illuminatedWord guibg=#676E95 guifg=#ffffff
+augroup END
+
 if has("autocmd")
     " Highlight TODO, FIXME, NOTE, etc.
     autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\)')
