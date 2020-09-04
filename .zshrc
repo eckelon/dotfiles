@@ -6,7 +6,6 @@ compinit -i -C
 ulimit -Sn 4096
 
 fpath+=$HOME/.zsh/pure
-# fpath+=$HOME/.zsh/tmuxinator
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -34,9 +33,10 @@ source $HOME/.zsh/tmux.zsh
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-bindkey "^[[1~" beginning-of-line
-bindkey "^[[4~" end-of-line
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
 bindkey "^[[3~" delete-char
+bindkey "^[[5~" page-up
 
 setopt histignorealldups sharehistory
 
