@@ -418,10 +418,26 @@ debug:
 #   - AppCursor
 #   - ~AppKeypad
 #   - AppKeypad
-key_bindings:
+key_bindings: # type xxd -psd to get the key pressed hexdump
   - { key: Left,     mods: Command,     chars: "\x1b[H" }
   - { key: Right,     mods: Command,     chars: "\x1b[F" }
   - { key: Left,     mods: Alt,         chars: "\x1bb" }
   - { key: Right,    mods: Alt,         chars: "\x1bf" }
   - { key: PageUp,    action: "ScrollPageUp" }
   - { key: PageDown,    action: "ScrollPageDown" }
+    # New tab (tmux window)
+  - { key: T,        mods: Command,       chars: "\x01\x63" }
+    # Close tab (tmux window)
+  - { key: W,        mods: Command,       chars: "\x01\x78" }
+    # tmux vertical pane
+  - { key: E,        mods: Command,       chars: "\x01\x25" }
+    # tmux horizontal pane
+  - { key: E,        mods: 'Shift|Command',       chars: "\x01\x22" }
+    # cycle between tabs (tmux windows)
+  - { key: Tab,        mods: Control,       chars: "\x01\x6e" }
+  - { key: Tab,        mods: 'Shift|Control',       chars: "\x01\x70" }
+    # cycle through pages
+  - { key: H,        mods: Command,       chars: "\x01\x1b\x5b\x44" }
+  - { key: J,        mods: Command,       chars: "\x01\x1b\x5b\x42" }
+  - { key: K,        mods: Command,       chars: "\x01\x1b\x5b\x41" }
+  - { key: L,        mods: Command,       chars: "\x01\x1b\x5b\x43" }
