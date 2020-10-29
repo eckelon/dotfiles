@@ -27,4 +27,5 @@ vnoremap <Space> za
 
 nnoremap ; :
 nmap bn :bn<CR>
+nmap bp :bp<CR>
 nmap bd :bd<CR>
