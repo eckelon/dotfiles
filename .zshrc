@@ -23,12 +23,13 @@ export TERM=xterm-256color-italic
 export EDITOR='nvim'
 export PATH="$HOME/nvim-osx64/bin:$PATH"
 
+
 source $HOME/.zsh/nvm.zsh
 source $HOME/.zsh/completions.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+# source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
