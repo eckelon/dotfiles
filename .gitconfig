@@ -39,3 +39,5 @@
 	required = true
 [mergetool "kdiff3"]
 	path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
+[pull]
+	rebase = false
