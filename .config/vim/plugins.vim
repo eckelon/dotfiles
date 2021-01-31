@@ -18,7 +18,6 @@ Plug 'elzr/vim-json', { 'for': 'json'}
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'typescript', 'scss', 'css', 'vue', 'svelte']}
 Plug 'honza/vim-snippets', { 'for': ['javascript', 'vue']}
 Plug 'RRethy/vim-illuminate' "automatically highlighting other uses of the word under the cursor
-Plug 'protocolbuffers/protobuf', { 'rtp': 'editors'}
 
 " better navigation
 Plug 'andymass/vim-matchup' "even better %. Navigate and highlight matching words
