@@ -1,7 +1,9 @@
-colorscheme material
-
 set noshowmode
 set termguicolors
+
+set background=light    " for light version of theme
+" set background=dark     " for either mirage or dark version.
+colorscheme ayu
 
 " fix italics inside tmux
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
@@ -10,7 +12,6 @@ let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'palenight'
 let g:lightline = {
-            \ 'colorscheme': 'material_vim',
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ],
             \             [ 'gitbranch', 'readonly', 'absolutepath', 'modified' ] ]
