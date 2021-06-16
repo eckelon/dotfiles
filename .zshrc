@@ -57,8 +57,15 @@ fi
 
 PURE_PROMPT_SYMBOL=λ
 ZSH_AUTOSUGGEST_USE_ASYNC=1
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export PATH="$PATH:$HOME/.cargo/bin"
+
+export JAVA_HOME=$(/usr/libexec/java_home)

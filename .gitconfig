@@ -30,8 +30,8 @@
 [merge]
 	tool = kdiff3
 [user]
-	name = JA Samitier
-	email = jesus.samitier@caseonit.com
+	name = Jesus Samitier
+	email = contacto@jasamitier.com
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
