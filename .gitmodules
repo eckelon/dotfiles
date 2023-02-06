@@ -69,6 +69,3 @@
 [submodule "raycast/.config/raycast"]
 	path = raycast/.config/raycast
 	url = git@github.com:eckelon/raycast-config.git
-[submodule "vscode/Library/Application Support/Code"]
-	path = vscode/Library/Application Support/Code
-	url = git@github.com:eckelon/vscode-user-settings.git
