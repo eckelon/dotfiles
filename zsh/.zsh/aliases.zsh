@@ -1,0 +1,22 @@
+# alias vim="hx"
+alias ivm="vim"
+alias weather='curl -4 wttr.in/Zaragoza\?lang=es'
+alias git-clean-local-branches="git branch -vv | grep -E \"desaparecido|gone\" | awk '{print $1}' | xargs -n1 git branch -d"
+alias killNode="ps aux | grep ' node' | awk '{print $2}' | xargs kill"
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias lockscreen='open -a ScreenSaverEngine'
+alias grep='grep --color'
+alias kdiff3='/Applications/kdiff3.app/Contents/MacOS/kdiff3'
+alias mergetool='git mergetool --tool kdiff3'
+alias difftool='git difftool --tool kdiff3'
+alias diff="diff-so-fancy"
+# alias cat="bat"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+alias ls="exa"
+alias l="exa -lahF"
+alias tmux="tmux -u"
+alias k="kubectl"
+alias keq="kubectl -n equine"
+alias huego=hugo
+alias minikubeup="minikube start --driver=virtualbox --memory 4000 --cpus 2 --no-kubernetes"
+alias python=python3

@@ -1,0 +1,7 @@
+[[language]]
+name = "python"
+auto-format = true
+
+[[language]]
+name = "typescript"
+auto-format = true

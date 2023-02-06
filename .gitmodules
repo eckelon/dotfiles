@@ -1,0 +1,74 @@
+[submodule ".nvm"]
+	path = .nvm
+	url = https://github.com/creationix/nvm.git
+[submodule ".vim/vim-plug"]
+	path = .vim/vim-plug
+	url = https://github.com/junegunn/vim-plug.git
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule ".zsh/zsh-autosuggestions"]
+	path = .zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule ".zsh/zsh-completions"]
+	path = .zsh/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
+[submodule ".zsh/zsh-history-substring-search"]
+	path = .zsh/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search.git
+[submodule ".zsh/zsh-syntax-highlighting"]
+	path = .zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule ".zsh/zsh-private-config"]
+	path = .zsh/zsh-private-config
+	url = git@github.com:eckelon/zsh-private-config.git
+[submodule ".zsh/pure"]
+	path = .zsh/pure
+	url = https://github.com/sindresorhus/pure.git
+	branch = main
+[submodule ".config/iterm2"]
+	path = .config/iterm2
+	url = git@github.com:eckelon/iterm2config.git
+[submodule ".config/alfred-config"]
+	path = .config/alfred-config
+	url = git@gitlab.com:jasamitier/alfred-config.git
+[submodule ".config/tmuxinator"]
+	path = .config/tmuxinator
+	url = git@github.com:eckelon/tmuxinator-config.git
+	branch = main
+[submodule ".config/kitty/kitty-themes"]
+	path = .config/kitty/kitty-themes
+	url = git@github.com:dexpota/kitty-themes.git
+[submodule ".config/raycast"]
+	path = .config/raycast
+	url = git@github.com:eckelon/raycast-config.git
+[submodule "zsh/.zsh/pure"]
+	path = zsh/.zsh/pure
+	url = https://github.com/sindresorhus/pure.git
+[submodule "zsh/.zsh/zsh-autosuggestions"]
+	path = zsh/.zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "zsh/.zsh/zsh-completions"]
+	path = zsh/.zsh/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "zsh/.zsh/zsh-history-substring-search"]
+	path = zsh/.zsh/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search.git
+[submodule "zsh/.zsh/zsh-syntax-highlighting"]
+	path = zsh/.zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "kitty/.config/kitty/kitty-themes"]
+	path = kitty/.config/kitty/kitty-themes
+	url = https://github.com/dexpota/kitty-themes.git
+[submodule "zsh/.zsh/zsh-private-config"]
+	path = zsh/.zsh/zsh-private-config
+	url = git@github.com:eckelon/zsh-private-config.git
+[submodule "nvm/.nvm"]
+	path = nvm/.nvm
+	url = https://github.com/nvm-sh/nvm.git
+[submodule "raycast/.config/raycast"]
+	path = raycast/.config/raycast
+	url = git@github.com:eckelon/raycast-config.git
+[submodule "vscode/Library/Application Support/Code"]
+	path = vscode/Library/Application Support/Code
+	url = git@github.com:eckelon/vscode-user-settings.git
