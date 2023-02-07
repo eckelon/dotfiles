@@ -3,9 +3,8 @@ theme = "onedark"
 [keys.insert]
 j = { j = "normal_mode" }
 
-[keys.normal]
-g = { a = "code_action" }
-esc = ["collapse_selection", "keep_primary_selection"]
+#I don't want to type , or ; to cancel a multiple cursors selection
+esc = ["collapse_selection", "keep_primary_selection"] 
 
 [editor]
 cursorline = true

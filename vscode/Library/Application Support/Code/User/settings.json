@@ -50,5 +50,7 @@
     "workbench.sideBar.location": "right",
     "editor.minimap.enabled": false,
     "editor.cursorBlinking": "phase",
-    "editor.cursorSmoothCaretAnimation": "explicit"
+    "editor.cursorSmoothCaretAnimation": "explicit",
+    "audioCues.terminalQuickFix": "off",
+    "python.terminal.activateEnvInCurrentTerminal": true
 }
