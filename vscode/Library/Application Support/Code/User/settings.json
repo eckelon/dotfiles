@@ -52,5 +52,6 @@
     "editor.cursorBlinking": "phase",
     "editor.cursorSmoothCaretAnimation": "explicit",
     "audioCues.terminalQuickFix": "off",
-    "python.terminal.activateEnvInCurrentTerminal": true
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "git.openRepositoryInParentFolders": "always"
 }
