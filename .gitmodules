@@ -25,3 +25,6 @@
 [submodule "raycast/.config/raycast"]
 	path = raycast/.config/raycast
 	url = git@github.com:eckelon/raycast-config.git
+[submodule "tmux/.tmux/plugins/tpm"]
+	path = tmux/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm.git
