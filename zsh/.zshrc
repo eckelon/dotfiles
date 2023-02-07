@@ -1,22 +1,15 @@
 # Enable autocompletion
 
-# autoload -Uz compinit # for dump in ~/.zcompdump(N.mh+24); do #   compinit -i # done # compinit -i -C
-
-source $HOME/.zsh/nvm.zsh
-source $HOME/.zsh/zoxide.zsh
-source $HOME/.zsh/completions.zsh
-source $HOME/.zsh/aliases.zsh
-
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 source $HOME/.zsh/zsh-private-config/init.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-if [ -f ~/.fzf.zsh ]; then
-  source $HOME/.fzf.zsh
-  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-fi
+source $HOME/.zsh/nvm.zsh
+source $HOME/.zsh/zoxide.zsh
+source $HOME/.zsh/fzf.zsh
+source $HOME/.zsh/completions.zsh
+source $HOME/.zsh/aliases.zsh
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
