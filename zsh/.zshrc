@@ -7,7 +7,6 @@ source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source $HOME/.zsh/nvm.zsh
 source $HOME/.zsh/zoxide.zsh
-source $HOME/.zsh/fzf.zsh
 source $HOME/.zsh/completions.zsh
 source $HOME/.zsh/aliases.zsh
 
