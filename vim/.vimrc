@@ -1,10 +1,12 @@
 set nocompatible
 set number
+set background=dark
+colorscheme habamax
 syntax enable
 filetype plugin on
 
 imap jj <Esc>
-
+nmap - :Explore %:p:h<CR>
 " Search down into subfolders
 " Provides tab-completion for all file-related tasks
 set path+=**
