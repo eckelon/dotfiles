@@ -22,11 +22,9 @@ HISTSIZE=100000
 SAVEHIST=100000
 HISTFILE=~/.zsh_history
 
-# Theme settings
-fpath+=$HOME/.zsh/pure
-autoload -U promptinit; promptinit
-prompt pure
-PURE_PROMPT_SYMBOL=λ
+# Starship prompt theme
+eval "$(starship init zsh)"
+
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
 
