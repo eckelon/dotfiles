@@ -53,5 +53,6 @@
     "editor.cursorSmoothCaretAnimation": "explicit",
     "audioCues.terminalQuickFix": "off",
     "python.terminal.activateEnvInCurrentTerminal": true,
-    "git.openRepositoryInParentFolders": "always"
+    "git.openRepositoryInParentFolders": "always",
+    "editor.formatOnSave": true
 }
