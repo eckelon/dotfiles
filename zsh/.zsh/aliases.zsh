@@ -10,6 +10,7 @@ alias mergetool='git mergetool --tool kdiff3'
 alias difftool='git difftool --tool kdiff3'
 alias diff="diff-so-fancy"
 alias rg="rg --hidden"
+alias fd="fd --hidden"
 # alias cat="bat"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 alias ls="exa"
