@@ -42,5 +42,13 @@
             "to": "prevBlankLine",
             "select": true
         }
-    }
+    },
+    {
+        "key": "ctrl+`",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+a t",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
 ]

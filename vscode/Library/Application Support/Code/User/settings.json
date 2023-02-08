@@ -54,5 +54,10 @@
     "audioCues.terminalQuickFix": "off",
     "python.terminal.activateEnvInCurrentTerminal": true,
     "git.openRepositoryInParentFolders": "always",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/node_modules/**": true,
+        "**/__pycache__/**": true
+    }
 }
