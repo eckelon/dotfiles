@@ -6,11 +6,11 @@ set number
 set mouse=a
 set clipboard^=unnamed,unnamedplus
 set termguicolors
+set incsearch
 set hlsearch
 set cursorline
 set nobackup
 set noswapfile
-
 
 set tabstop=4
 set shiftwidth=4 smarttab
