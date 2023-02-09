@@ -23,9 +23,9 @@ set t_ut=
 imap jj <Esc>
 map <silent> - :Ex <bar> :sil! /<C-R>=expand("%:t")<CR><CR>
 
-" Search down into subfolders
-" Provides tab-completion for all file-related tasks
-set path+=**
+set path=.,**
+set wildignore+=*/node_modules/*
+set wildignore+=*/__pycache__/*
 
 " Display all matching files when we tab complete
 set wildmenu
