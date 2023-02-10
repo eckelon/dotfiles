@@ -1,7 +1,7 @@
 set shiftwidth=4 tabstop=4 softtabstop=4 autoindent smartindent
 set colorcolumn=80
 compiler python
-setlocal path=.,**
+setlocal path=,..
 setlocal wildignore+=*/node_modules/*
 setlocal wildignore+=*/__pycache__/*
 setlocal include=^\\s*\\(from\\\|import\\)\\s*\\zs\\(\\S\\+\\s\\{-}\\)*\\ze\\($\\\|\ as\\)
