@@ -25,3 +25,18 @@
 [submodule "tmux/.tmux/plugins/tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
+[submodule "vim/.vim/pack/git-plugins/start/fzf"]
+	path = vim/.vim/pack/git-plugins/start/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "vim/.vim/pack/git-plugins/start/fzf.vim"]
+	path = vim/.vim/pack/git-plugins/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
+[submodule "vim/.vim/pack/git-plugins/opt/ale"]
+	path = vim/.vim/pack/git-plugins/opt/ale
+	url = https://github.com/dense-analysis/ale.git
+[submodule "vim/.vim/pack/git-plugins/opt/vim-mucomplete"]
+	path = vim/.vim/pack/git-plugins/opt/vim-mucomplete
+	url = https://github.com/lifepillar/vim-mucomplete.git
+[submodule "vim/.vim/pack/git-plugins/opt/vim-commentary"]
+	path = vim/.vim/pack/git-plugins/opt/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git

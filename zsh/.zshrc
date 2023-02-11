@@ -39,4 +39,6 @@ export LANG=en_US.UTF-8
 setopt auto_cd #automatically cd to a directory without `cd`
 setopt histignorealldups sharehistory
 
+export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
+
 source <(oc completion zsh)
