@@ -40,3 +40,6 @@
 [submodule "vim/.vim/pack/git-plugins/opt/vim-commentary"]
 	path = vim/.vim/pack/git-plugins/opt/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim/.vim/pack/git-plugins/opt/vim-poliglot"]
+	path = vim/.vim/pack/git-plugins/opt/vim-poliglot
+	url = https://github.com/sheerun/vim-polyglot.git
