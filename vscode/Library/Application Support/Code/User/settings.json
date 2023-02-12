@@ -59,5 +59,7 @@
         "**/.git/objects/**": true,
         "**/node_modules/**": true,
         "**/__pycache__/**": true
-    }
+    },
+    "editor.fontFamily": "JetBrainsMono SemiBold, Menlo, Monaco, 'Courier New', monospace",
+    "workbench.colorTheme": "Catppuccin Mocha"
 }
