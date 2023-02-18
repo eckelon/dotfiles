@@ -5,13 +5,16 @@ set wildmenu
 setlocal wildignore+=*/node_modules/*
 setlocal wildignore+=*/__pycache__/*
 
-let b:ale_linters = ['flake8', 'pylsp', 'mypy']
+let b:ale_linters = ['flake8', 'pylsp']
 let b:ale_fixers = ['black', 'isort', 'autoimport', 'ruff']
 let g:ale_python_auto_virtualenv = 1
 packadd vim-mucomplete
 packadd ale
 packadd vim-poliglot
 packadd vim-commentary
+
+nnoremap <leader>fun :-1read $HOME/.vim/snippets/python/function<CR>wviw
+nnoremap <leader>lam :-1read $HOME/.vim/snippets/python/lambda<CR>d$j$p0flwviw
 
 " handy if not using ALE or similar
 "command! -bar Runlinter silent make %:p | redraw!
@@ -22,5 +25,5 @@ packadd vim-commentary
 "        cclose
 "    endif
 "endfunction
-"nmap <leader>d :call ToggleDiagnostics()<CR>
+"nmap <leader>d :call ToggleDiagno:stics()<CR>
 

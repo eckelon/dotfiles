@@ -1,6 +1,6 @@
 syntax enable
 filetype plugin on
-colorscheme slate
+colorscheme catppuccin_mocha
 
 set nocompatible
 set number

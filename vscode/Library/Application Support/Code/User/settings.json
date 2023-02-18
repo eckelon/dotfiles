@@ -1,8 +1,8 @@
 {
     "files.autoSave": "afterDelay",
-    "window.zoomLevel": 0.5,
+    "window.zoomLevel": 2,
     "editor.wordWrap": "on",
-    "editor.fontSize": 16,
+    "editor.fontSize": 14,
     "explorer.autoRevealExclude": {
         "**/__pycache__": true
     },
@@ -31,10 +31,9 @@
     "[markdown]": {
         "files.trimTrailingWhitespace": false
     },
-    "editor.bracketPairColorization.enabled": true,
+    "editor.bracketPairColorization.enabled": false,
     "editor.guides.bracketPairs": true,
     "editor.guides.highlightActiveIndentation": true,
-    "editor.guides.bracketPairsHorizontal": "active",
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
     },
@@ -61,5 +60,29 @@
         "**/__pycache__/**": true
     },
     "editor.fontFamily": "JetBrainsMono SemiBold, Menlo, Monaco, 'Courier New', monospace",
-    "workbench.colorTheme": "Catppuccin Mocha"
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.activityBar.visible": false,
+    "workbench.statusBar.visible": false,
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.overviewRulerBorder": false,
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+    "workbench.tree.renderIndentGuides": "none",
+    "explorer.openEditors.visible": 0,
+    "explorer.decorations.colors": false,
+    "editor.guides.highlightActiveBracketPair": false,
+    "editor.guides.bracketPairsHorizontal": false,
+    "editor.guides.indentation": false,
+    "editor.renderLineHighlight": "none",
+    "editor.glyphMargin": false,
+    "workbench.layoutControl.enabled": false,
+    "window.title": " ",
+    "breadcrumbs.enabled": false,
+    "python.formatting.provider": "black",
+    "go.toolsManagement.autoUpdate": true,
+    "telemetry.telemetryLevel": "off",
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.typeCheckingMode": "strict",
+    "python.analysis.inlayHints.pytestParameters": true,
+    "python.analysis.inlayHints.variableTypes": true
 }
