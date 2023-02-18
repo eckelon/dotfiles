@@ -13,7 +13,7 @@ opts = get_options()
 icon_fg = as_rgb(color_as_int(opts.color16))
 icon_bg = as_rgb(color_as_int(opts.color8))
 bat_text_color = as_rgb(color_as_int(opts.color15))
-clock_color = as_rgb(color_as_int(opts.color15))
+clock_color = as_rgb(color_as_int(opts.active_tab_background))
 date_color = as_rgb(color_as_int(opts.color8))
 SEPARATOR_SYMBOL, SOFT_SEPARATOR_SYMBOL = ("\ue0b0", "\ue0b1")
 RIGHT_SEPARATOR_SYMBOL = "\ue0b2"
@@ -25,7 +25,6 @@ background_color = as_rgb(color_as_int(opts.background))
 even_color_bg = as_rgb(color_as_int(opts.color4))
 odd_color_bg = as_rgb(color_as_int(opts.color15))
 cell_fg = as_rgb(color_as_int(opts.background))
-
 
 
 def _draw_icon(screen: Screen, index: int) -> int:
@@ -110,8 +109,10 @@ def _redraw_tab_bar(_):
     if tm is not None:
         tm.mark_tab_bar_dirty()
 
+
 timer_id = None
 right_status_length = -1
+
 
 def draw_tab(
     draw_data: DrawData,
