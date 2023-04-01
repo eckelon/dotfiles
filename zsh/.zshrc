@@ -31,8 +31,9 @@ export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/nvim-macos/bin"
 export PATH="$PATH:$HOME/.local/bin"
-
+export PATH="$PATH:/opt/homebrew/opt/llvm/bin"
 export EDITOR='hx'
+
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 

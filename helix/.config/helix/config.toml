@@ -22,3 +22,11 @@ render = true
 
 [editor.lsp]
 display-messages = true
+display-inlay-hints = true
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control"]
+center = ["file-name"]
+
+[editor.soft-wrap]
+enable = true
