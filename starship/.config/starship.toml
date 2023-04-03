@@ -7,3 +7,5 @@ disabled = true
 disabled = true
 [package]
 disabled = true
+[python]
+detect_files = ['Pipfile', '__init__.py', 'pyproject.toml', 'requirements.txt', 'setup.py', 'tox.ini']

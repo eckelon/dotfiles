@@ -27,6 +27,7 @@ eval "$(starship init zsh)"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
 
+export PATH="$PATH:/usr/local/sbin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/nvim-macos/bin"

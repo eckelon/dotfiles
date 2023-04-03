@@ -13,11 +13,10 @@ alias rg="rg --hidden"
 alias fd="fd --hidden"
 # alias cat="bat"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-alias ls="exa"
-alias l="exa -lahF"
 alias tmux="tmux -u"
 alias k="kubectl"
 alias keq="kubectl -n equine"
 alias huego=hugo
 alias minikubeup="minikube start --driver=virtualbox --memory 4000 --cpus 2 --no-kubernetes"
-alias python=python3
+alias python="pyenv exec python"
+alias pip="pyenv exec pip"

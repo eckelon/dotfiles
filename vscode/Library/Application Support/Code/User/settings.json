@@ -20,7 +20,7 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     "typescript.updateImportsOnFileMove.enabled": "always",
     "editor.codeActionsOnSave": {
-        "source.organizeImports": true
+        "source.organizeImports": false
     },
     "emmet.includeLanguages": {
         "vue-html": "html",
@@ -53,7 +53,6 @@
     "audioCues.terminalQuickFix": "off",
     "python.terminal.activateEnvInCurrentTerminal": true,
     "git.openRepositoryInParentFolders": "always",
-    "editor.formatOnSave": true,
     "files.watcherExclude": {
         "**/.git/objects/**": true,
         "**/node_modules/**": true,
@@ -62,7 +61,6 @@
     "editor.fontFamily": "JetBrainsMono SemiBold, Menlo, Monaco, 'Courier New', monospace",
     "workbench.colorTheme": "Catppuccin Mocha",
     "workbench.activityBar.visible": false,
-    "workbench.statusBar.visible": false,
     "editor.hideCursorInOverviewRuler": true,
     "editor.overviewRulerBorder": false,
     "editor.scrollbar.horizontal": "hidden",
@@ -86,6 +84,7 @@
     "python.analysis.inlayHints.pytestParameters": true,
     "python.analysis.inlayHints.variableTypes": true,
     "zig.buildOnSave": true,
+    "rust-analyzer.check.overrideCommand": null
     "zig.zls.enableAutofix": true,
     "zig.zls.enableImportEmbedfileArgumentCompletions": true,
     "zig.zls.enableInlayHints": true,
