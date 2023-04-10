@@ -17,6 +17,10 @@ bindkey "^[[F" end-of-line
 bindkey "^[[3~" delete-char
 bindkey "^[[5~" page-up
 
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
 HISTSIZE=100000
 SAVEHIST=100000
 HISTFILE=~/.zsh_history
@@ -34,6 +38,7 @@ export PATH="$PATH:$HOME/nvim-macos/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/opt/homebrew/opt/llvm/bin"
 export EDITOR='hx'
+export VISUAL='vim'
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -44,3 +49,4 @@ setopt histignorealldups sharehistory
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 
 source <(oc completion zsh)
+
