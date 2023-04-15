@@ -5,10 +5,13 @@ source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 source $HOME/.zsh/zsh-private-config/init.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+source $HOME/.zsh/aliases.zsh
+
 source $HOME/.zsh/nvm.zsh
 source $HOME/.zsh/zoxide.zsh
+source $HOME/.zsh/pyenv.zsh
+
 source $HOME/.zsh/completions.zsh
-source $HOME/.zsh/aliases.zsh
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -50,3 +53,5 @@ export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 
 source <(oc completion zsh)
 
+export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
