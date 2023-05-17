@@ -84,9 +84,11 @@
     "python.analysis.inlayHints.pytestParameters": true,
     "python.analysis.inlayHints.variableTypes": true,
     "zig.buildOnSave": true,
-    "rust-analyzer.check.overrideCommand": null
+    "rust-analyzer.check.overrideCommand": null,
     "zig.zls.enableAutofix": true,
     "zig.zls.enableImportEmbedfileArgumentCompletions": true,
     "zig.zls.enableInlayHints": true,
-    "zig.zls.path": "/Users/eckelon/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls"
+    "zig.zls.path": "/Users/eckelon/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
+    "redhat.telemetry.enabled": false,
+    "explorer.confirmDragAndDrop": false
 }

@@ -18,5 +18,6 @@ alias k="kubectl"
 alias keq="kubectl -n equine"
 alias huego=hugo
 alias minikubeup="minikube start --driver=virtualbox --memory 4000 --cpus 2 --no-kubernetes"
-alias python="pyenv exec python"
-alias pip="pyenv exec pip"
+# alias python="pyenv exec python"
+# alias pip="pyenv exec pip"
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'

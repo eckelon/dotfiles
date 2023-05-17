@@ -40,6 +40,7 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/nvim-macos/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/opt/homebrew/opt/llvm/bin"
+export PATH="/Library/Java/JavaVirtualMachines/graalvm-ce-java17-22.3.1/Contents/Home/bin:$PATH"
 export EDITOR='hx'
 export VISUAL='vim'
 
@@ -55,3 +56,7 @@ source <(oc completion zsh)
 
 export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/jasamitier/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
