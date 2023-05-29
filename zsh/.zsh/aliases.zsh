@@ -21,3 +21,4 @@ alias minikubeup="minikube start --driver=virtualbox --memory 4000 --cpus 2 --no
 # alias python="pyenv exec python"
 # alias pip="pyenv exec pip"
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+alias zshspeed='sudo rm -rf /private/var/log/asl/*.asl'
