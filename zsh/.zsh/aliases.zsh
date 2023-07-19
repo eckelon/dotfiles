@@ -15,10 +15,8 @@ alias fd="fd --hidden"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 alias tmux="tmux -u"
 alias k="kubectl"
-alias keq="kubectl -n equine"
 alias huego=hugo
 alias minikubeup="minikube start --driver=virtualbox --memory 4000 --cpus 2 --no-kubernetes"
-# alias python="pyenv exec python"
-# alias pip="pyenv exec pip"
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+alias python=$(which python3)
+alias pip=$(which pip3)
 alias zshspeed='sudo rm -rf /private/var/log/asl/*.asl'

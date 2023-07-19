@@ -6,11 +6,8 @@ source $HOME/.zsh/zsh-private-config/init.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source $HOME/.zsh/aliases.zsh
-
-source $HOME/.zsh/nvm.zsh
 source $HOME/.zsh/zoxide.zsh
-source $HOME/.zsh/pyenv.zsh
-
+source $HOME/.zsh/gcloud.zsh
 source $HOME/.zsh/completions.zsh
 
 bindkey '^[[A' history-substring-search-up
@@ -40,7 +37,6 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/nvim-macos/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/opt/homebrew/opt/llvm/bin"
-export PATH="/Library/Java/JavaVirtualMachines/graalvm-ce-java17-22.3.1/Contents/Home/bin:$PATH"
 export EDITOR='hx'
 export VISUAL='vim'
 
@@ -55,8 +51,5 @@ export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 source <(oc completion zsh)
 
 export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/jasamitier/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
