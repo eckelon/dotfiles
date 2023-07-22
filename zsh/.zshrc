@@ -1,5 +1,3 @@
-# Enable autocompletion
-
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 source $HOME/.zsh/zsh-private-config/init.zsh

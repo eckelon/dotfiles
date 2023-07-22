@@ -18,5 +18,6 @@ alias k="kubectl"
 alias huego=hugo
 alias minikubeup="minikube start --driver=virtualbox --memory 4000 --cpus 2 --no-kubernetes"
 alias python=$(which python3)
+alias mvn="docker run --rm -it -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:3.8.4-openjdk-17 mvn"
 alias pip=$(which pip3)
 alias zshspeed='sudo rm -rf /private/var/log/asl/*.asl'
