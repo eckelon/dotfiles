@@ -13,15 +13,6 @@
 [submodule "zsh/.zsh/zsh-private-config"]
 	path = zsh/.zsh/zsh-private-config
 	url = git@github.com:eckelon/zsh-private-config.git
-[submodule "nvm/.nvm"]
-	path = nvm/.nvm
-	url = https://github.com/nvm-sh/nvm.git
-[submodule "raycast/.config/raycast"]
-	path = raycast/.config/raycast
-	url = git@github.com:eckelon/raycast-config.git
-[submodule "tmux/.tmux/plugins/tpm"]
-	path = tmux/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm.git
 [submodule "vim/.vim/pack/git-plugins/start/fzf"]
 	path = vim/.vim/pack/git-plugins/start/fzf
 	url = https://github.com/junegunn/fzf.git
@@ -46,15 +37,15 @@
 [submodule "vim/.vim/pack/git-plugins/start/catppuccin"]
 	path = vim/.vim/pack/git-plugins/start/catppuccin
 	url = https://github.com/catppuccin/vim.git
-[submodule "kitty/.config/kitty/catppuccin-theme"]
-	path = kitty/.config/kitty/catppuccin-theme
-	url = https://github.com/catppuccin/kitty.git
-[submodule "kitty/.config/kitty/catppuccin-theme"]
-	path = kitty/.config/kitty/catppuccin-theme
-	url = https://github.com/catppuccin/kitty.git
 [submodule "vim/.vim/pack/git-plugins/start/ale"]
 	path = vim/.vim/pack/git-plugins/start/ale
 	url = https://github.com/dense-analysis/ale.git
 [submodule "vim/.vim/pack/git-plugins/start/catppuccin"]
 	path = vim/.vim/pack/git-plugins/start/catppuccin
 	url = https://github.com/catppuccin/vim.git
+[submodule "kitty/.config/kitty/catppuccin-theme"]
+	path = kitty/.config/kitty/catppuccin-theme
+	url = https://github.com/catppuccin/kitty
+[submodule "tmux/.tmux/plugins/tpm"]
+	path = tmux/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
