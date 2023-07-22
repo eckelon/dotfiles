@@ -130,12 +130,12 @@ def draw_tab(
         timer_id = add_timer(_redraw_tab_bar, REFRESH_TIME, True)
     clock = datetime.now().strftime(" %H:%M ")
     date = datetime.now().strftime(" %d.%m.%Y ")
-    username = getuser()
-    hostname = gethostname().replace('.local', '')
+    # username = getuser()
+    # hostname = gethostname().replace('.local', '')
     cells = []
     cells.append((clock_color, clock))
     cells.append((date_color, date))
-    cells.append((date_color, f' {username} @ {hostname} '))
+    # cells.append((date_color, f' {username} @ {hostname} '))
 
     right_status_length = RIGHT_MARGIN
     for cell in cells:
