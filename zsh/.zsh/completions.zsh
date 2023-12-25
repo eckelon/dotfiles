@@ -1,3 +1,4 @@
+autoload bashcompinit
 autoload -Uz compinit
 compinit -i -C
 

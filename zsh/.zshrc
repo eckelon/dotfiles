@@ -19,8 +19,8 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=100000000000000
+SAVEHIST=100000000000000
 HISTFILE=~/.zsh_history
 
 # Starship prompt theme
@@ -34,9 +34,8 @@ export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/nvim-macos/bin"
 export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:/opt/homebrew/opt/llvm/bin"
+export PATH="$PATH:$(brew --prefix)/opt/llvm/bin"
 export EDITOR='hx'
-export VISUAL='vim'
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -48,6 +47,12 @@ export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 
 source <(oc completion zsh)
 
-export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
-
+export PATH="/usr/local/opt/ruby@2.7/bin:$PATH"
 export PATH="/Users/jasamitier/.rd/bin:$PATH"
+export BUN_INSTALL="$HOME/.bun" 
+export PATH="$BUN_INSTALL/bin:$PATH"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/jasamitier/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
