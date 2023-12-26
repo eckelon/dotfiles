@@ -51,3 +51,7 @@ source <(oc completion zsh)
 export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
 
 export PATH="/Users/jasamitier/.rd/bin:$PATH"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/eckelon/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
