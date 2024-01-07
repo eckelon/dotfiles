@@ -1,0 +1,116 @@
+{
+    "[css][scss][less]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[javascript][javascriptreact][typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[json][jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false
+    },
+    "breadcrumbs.enabled": false,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+    },
+    "editor.codeLens": false,
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 16,
+    "editor.fontVariations": false,
+    "editor.fontWeight": "bold",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.lineNumbers": "relative",
+    "editor.linkedEditing": true,
+    "editor.minimap.enabled": false,
+    "editor.scrollBeyondLastLine": false,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+        "vue-html": "html"
+    },
+    "explorer.confirmDragAndDrop": false,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "files.exclude": {
+        "**/.gradle": true,
+        "**/.js": {
+            "when": "$(basename).ts"
+        },
+        "**/bin": true,
+        "**/build": true,
+        "**/gradle": true,
+        "**/gradlew.bat": true,
+        "**/mvnw.cmd": true,
+        "**/node_modules": true,
+        "**/out": true,
+        "**/target": true,
+        "**/vendor": true,
+        "*.log": true,
+        "*.pid": true
+    },
+    "files.restoreUndoStack": false,
+    "files.trimTrailingWhitespace": true,
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/__pycache__/**": true,
+        "**/node_modules/**": true
+    },
+    "git.openRepositoryInParentFolders": "always",
+    "html.autoClosingTags": true,
+    "javascript.autoClosingTags": true,
+    "javascript.suggest.autoImports": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "python.createEnvironment.trigger": "prompt",
+    "python.defaultInterpreterPath": "python3",
+    "search.exclude": {
+        "**/.gradle": true,
+        "**/.js": {
+            "when": "$(basename).ts"
+        },
+        "**/bin": true,
+        "**/build": true,
+        "**/gradle": true,
+        "**/gradlew.bat": true,
+        "**/mvnw.cmd": true,
+        "**/node_modules": true,
+        "**/out": true,
+        "**/target": true,
+        "**/vendor": true,
+        "*.log": true,
+        "*.pid": true
+    },
+    "search.searchOnType": false,
+    "telemetry.telemetryLevel": "off",
+    "terminal.integrated.gpuAcceleration": "on",
+    "typescript.autoClosingTags": true,
+    "typescript.suggest.autoImports": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+    // "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
+    "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
+    "window.zoomLevel": 0.75,
+    "workbench.activityBar.location": "top",
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.restoreViewState": false,
+    "workbench.startupEditor": "none",
+    "zig.initialSetupDone": true,
+    "zig.path": "/Users/eckelon/zig-0.12/zig",
+    "zig.zls.path": "/Users/eckelon/.local/bin/zls",
+    "window.commandCenter": false,
+    "workbench.editor.showTabs": "none",
+    "workbench.layoutControl.enabled": false,
+    "workbench.editor.editorActionsLocation": "hidden",
+    "whichkey.bindingOverrides": [],
+    "bun.runtime": "/Users/eckelon/.bun/bin/bun",
+    "bun.debugTerminal.stopOnEntry": true,
+    "zig.revealOutputChannelOnFormattingError": false
+}
