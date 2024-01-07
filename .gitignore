@@ -1,4 +1,5 @@
 .DS_Store
 tmux/.tmux/plugins/*
 !tmux/.tmux/plugins/tpm
+*.log
 

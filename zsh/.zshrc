@@ -1,3 +1,8 @@
+if [ -z "$TMUX" ]; then
+    tmux attach -d -t || tmux new-session
+fi
+
+TERM=xterm-256color
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 source $HOME/.zsh/zsh-private-config/init.zsh
@@ -50,8 +55,16 @@ source <(oc completion zsh)
 
 export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
 
-export PATH="/Users/jasamitier/.rd/bin:$PATH"
+export PATH="$HOME/.rd/bin:$PATH"
+export PATH="$HOME/zig-0.12:$PATH"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/eckelon/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# bun completions
+[ -s "/Users/eckelon/.bun/_bun" ] && source "/Users/eckelon/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
