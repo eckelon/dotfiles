@@ -12,6 +12,7 @@ y = "yank_main_selection_to_clipboard"
 p = "paste_clipboard_before"
 
 [editor]
+lsp.enable = false
 cursorline = true
 auto-save = true
 bufferline = "always"
@@ -28,10 +29,6 @@ hidden = false
 
 [editor.indent-guides]
 render = true
-
-[editor.lsp]
-display-messages = true
-display-inlay-hints = true
 
 [editor.statusline]
 left = ["mode", "spinner", "version-control"]

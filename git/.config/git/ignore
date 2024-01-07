@@ -4,3 +4,5 @@
 .config/joplin-desktop/
 .config/coc/
 plug.vim.old
+.vscode
+.idea
