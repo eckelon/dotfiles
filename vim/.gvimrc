@@ -1,2 +1,2 @@
-set guifont=Victor\ Mono:h20
+set guifont=JetBrainsMonoNF-SemiBold:h20
 set guioptions -=T

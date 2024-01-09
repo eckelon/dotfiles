@@ -1,60 +1,171 @@
-syntax enable
-filetype plugin on
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
+
+packadd! matchit
+packadd! editorconfig
+
+set termguicolors
+set background=dark
 colorscheme catppuccin_mocha
 
-set nocompatible
+"always load the lsp options after the colorscheme
+source ~/.vim/lsp.vim
+
 set number
-set mouse=a
+set backspace=indent,eol,start
 set clipboard^=unnamed,unnamedplus
-set termguicolors
-set incsearch
+
+set wildmode=longest:full,full
+if has( 'patch-8.2.4325' )
+  set wildoptions+=pum
+endif
+set complete=.,w,b,u,i,k
+set listchars=tab:>-
+nnoremap ; :
+
 set hlsearch
-set cursorline
-set nobackup
-set noswapfile
-set grepprg=rg\ --vimgrep
-set grepformat=%f:%l:%c:%m
-set path=,..
-set t_ut= "avoid weird to the highlight in the terminal
+set incsearch
 set laststatus=2
-set statusline=%f "show the filename in the statusbar
+set mouse=a
+set nobackup
+set nocompatible
+set noswapfile
+set shortmess+=c   " Shut off completion messages
+set smarttab
+set smartcase
 set splitright
+set noshowmode
+set t_ut= "avoid weird to the highlight in the terminal
 
 let mapleader = " "
-let g:netrw_banner = 0
-let g:netrw_altv = 1
 
-set omnifunc=ale#completion#OmniFunc
-set completeopt+=noinsert
 
-let g:mucomplete#enable_auto_at_startup = 1
-let b:ale_warn_about_trailing_whitespace = 1
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_fix_on_save = 1
-let g:ale_sign_column_always = 1
-let g:ale_sign_error = '🔴'
-let g:ale_sign_warning = '❕'
-let g:ale_cursor_detail = 1
-let g:ale_floating_preview = 1
-let g:ale_hover_to_floating_preview = 1
-let g:ale_floating_window_border = []
+"-----------------------------
+"------- File Explorer -------
+"-----------------------------
 
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
+let g:netrw_banner=0
+let g:netrw_keepdir=0
+let g:netrw_liststyle=3
+let g:netrw_winsize=15
+
+"----------------------------
+"------- Git Commands -------
+"----------------------------
+
+command! Gstatus vertical term git status -sb
+command! Glog 	 vertical term git lg
+command! Gdiff 	 vertical term git diff %
+command! Gadd    !git add %
+command! -range GBlame echo join(systemlist("git -C " . shellescape(expand('%:p:h')) . " blame -L <line1>,<line2> " . expand('%:t')), "\n")
+
+"-----------------------------
+"------- Finding Files -------
+"-----------------------------
+
+" Faster vimgrep/grep via ripgrep
+
+if executable("rg")
+  set grepprg=rg\ --vimgrep\ --no-heading
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
+
+function! Grep(...)
+    return system(join([&grepprg] + [join(a:000, ' ')], ' '))
+endfunction
+command! -nargs=+ -complete=file_in_path Grep cexpr Grep(<f-args>) | copen
+nnoremap <leader>? :Grep
+
+" List buffers in quickfix
+function Buffers()
+    call setqflist(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), '{"bufnr": v:val}'))
+endfunction
+nnoremap <leader>b :call Buffers()<CR>:copen<CR>
+
+" Fuzzy finding in the quickfix
+autocmd! FileType qf nnoremap <buffer> <leader>v <C-w><Enter><C-w>L
+
+if executable("fd")
+	function! Fd(pattern)
+		let output = systemlist("fd -c never --type f --hidden --exclude .git " . shellescape(a:pattern))
+		call setqflist(map(output, '{ "filename": v:val }'))
+		copen
+	endfunction
+	command! -nargs=1 FindFiles call Fd(<q-args>)
+	nnoremap <leader>f :FindFiles<space>
+endif
+
+if g:lsp_auto_enable == 0
+  nnoremap gr :execute 'Grep ' . expand('<cword>')<CR>
+endif
+
+nnoremap <leader>co :copen<CR>
+nnoremap <leader>cc :cclose<CR>
+
+"--------------
+"--- Linter ---
+"--------------
+
+function! s:make(...) abort
+  if empty(a:000)
+    let l:args = [expand("%:S")]
+  else
+    let l:args = a:000
+  endif
+  return system(join(extend([&makeprg], l:args), ' '))
+endfunction
+
+" Run [cl]getexpr using local errorformat, if it's available.
+function! s:getexpr_efm(func, msg) abort
+  let l:efm_save = &g:errorformat
+  if !empty(&l:errorformat)
+    let &g:errorformat = &l:errorformat
+  endif
+  execute a:func . " a:msg"
+  let &g:errorformat = l:efm_save
+endfunction
+
+command! -nargs=* -complete=file_in_path -bar Make call s:getexpr_efm("cgetexpr", s:make(<args>))
+command! -nargs=* -complete=file_in_path -bar LMake call s:getexpr_efm("lgetexpr", s:make(<args>))
+
+"------------------
+"--- Navigation ---
+"------------------
+
+" Moving lines in visual mode
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '>-2<CR>gv=gv
+
+" helix-like mappings
+nnoremap ge G
+nnoremap gh 0
+nnoremap gl $
 
 inoremap jj <Esc>
 nnoremap <silent> - :Ex <bar> :sil! /<C-R>=expand("%:t")<CR><CR>
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>/ :Rg<CR>
-nnoremap <leader>s :Rg <C-R>=expand('<cword>')<CR><CR>
+nnoremap <silent> <leader>e :Lex <bar> :sil! /<C-R>=expand("%:t")<CR><CR>
 
-nnoremap gd :ALEGoToDefinition<CR>
-nnoremap gD :ALEGoToImplementation<CR>
-nnoremap gT :ALEGoToTypeDefinition<CR>
-nnoremap gr :ALEFindReferences<CR>
-nnoremap ga :ALECodeAction
-nnoremap <leader>r :ALERename<CR>
+xnoremap <C-c> <Plug>Commentary
+nnoremap <C-c> <Plug>CommentaryLine
 
-xnoremap <c-c> <Plug>Commentary
-nnoremap <c-c> <Plug>CommentaryLine
+"-------------------------
+"--- Fancy status line ---
+"-------------------------
+
+augroup customstatusline
+    au!
+    autocmd BufEnter * let b:git_branch = system("git branch --show-current 2>/dev/null")
+augroup end
+
+function! CurrentMode()
+    return mode()[0] ==# 'i' ? 'INS' : mode()[0] ==# 'v' ? 'VIS' : 'NOR'
+endfunction
+
+let &statusline = ' %{CurrentMode()} 〉 %{substitute(get(b:, "git_branch", ""), "\n$", "", "")} 〉%t %m %= %{&fileencoding} 〈 %{&filetype}〈 %p%%〈 %l:%v '
+
+" Closing compaction in insert mode
+inoremap [ []<left>
+inoremap < <><left>
+inoremap ( ()<left>
+inoremap { {}<left>
+inoremap /* /**/<left><left>

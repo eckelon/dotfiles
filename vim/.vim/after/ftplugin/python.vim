@@ -1,29 +1,23 @@
-"setlocal shiftwidth=4 tabstop=4 softtabstop=4 autoindent smartindent
-setlocal colorcolumn=80
-setlocal path=,..
-set wildmenu
-setlocal wildignore+=*/node_modules/*
-setlocal wildignore+=*/__pycache__/*
+set colorcolumn=80
 
-let b:ale_linters = ['flake8', 'pylsp']
-let b:ale_fixers = ['black', 'isort', 'autoimport', 'ruff']
-let g:ale_python_auto_virtualenv = 1
-packadd vim-mucomplete
-packadd ale
-packadd vim-poliglot
-packadd vim-commentary
+setlocal wildignore+=**/venv/**,**/env/**
 
+if g:lsp_auto_enable == 0
+
+  compiler pylint
+  command! -buffer -range=% Black let b:winview = winsaveview() |
+    \ silent! execute <line1> . "," . <line2> . "!black -q - " |
+    \ call winrestview(b:winview)
+
+  augroup Formatonsave
+    autocmd!
+    autocmd BufWritePost <buffer> :Make
+    autocmd BufWritePre <buffer> Black
+  augroup END
+
+  setlocal formatexpr=
+  setlocal formatprg=black\ -q\ -
+
+endif
 nnoremap <leader>fun :-1read $HOME/.vim/snippets/python/function<CR>wviw
 nnoremap <leader>lam :-1read $HOME/.vim/snippets/python/lambda<CR>d$j$p0flwviw
-
-" handy if not using ALE or similar
-"command! -bar Runlinter silent make %:p | redraw!
-"function! ToggleDiagnostics()
-"    if empty(filter(getwininfo(), 'v:val.quickfix'))
-"        cw 5
-"    else
-"        cclose
-"    endif
-"endfunction
-"nmap <leader>d :call ToggleDiagno:stics()<CR>
-

@@ -13,36 +13,27 @@
 [submodule "zsh/.zsh/zsh-private-config"]
 	path = zsh/.zsh/zsh-private-config
 	url = git@github.com:eckelon/zsh-private-config.git
-[submodule "vim/.vim/pack/git-plugins/start/fzf"]
-	path = vim/.vim/pack/git-plugins/start/fzf
-	url = https://github.com/junegunn/fzf.git
-[submodule "vim/.vim/pack/git-plugins/start/fzf.vim"]
-	path = vim/.vim/pack/git-plugins/start/fzf.vim
-	url = https://github.com/junegunn/fzf.vim.git
-[submodule "vim/.vim/pack/git-plugins/opt/ale"]
-	path = vim/.vim/pack/git-plugins/opt/ale
-	url = https://github.com/dense-analysis/ale.git
-[submodule "vim/.vim/pack/git-plugins/opt/vim-mucomplete"]
-	path = vim/.vim/pack/git-plugins/opt/vim-mucomplete
-	url = https://github.com/lifepillar/vim-mucomplete.git
-[submodule "vim/.vim/pack/git-plugins/opt/vim-commentary"]
-	path = vim/.vim/pack/git-plugins/opt/vim-commentary
-	url = https://github.com/tpope/vim-commentary.git
-[submodule "vim/.vim/pack/git-plugins/opt/vim-poliglot"]
-	path = vim/.vim/pack/git-plugins/opt/vim-poliglot
-	url = https://github.com/sheerun/vim-polyglot.git
-[submodule "vim/.vim/pack/git-plugins/start/catppuccin"]
-	path = vim/.vim/pack/git-plugins/start/catppuccin
-	url = https://github.com/catppuccin/vim.git
-[submodule "vim/.vim/pack/git-plugins/start/ale"]
-	path = vim/.vim/pack/git-plugins/start/ale
-	url = https://github.com/dense-analysis/ale.git
-[submodule "vim/.vim/pack/git-plugins/start/catppuccin"]
-	path = vim/.vim/pack/git-plugins/start/catppuccin
-	url = https://github.com/catppuccin/vim.git
 [submodule "kitty/.config/kitty/catppuccin-theme"]
 	path = kitty/.config/kitty/catppuccin-theme
 	url = https://github.com/catppuccin/kitty
 [submodule "tmux/.tmux/plugins/tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "vim/.vim/pack/git-plugins/start/vim-lsp"]
+	path = vim/.vim/pack/git-plugins/start/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp
+[submodule "vim/.vim/pack/git-plugins/start/vim-lsp-settings"]
+	path = vim/.vim/pack/git-plugins/start/vim-lsp-settings
+	url = https://github.com/mattn/vim-lsp-settings
+[submodule "vim/.vim/pack/git-plugins/start/vim-commentary"]
+	path = vim/.vim/pack/git-plugins/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "vim/.vim/pack/git-plugins/start/asyncomplete"]
+	path = vim/.vim/pack/git-plugins/start/asyncomplete
+	url = https://github.com/prabirshrestha/asyncomplete.vim
+[submodule "vim/.vim/pack/git-plugins/start/asyncomplete-lsp"]
+	path = vim/.vim/pack/git-plugins/start/asyncomplete-lsp
+	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim
+[submodule "vim/.vim/pack/git-plugins/start/catppuccin"]
+	path = vim/.vim/pack/git-plugins/start/catppuccin
+	url = https://github.com/catppuccin/vim
