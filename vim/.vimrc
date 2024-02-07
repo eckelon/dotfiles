@@ -2,7 +2,12 @@ unlet! skip_defaults_vim
 source $VIMRUNTIME/defaults.vim
 
 packadd! matchit
-packadd! editorconfig
+
+if version>= 901
+  packadd! editorconfig
+else
+  packadd! editorconfig-vim
+endif
 
 set termguicolors
 set background=dark
@@ -12,7 +17,6 @@ colorscheme catppuccin_mocha
 source ~/.vim/lsp.vim
 
 set number
-set backspace=indent,eol,start
 set clipboard^=unnamed,unnamedplus
 
 set wildmode=longest:full,full
@@ -23,22 +27,24 @@ set complete=.,w,b,u,i,k
 set listchars=tab:>-
 nnoremap ; :
 
+set noswapfile
+set nobackup
 set hlsearch
-set incsearch
 set laststatus=2
-set mouse=a
 set nobackup
 set nocompatible
 set noswapfile
 set shortmess+=c   " Shut off completion messages
 set smarttab
-set smartcase
+set ignorecase
 set splitright
 set noshowmode
+set cursorline
 set t_ut= "avoid weird to the highlight in the terminal
 
-let mapleader = " "
+set undodir=$HOME/.vim/undodir
 
+let mapleader = " "
 
 "-----------------------------
 "------- File Explorer -------
@@ -46,12 +52,13 @@ let mapleader = " "
 
 let g:netrw_banner=0
 let g:netrw_keepdir=0
-let g:netrw_liststyle=3
+" let g:netrw_liststyle=3
 let g:netrw_winsize=15
 
 "----------------------------
 "------- Git Commands -------
 "----------------------------
+
 
 command! Gstatus vertical term git status -sb
 command! Glog 	 vertical term git lg
@@ -59,6 +66,8 @@ command! Gdiff 	 vertical term git diff %
 command! Gadd    !git add %
 command! -range GBlame echo join(systemlist("git -C " . shellescape(expand('%:p:h')) . " blame -L <line1>,<line2> " . expand('%:t')), "\n")
 
+"hightlight conflict marks
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "-----------------------------
 "------- Finding Files -------
 "-----------------------------
@@ -141,12 +150,27 @@ nnoremap ge G
 nnoremap gh 0
 nnoremap gl $
 
+" Closing compaction in insert mode
+inoremap [ []<left>
+inoremap < <><left>
+inoremap ( ()<left>
+inoremap { {}<left>
+inoremap /* /**/<left><left>
+
+" Visually select pasted or yanked text
+nnoremap gV `[v`]
+
 inoremap jj <Esc>
 nnoremap <silent> - :Ex <bar> :sil! /<C-R>=expand("%:t")<CR><CR>
 nnoremap <silent> <leader>e :Lex <bar> :sil! /<C-R>=expand("%:t")<CR><CR>
 
 xnoremap <C-c> <Plug>Commentary
 nnoremap <C-c> <Plug>CommentaryLine
+
+set timeoutlen=500
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :WhichKeyVisual '<Space>'<CR>
+" vnoremap <silent> <leader> :<c-u>WhichKeyVisual  ','<CR>
 
 "-------------------------
 "--- Fancy status line ---
@@ -161,11 +185,10 @@ function! CurrentMode()
     return mode()[0] ==# 'i' ? 'INS' : mode()[0] ==# 'v' ? 'VIS' : 'NOR'
 endfunction
 
-let &statusline = ' %{CurrentMode()} 〉 %{substitute(get(b:, "git_branch", ""), "\n$", "", "")} 〉%t %m %= %{&fileencoding} 〈 %{&filetype}〈 %p%%〈 %l:%v '
+function! GetPath(depth)
+    let l:path = expand('%:p')
+    let l:parts = split(l:path, '/')
+    return len(l:parts) > a:depth ? join(l:parts[-a:depth:], '/') : l:path
+endfunction
 
-" Closing compaction in insert mode
-inoremap [ []<left>
-inoremap < <><left>
-inoremap ( ()<left>
-inoremap { {}<left>
-inoremap /* /**/<left><left>
+let &statusline = ' %{CurrentMode()} 〉 %{substitute(get(b:, "git_branch", ""), "\n$", "", "")} 〉%{GetPath(4)} %m %= %{&fileencoding} 〈 %{&filetype}〈 %p%%〈 %l:%v '

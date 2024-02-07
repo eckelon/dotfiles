@@ -22,18 +22,24 @@
 [submodule "vim/.vim/pack/git-plugins/start/vim-lsp"]
 	path = vim/.vim/pack/git-plugins/start/vim-lsp
 	url = https://github.com/prabirshrestha/vim-lsp
-[submodule "vim/.vim/pack/git-plugins/start/vim-lsp-settings"]
-	path = vim/.vim/pack/git-plugins/start/vim-lsp-settings
-	url = https://github.com/mattn/vim-lsp-settings
 [submodule "vim/.vim/pack/git-plugins/start/vim-commentary"]
 	path = vim/.vim/pack/git-plugins/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
-[submodule "vim/.vim/pack/git-plugins/start/asyncomplete"]
-	path = vim/.vim/pack/git-plugins/start/asyncomplete
-	url = https://github.com/prabirshrestha/asyncomplete.vim
-[submodule "vim/.vim/pack/git-plugins/start/asyncomplete-lsp"]
-	path = vim/.vim/pack/git-plugins/start/asyncomplete-lsp
-	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim
 [submodule "vim/.vim/pack/git-plugins/start/catppuccin"]
 	path = vim/.vim/pack/git-plugins/start/catppuccin
 	url = https://github.com/catppuccin/vim
+[submodule "vim/.vim/pack/git-plugins/opt/vim-lsp-settings"]
+	path = vim/.vim/pack/git-plugins/opt/vim-lsp-settings
+	url = https://github.com/mattn/vim-lsp-settings
+[submodule "vim/.vim/pack/git-plugins/opt/asyncomplete.vim"]
+	path = vim/.vim/pack/git-plugins/opt/asyncomplete.vim
+	url = https://github.com/prabirshrestha/asyncomplete.vim
+[submodule "vim/.vim/pack/git-plugins/opt/asyncomplete-lsp.vim"]
+	path = vim/.vim/pack/git-plugins/opt/asyncomplete-lsp.vim
+	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim
+[submodule "vim/.vim/pack/git-plugins/opt/editorconfig-vim"]
+	path = vim/.vim/pack/git-plugins/opt/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim
+[submodule "vim/.vim/pack/git-plugins/opt/copilot.vim"]
+	path = vim/.vim/pack/git-plugins/opt/copilot.vim
+	url = https://github.com/github/copilot.vim

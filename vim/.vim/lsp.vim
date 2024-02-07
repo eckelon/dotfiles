@@ -1,4 +1,3 @@
-" disable LSP by default
 let g:lsp_auto_enable = 1
 
 "--------------------------
@@ -17,7 +16,7 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> <leader>] <plug>(lsp-next-diagnostic)
     nmap <buffer> <leader>[ <plug>(lsp-previous-diagnostic)
     nmap <buffer> <leader>cd <plug>(lsp-preview-close)
-    autocmd! BufWritePre *.py,*.go call execute('LspDocumentFormatSync')
+    autocmd! BufWritePre *.py,*.go,*.ts,*.js call execute('LspDocumentFormatSync')
 endfunction
 
 augroup lsp_install
@@ -30,8 +29,8 @@ let g:lsp_diagnostics_virtual_text_align = "after"
 let g:lsp_diagnostics_virtual_text_padding_left = 5
 let g:lsp_diagnostics_virtual_text_wrap = "truncate"
 let g:lsp_document_code_action_signs_hint = {'text': ''}
-let g:lsp_diagnostics_signs_error = {'text': '🚨'}
-let g:lsp_diagnostics_signs_warning = {'text': '👮'}
+let g:lsp_diagnostics_signs_error = {'text': '✗'}
+let g:lsp_diagnostics_signs_warning = {'text': ''}
 let g:lsp_format_sync_timeout = 1000
 
 " " nicer colors for the messages
@@ -52,13 +51,18 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 "----------------------------------------
 " if LSP is disabled, I'll rely on
 " custom completion and makeprg/formatprg
 "----------------------------------------
 
 
-if g:lsp_auto_enable == 0
+if g:lsp_auto_enable == 1
+  packadd! vim-lsp-settings
+  packadd! asyncomplete.vim
+  packadd! asyncomplete-lsp.vim
+else
 
   " Set the function as the completefunc use with <c-x><c-u>
   set completefunc=CustomCompleteFunc

@@ -1,0 +1,20 @@
+#!/bin/bash
+codium --install-extension Catppuccin.catppuccin-vsc
+codium --install-extension golang.go
+codium --install-extension mathiasfrohlich.Kotlin
+codium --install-extension ms-python.black-formatter
+codium --install-extension ms-python.isort
+codium --install-extension ms-python.python
+codium --install-extension ms-python.vscode-pylance
+codium --install-extension redhat.fabric8-analytics
+codium --install-extension redhat.java
+codium --install-extension rust-lang.rust-analyzer
+codium --install-extension usernamehw.errorlens
+codium --install-extension VisualStudioExptTeam.intellicode-api-usage-examples
+codium --install-extension VisualStudioExptTeam.vscodeintellicode
+codium --install-extension vscjava.vscode-java-debug
+codium --install-extension vscjava.vscode-java-dependency
+codium --install-extension vscjava.vscode-java-pack
+codium --install-extension vscjava.vscode-java-test
+codium --install-extension vscjava.vscode-maven
+codium --install-extension vscodevim.vim

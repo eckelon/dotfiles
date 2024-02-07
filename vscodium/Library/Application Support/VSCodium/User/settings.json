@@ -93,7 +93,7 @@
     "typescript.autoClosingTags": true,
     "typescript.suggest.autoImports": true,
     "typescript.updateImportsOnFileMove.enabled": "always",
-    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
     // "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
     "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
     "window.zoomLevel": 0.75,
@@ -112,5 +112,13 @@
     "whichkey.bindingOverrides": [],
     "bun.runtime": "/Users/eckelon/.bun/bin/bun",
     "bun.debugTerminal.stopOnEntry": true,
-    "zig.revealOutputChannelOnFormattingError": false
+    "zig.revealOutputChannelOnFormattingError": false,
+    "editor.cursorSmoothCaretAnimation": "on",
+    "go.coverOnSingleTest": true,
+    "java.imports.gradle.wrapper.checksums": [
+        {
+            "sha256": "d2d7ecbff9d7e64341fc9f8ecea5968548652a7fb192b3e0bc6e5fe20b892ed2",
+            "allowed": true
+        }
+    ]
 }
