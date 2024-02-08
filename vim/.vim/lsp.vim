@@ -40,7 +40,7 @@ hi LspWarningHighlight cterm=underline gui=undercurl
 hi LspWarningVirtualText ctermfg=yellow cterm=italic gui=italic guifg=yellow
 hi link LspErrorText SignColumn
 hi link LspWarningText SignColumn
-hi Comment cterm=italic gui=italic
+" hi Comment cterm=italic gui=italic
 
 let g:asyncomplete_auto_completeopt = 0
 set completeopt=menuone,noinsert,noselect,preview

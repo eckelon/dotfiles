@@ -9,9 +9,12 @@ else
   packadd! editorconfig-vim
 endif
 
+
 set termguicolors
 set background=dark
 colorscheme catppuccin_mocha
+
+hi Comment cterm=italic
 
 "always load the lsp options after the colorscheme
 source ~/.vim/lsp.vim
@@ -40,7 +43,7 @@ set ignorecase
 set splitright
 set noshowmode
 set cursorline
-set t_ut= "avoid weird to the highlight in the terminal
+set t_ut=
 
 set undodir=$HOME/.vim/undodir
 
