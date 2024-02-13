@@ -27,7 +27,6 @@
     "editor.fontWeight": "bold",
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
-    "editor.lineNumbers": "relative",
     "editor.linkedEditing": true,
     "editor.minimap.enabled": false,
     "editor.scrollBeyondLastLine": false,
