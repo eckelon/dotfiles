@@ -8,8 +8,6 @@ j = { j = "normal_mode" }
 X = ["extend_line_up", "extend_to_line_bounds"]
 "tab" = ["jump_forward"]
 "%" = ["save_selection", "select_all"]
-y = "yank_main_selection_to_clipboard"
-p = "paste_clipboard_before"
 
 [editor]
 cursorline = true
