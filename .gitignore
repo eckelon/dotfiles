@@ -1,5 +1,7 @@
 .DS_Store
 tmux/.tmux/plugins/*
 !tmux/.tmux/plugins/tpm
+tmux/.tmux/plugins/tpm/lib/tmux-test
 *.log
-
+zed/.config/zed/.tmp*
+zed/.config/zed/embeddings/

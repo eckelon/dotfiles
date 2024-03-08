@@ -24,14 +24,14 @@
 	default = simple
 	required = true
 [core]
-	editor = vim
+	editor = hx
 	autocrlf = false
 	pager = diff-so-fancy | less --tabs=4 -RFX
 
 [diff]
-	tool = vim
+	tool = zed
 [merge]
-	tool = vim
+	tool = zed
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

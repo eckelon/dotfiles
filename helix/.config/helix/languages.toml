@@ -13,4 +13,4 @@ auto-format = true
 [[language]]
 name = "java"
 auto-format = true
-
+file-types = ["java", "groovy", "Jenkinsfile", "jenkinsfile"]

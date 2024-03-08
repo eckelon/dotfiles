@@ -74,3 +74,6 @@ export PATH="/Users/jasamitier/.rd/bin:$PATH"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun completions
+[ -s "/Users/eckelon/.bun/_bun" ] && source "/Users/eckelon/.bun/_bun"
