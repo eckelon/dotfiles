@@ -20,16 +20,18 @@
         "source.organizeImports": "explicit"
     },
     "editor.codeLens": false,
-    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontFamily": "FiraCode-Retina",
     "editor.fontLigatures": true,
-    "editor.fontSize": 16,
-    "editor.fontVariations": false,
-    "editor.fontWeight": "bold",
+    "editor.fontWeight": "500",
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
     "editor.linkedEditing": true,
     "editor.minimap.enabled": false,
     "editor.scrollBeyondLastLine": false,
+    "fontshortcuts.defaultFontSize": 13,
+    "fontshortcuts.defaultTerminalFontSize": 13,
+    "window.zoomPerWindow": true,
+    "fontshortcuts.step": 1,
     "emmet.includeLanguages": {
         "javascript": "javascriptreact",
         "vue-html": "html"
@@ -93,11 +95,9 @@
     "typescript.suggest.autoImports": true,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
-    // "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
     "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
-    "window.zoomLevel": 0.75,
+    "window.zoomLevel": 1,
     "workbench.activityBar.location": "top",
-    "workbench.colorTheme": "Catppuccin Mocha",
     "workbench.editor.enablePreview": false,
     "workbench.editor.restoreViewState": false,
     "workbench.startupEditor": "none",
@@ -111,12 +111,21 @@
     "bun.runtime": "/Users/eckelon/.bun/bin/bun",
     "bun.debugTerminal.stopOnEntry": true,
     "zig.revealOutputChannelOnFormattingError": false,
-    "editor.cursorSmoothCaretAnimation": "on",
     "go.coverOnSingleTest": true,
     "java.imports.gradle.wrapper.checksums": [
         {
             "sha256": "d2d7ecbff9d7e64341fc9f8ecea5968548652a7fb192b3e0bc6e5fe20b892ed2",
             "allowed": true
         }
-    ]
+    ],
+    "workbench.sideBar.location": "right",
+    "editor.snippetSuggestions": "top",
+    "workbench.editor.showTabs": "none",
+    "editor.cursorBlinking": "smooth",
+    "debug.focusWindowOnBreak": false,
+    "editor.inlayHints.fontFamily": "FiraCode-Retina",
+    "editor.fontSize": 13,
+    "editor.lineHeight": 0,
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "files.autoSave": "onFocusChange"
 }

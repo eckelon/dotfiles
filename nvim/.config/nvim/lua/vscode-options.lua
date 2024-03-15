@@ -14,6 +14,9 @@ vim.api.nvim_set_keymap('n', 'gd',
 vim.api.nvim_set_keymap('n', '<leader>k',
     ":lua require('vscode-neovim').action('editor.action.showHover')<CR>", { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n', '<leader>ca',
+    ":lua require('vscode-neovim').action('editor.action.quickFix')<CR>", { noremap = true, silent = true })
+
 vim.api.nvim_set_keymap('n', 'ge',
     ":lua require('vscode-neovim').action('cursorBottom')<CR>", { noremap = true, silent = true })
 
@@ -22,7 +25,6 @@ vim.api.nvim_set_keymap('n', 'gh',
 
 vim.api.nvim_set_keymap('n', 'gl',
     ":lua require('vscode-neovim').action('cursorEnd')<CR>", { noremap = true, silent = true })
-
 vim.api.nvim_set_keymap('n', 'gn',
     ":lua require('vscode-neovim').action('workbench.action.nextEditor')<CR>", { noremap = true, silent = true })
 

@@ -49,9 +49,9 @@ export PATH="$PATH:$HOME/nvim-macos/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/Library/Python/3.11/bin/"
 export PATH="$PATH:/opt/homebrew/opt/llvm/bin"
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='hx'
 
+alias vim='hx'
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8

@@ -8,8 +8,7 @@
 // from the command palette or from `Zed` application menu.
 {
   "theme": "Ayu Mirage",
->>>>>>> 6bc18c5 (add zed config)
-  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_family": "FiraCode-Retina",
   "buffer_font_size": 18,
   "ui_font_size": 20,
   "vim_mode": true,
