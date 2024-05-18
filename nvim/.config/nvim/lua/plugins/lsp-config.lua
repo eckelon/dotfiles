@@ -40,12 +40,36 @@ return {
         capabilites = capabilities,
       })
 
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, {})
       vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, {})
       vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+
+      -- -- Autocommand to format the buffer with 'gq' on save
+      -- vim.api.nvim_create_autocmd("BufWritePre", {
+      --   pattern = "*",
+      --   callback = function()
+      --     vim.cmd("normal! gggqG")
+      --   end,
+      -- })
+
+      -- Function to format the buffer asynchronously
+      local async_formatting = function(bufnr)
+        bufnr = bufnr or vim.api.nvim_get_current_buf()
+        vim.lsp.buf.format({
+          async = true,
+          bufnr = bufnr,
+        })
+      end
+
+      -- Autocommand to format the buffer on save using LSP
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = "*",
+        callback = function()
+          async_formatting()
+        end,
+      })
     end,
   },
 }
