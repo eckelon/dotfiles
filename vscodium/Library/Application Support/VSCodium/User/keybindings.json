@@ -11,12 +11,6 @@
         "when": "editorTextFocus"
     },
     {
-        "command": "vscode-neovim.compositeEscape1",
-        "key": "j",
-        "when": "neovim.mode == insert && editorTextFocus",
-        "args": "j"
-    },
-    {
         "command": "editor.action.commentLine",
         "key": "ctrl+c",
         "when": "editorTextFocus && neovim.mode != insert",

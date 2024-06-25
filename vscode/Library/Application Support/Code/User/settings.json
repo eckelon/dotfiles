@@ -1,27 +1,7 @@
 {
-    "zig.initialSetupDone": true,
-    "zig.path": "",
-    "zig.zls.path": "",
-    "editor.linkedEditing": true,
-    "html.autoClosingTags": true,
-    "javascript.autoClosingTags": true,
-    "typescript.autoClosingTags": true,
-    "telemetry.telemetryLevel": "off",
-    "javascript.suggest.autoImports": true,
-    "typescript.suggest.autoImports": true,
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": "explicit"
+    "[css][scss][less]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
     },
-    "files.trimTrailingWhitespace": true,
-    "[markdown]": {
-        "files.trimTrailingWhitespace": false
-    },
-    "editor.bracketPairColorization.enabled": true,
-    // "editor.guides.bracketPairs": true,
-    // "editor.guides.highlightActiveIndentation": true,
-    // "editor.guides.bracketPairsHorizontal": "active",
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
     },
@@ -31,162 +11,121 @@
     "[json][jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "[css][scss][less]": {
-        "editor.defaultFormatter": "vscode.css-language-features"
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false
     },
-    "workbench.editor.restoreViewState": false,
-    "files.restoreUndoStack": false,
-    "workbench.startupEditor": "none",
-    "editor.minimap.enabled": false,
+    "breadcrumbs.enabled": false,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+    },
     "editor.codeLens": false,
-    "editor.formatOnSave": true,
+    "editor.fontFamily": "FiraCode-Retina",
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "500",
     "editor.formatOnPaste": true,
-    "search.exclude": {
-        "**/node_modules": true,
-        "*.log": true,
-        "*.pid": true,
-        "**/out": true,
-        "**/vendor": true,
-        "**/bin": true,
-        "**/build": true,
-        "**/gradle": true,
-        "**/.gradle": true,
-        "**/gradlew.bat": true,
-        "**/mvnw.cmd": true,
-        "**/target": true,
-        "**/.js": {
-            "when": "$(basename).ts"
-        },
-        "**/.idea"
+    "editor.formatOnSave": true,
+    "editor.linkedEditing": true,
+    "editor.minimap.enabled": false,
+    "editor.scrollBeyondLastLine": false,
+    "fontshortcuts.defaultFontSize": 13,
+    "fontshortcuts.defaultTerminalFontSize": 13,
+    "window.zoomPerWindow": true,
+    "fontshortcuts.step": 1,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+        "vue-html": "html"
+    },
+    "explorer.confirmDragAndDrop": false,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
     },
     "files.exclude": {
-        "**/node_modules": true,
-        "*.log": true,
-        "*.pid": true,
-        "**/out": true,
-        "**/vendor": true,
-        "**/bin": true,
-        "**/build": true,
-        "**/gradle": true,
         "**/.gradle": true,
-        "**/gradlew.bat": true,
-        "**/mvnw.cmd": true,
-        "**/target": true,
         "**/.js": {
             "when": "$(basename).ts"
         },
-        "**/.idea"
+        "**/bin": true,
+        "**/build": true,
+        "**/gradle": true,
+        "**/gradlew.bat": true,
+        "**/mvnw.cmd": true,
+        "**/node_modules": true,
+        "**/out": true,
+        "**/target": true,
+        "**/vendor": true,
+        "*.log": true,
+        "*.pid": true
     },
+    "files.restoreUndoStack": false,
+    "files.trimTrailingWhitespace": true,
     "files.watcherExclude": {
         "**/.git/objects/**": true,
-        "**/node_modules/**": true,
         "**/__pycache__/**": true,
-        "**/.idea"
+        "**/node_modules/**": true
     },
-    "workbench.colorTheme": "Catppuccin Mocha",
-    "editor.fontFamily": "Cascadia Code",
-    "editor.fontSize": 13,
-    "editor.fontWeight": "500",
-    "editor.fontLigatures": true,
-    "workbench.editor.enablePreview": false,
-    "workbench.activityBar.location": "top",
-    "breadcrumbs.enabled": false,
+    "git.openRepositoryInParentFolders": "always",
+    "html.autoClosingTags": true,
+    "javascript.autoClosingTags": true,
+    "javascript.suggest.autoImports": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
     "python.createEnvironment.trigger": "prompt",
     "python.defaultInterpreterPath": "python3",
-    "window.zoomLevel": 0.75,
-    "terminal.integrated.gpuAcceleration": "on",
+    "search.exclude": {
+        "**/.gradle": true,
+        "**/.js": {
+            "when": "$(basename).ts"
+        },
+        "**/bin": true,
+        "**/build": true,
+        "**/gradle": true,
+        "**/gradlew.bat": true,
+        "**/mvnw.cmd": true,
+        "**/node_modules": true,
+        "**/out": true,
+        "**/target": true,
+        "**/vendor": true,
+        "*.log": true,
+        "*.pid": true
+    },
     "search.searchOnType": false,
-    "explorer.confirmDragAndDrop": false,
-    "vim.enableNeovim": true,
-    "vim.neovimPath": "/opt/homebrew/bin/nvim",
-    "vim.insertModeKeyBindings": [
+    "telemetry.telemetryLevel": "off",
+    "terminal.integrated.gpuAcceleration": "on",
+    "typescript.autoClosingTags": true,
+    "typescript.suggest.autoImports": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
+    "window.zoomLevel": 1,
+    "workbench.activityBar.location": "top",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.restoreViewState": false,
+    "workbench.startupEditor": "none",
+    "zig.initialSetupDone": true,
+    "zig.path": "/Users/eckelon/zig-0.12/zig",
+    "zig.zls.path": "/Users/eckelon/.local/bin/zls",
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.editor.editorActionsLocation": "hidden",
+    "whichkey.bindingOverrides": [],
+    "bun.runtime": "/Users/eckelon/.bun/bin/bun",
+    "bun.debugTerminal.stopOnEntry": true,
+    "zig.revealOutputChannelOnFormattingError": false,
+    "go.coverOnSingleTest": true,
+    "java.imports.gradle.wrapper.checksums": [
         {
-            "before": [
-                "j",
-                "j"
-            ],
-            "after": [
-                "<esc>"
-            ]
-        },
-    ],
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": [
-                "<leader>",
-                "r"
-            ],
-            "commands": [
-                "editor.action.rename"
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                "k"
-            ],
-            "commands": [
-                "editor.action.showHover"
-            ]
-        },
-        {
-            "before": [
-                "-"
-            ],
-            "commands": [
-                "workbench.action.quickOpen"
-            ]
-        },
-        {
-            "before": [
-                "b",
-                "n"
-            ],
-            "commands": [
-                "workbench.action.nextEditor"
-            ]
-        },
-        {
-            "before": [
-                "b",
-                "p"
-            ],
-            "commands": [
-                "workbench.action.previousEditor"
-            ]
-        },
-        {
-            "before": [
-                "g",
-                "e"
-            ],
-            "commands": [
-                "cursorBottom"
-            ]
-        },
-        {
-            "before": [
-                "g",
-                "h"
-            ],
-            "commands": [
-                "cursorHome"
-            ]
-        },
-        {
-            "before": [
-                "g",
-                "l"
-            ],
-            "commands": [
-                "cursorEnd"
-            ]
+            "sha256": "d2d7ecbff9d7e64341fc9f8ecea5968548652a7fb192b3e0bc6e5fe20b892ed2",
+            "allowed": true
         }
     ],
-    "redhat.telemetry.enabled": false,
-    "vim.useSystemClipboard": true,
-    "vim.leader": " ",
-    "vim.hlsearch": true,
-    "vim.smartRelativeLine": true,
-    "git.openRepositoryInParentFolders": "always",
+    "workbench.sideBar.location": "right",
+    "editor.snippetSuggestions": "top",
+    "workbench.editor.showTabs": "none",
+    "editor.cursorBlinking": "smooth",
+    "debug.focusWindowOnBreak": false,
+    "editor.inlayHints.fontFamily": "FiraCode-Retina",
+    "editor.fontSize": 13,
+    "editor.lineHeight": 0,
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "files.autoSave": "onFocusChange"
 }

@@ -1,0 +1,65 @@
+// // Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "cmd+[",
+        "command": "workbench.action.navigateBack",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+]",
+        "command": "workbench.action.navigateForward",
+        "when": "editorTextFocus"
+    },
+    {
+        "command": "vscode-neovim.compositeEscape1",
+        "key": "j",
+        "when": "neovim.mode == insert && editorTextFocus",
+        "args": "j"
+    },
+    {
+        "command": "editor.action.commentLine",
+        "key": "ctrl+c",
+        "when": "editorTextFocus && neovim.mode != insert",
+    },
+    {
+        "command": "workbench.action.navigateLeft",
+        "key": "ctrl+h",
+        "when": "editorTextFocus && neovim.mode != insert",
+    },
+    {
+        "command": "workbench.action.navigateDown",
+        "key": "ctrl+j",
+        "when": "editorTextFocus && neovim.mode != insert",
+    },
+    {
+        "command": "workbench.action.navigateUp",
+        "key": "ctrl+k",
+        "when": "editorTextFocus && neovim.mode != insert",
+    },
+    {
+        "command": "workbench.action.navigateRight",
+        "key": "ctrl+l",
+        "when": "editorTextFocus && neovim.mode != insert",
+    },
+    {
+        "key": "ctrl+o",
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.init && neovim.mode == 'insert'",
+        "args": "<C-o>"
+    },
+    {
+        "key": "cmd+o",
+        "command": "-workbench.action.files.openFile",
+        "when": "false"
+    },
+    {
+        "key": "cmd+o",
+        "command": "-workbench.action.files.openFileFolder",
+        "when": "isMacNative && openFolderWorkspaceSupport"
+    },
+    {
+        "key": "cmd+o",
+        "command": "-workbench.action.files.openFolderViaWorkspace",
+        "when": "!openFolderWorkspaceSupport && workbenchState == 'workspace'"
+    },
+]

@@ -20,39 +20,22 @@ return {
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       local lspconfig = require("lspconfig")
-      lspconfig.tsserver.setup({
-        capabilites = capabilities,
-      })
 
-      lspconfig.html.setup({
-        capabilites = capabilities,
-      })
+      lspconfig.tsserver.setup({ capabilites = capabilities })
+      lspconfig.html.setup({ capabilites = capabilities })
+      lspconfig.lua_ls.setup({ capabilites = capabilities })
+      lspconfig.zls.setup({ capabilites = capabilities })
+      lspconfig.jedi_language_server.setup({ capabilites = capabilities })
+      lspconfig.bashls.setup({ capabilites = capabilities })
+      lspconfig.jdtls.setup({ capabilites = capabilities })
+      lspconfig.gopls.setup({ capabilites = capabilities })
 
-      lspconfig.lua_ls.setup({
-        capabilites = capabilities,
-      })
-
-      lspconfig.zls.setup({
-        capabilites = capabilities,
-      })
-
-      lspconfig.jedi_language_server.setup({
-        capabilites = capabilities,
-      })
-
-      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-      vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, {})
-      vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, {})
-      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+      vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
+      vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {})
+      vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
+      vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {})
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-
-      -- -- Autocommand to format the buffer with 'gq' on save
-      -- vim.api.nvim_create_autocmd("BufWritePre", {
-      --   pattern = "*",
-      --   callback = function()
-      --     vim.cmd("normal! gggqG")
-      --   end,
-      -- })
 
       -- Function to format the buffer asynchronously
       local async_formatting = function(bufnr)
@@ -69,6 +52,19 @@ return {
         callback = function()
           async_formatting()
         end,
+      })
+
+      -- Since now nvim supports floting text around the diagnostic items
+      -- I don't want the symbols in the gutter
+      vim.diagnostic.config({
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = '',
+            [vim.diagnostic.severity.WARN] = '',
+            [vim.diagnostic.severity.INFO] = '',
+            [vim.diagnostic.severity.HINT] = '',
+          },
+        },
       })
     end,
   },

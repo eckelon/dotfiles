@@ -6,8 +6,8 @@ vim.g.netrw_winsize = 30
 vim.g.netrw_localcopydircmd = 'cp -r'
 
 vim.opt.clipboard = "unnamedplus"
+vim.opt.swapfile = false
 vim.o.number = true
-vim.o.relativenumber = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
