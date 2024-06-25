@@ -2,6 +2,15 @@
 #     tmux attach -d -t || tmux new-session
 # fi
 
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$PATH:/usr/local/sbin"
+export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/nvim-macos/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/Library/Python/3.11/bin/"
+export EDITOR='nvim'
+
 if [ -z "$TMUX" ]; then
     attached_session=$(tmux list-sessions | grep attached)
     if [ -z "$attached_session" ]; then
@@ -20,6 +29,7 @@ source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/zoxide.zsh
 source $HOME/.zsh/gcloud.zsh
 source $HOME/.zsh/completions.zsh
+
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -42,16 +52,8 @@ PROMPT='%F{#8caaee}%~%f%F{#8caaee}❭ '
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
 
-export PATH="$PATH:/usr/local/sbin"
-export PATH="$PATH:$HOME/go/bin"
-export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:$HOME/nvim-macos/bin"
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/Library/Python/3.11/bin/"
-export PATH="$PATH:/opt/homebrew/opt/llvm/bin"
-export EDITOR='hx'
 
-alias vim='hx'
+alias vim='nvim'
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -66,10 +68,6 @@ export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
 export PATH="$HOME/.rd/bin:$PATH"
 export PATH="$HOME/zig-0.12:$PATH"
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/jasamitier/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
