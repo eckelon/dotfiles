@@ -11,21 +11,16 @@ return {
       -- disable netrw at the very start of your init.lua
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
-      vim.keymap.set("n", "fte", ":NvimTreeFindFile<CR>", { noremap = false })
-      vim.keymap.set("n", "ftc", ":NvimTreeClose<CR>", { noremap = false })
+      vim.keymap.set("n", ",e", ":NvimTreeFindFile<CR>", { noremap = false })
+      vim.keymap.set("n", ",b", ":NvimTreeClose<CR>", { noremap = false })
 
 
       -- OR setup with some options
       require("nvim-tree").setup({
-        sort = {
-          sorter = "case_sensitive",
-        },
-        view = {
-          width = 30,
-        },
-        renderer = {
-          group_empty = true,
-        },
+        sort = { sorter = "case_sensitive" },
+        view = { width = 30 },
+        renderer = { group_empty = true },
+        actions = { open_file = { window_picker = { enable = false } } },
       })
     end
   }

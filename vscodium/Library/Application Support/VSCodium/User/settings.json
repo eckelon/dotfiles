@@ -19,7 +19,6 @@
     "editor.codeActionsOnSave": {
         "source.organizeImports": "explicit"
     },
-    "editor.codeLens": false,
     "editor.fontFamily": "FiraCode-Retina",
     "editor.fontLigatures": true,
     "editor.fontWeight": "500",
@@ -41,11 +40,12 @@
         "asvetliakov.vscode-neovim": 1
     },
     "files.exclude": {
+        "*.log": true,
+        "*.pid": true,
         "**/.gradle": true,
         "**/.js": {
             "when": "$(basename).ts"
         },
-        "**/bin": true,
         "**/build": true,
         "**/gradle": true,
         "**/gradlew.bat": true,
@@ -53,9 +53,7 @@
         "**/node_modules": true,
         "**/out": true,
         "**/target": true,
-        "**/vendor": true,
-        "*.log": true,
-        "*.pid": true
+        "**/vendor": true
     },
     "files.restoreUndoStack": false,
     "files.trimTrailingWhitespace": true,
@@ -72,11 +70,12 @@
     "python.createEnvironment.trigger": "prompt",
     "python.defaultInterpreterPath": "python3",
     "search.exclude": {
+        "*.log": true,
+        "*.pid": true,
         "**/.gradle": true,
         "**/.js": {
             "when": "$(basename).ts"
         },
-        "**/bin": true,
         "**/build": true,
         "**/gradle": true,
         "**/gradlew.bat": true,
@@ -84,9 +83,7 @@
         "**/node_modules": true,
         "**/out": true,
         "**/target": true,
-        "**/vendor": true,
-        "*.log": true,
-        "*.pid": true
+        "**/vendor": true
     },
     "search.searchOnType": false,
     "telemetry.telemetryLevel": "off",
@@ -94,8 +91,13 @@
     "typescript.autoClosingTags": true,
     "typescript.suggest.autoImports": true,
     "typescript.updateImportsOnFileMove.enabled": "always",
-    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
     "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
+    "vscode-neovim.compositeKeys": {
+        "jj": {
+            "command": "vscode-neovim.escape"
+        }
+    },
     "window.zoomLevel": 1,
     "workbench.activityBar.location": "top",
     "workbench.editor.enablePreview": false,
@@ -104,7 +106,6 @@
     "zig.initialSetupDone": true,
     "zig.path": "/Users/eckelon/zig-0.12/zig",
     "zig.zls.path": "/Users/eckelon/.local/bin/zls",
-    "window.commandCenter": false,
     "workbench.layoutControl.enabled": false,
     "workbench.editor.editorActionsLocation": "hidden",
     "whichkey.bindingOverrides": [],
@@ -127,5 +128,6 @@
     "editor.fontSize": 13,
     "editor.lineHeight": 0,
     "workbench.colorTheme": "Catppuccin Mocha",
-    "files.autoSave": "onFocusChange"
+    "files.autoSave": "onFocusChange",
+    "window.commandCenter": false
 }

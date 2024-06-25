@@ -1,4 +1,4 @@
-# alias vim="hx"
+alias vim="nvim"
 alias vi=vim
 alias ivm="vim"
 alias weather='curl -4 wttr.in/Zaragoza\?lang=es'
