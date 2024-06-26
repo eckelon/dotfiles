@@ -23,3 +23,4 @@ alias python=$(which python3)
 alias pip=$(which pip3)
 alias zshspeed='sudo rm -rf /private/var/log/asl/*.asl'
 alias hxraw='hx --config $HOME/.config/helix/config_raw.toml'
+alias lg=lazygit
