@@ -6,3 +6,4 @@
 plug.vim.old
 .vscode
 .idea
+.helix

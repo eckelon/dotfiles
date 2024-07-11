@@ -3,14 +3,26 @@ name = "python"
 auto-format = true
 
 [[language]]
+name = "java"
+auto-format = true
+file-types = ["java", "groovy", "Jenkinsfile", "jenkinsfile"]
+
+[[language]]
 name = "typescript"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "javascript"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
 [[language]]
 name = "tsx"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
 [[language]]
-name = "java"
+name = "jsx"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
-file-types = ["java", "groovy", "Jenkinsfile", "jenkinsfile"]

@@ -1,4 +1,4 @@
-theme = "catppuccin_mocha"
+theme = "poimandres_storm"
 
 [keys.insert]
 j = { j = "normal_mode" }
@@ -12,19 +12,24 @@ X = ["extend_line_up", "extend_to_line_bounds"]
 [editor]
 cursorline = true
 auto-save = true
-bufferline = "always"
+bufferline = "multiple"
+true-color = true
 auto-pairs = false
 idle-timeout = 200
 color-modes = true
 mouse = true
 
+
 [editor.cursor-shape]
 insert = "bar"
+normal = "block"
+select = "underline"
 
 [editor.file-picker]
 hidden = false
 
 [editor.indent-guides]
+character = "╎"
 render = true
 
 [editor.lsp]
@@ -39,6 +44,4 @@ center = ["file-name"]
 enable = true
 
 [editor.whitespace.render]
-space = "none"
 tab = "all"
-newline = "all"
