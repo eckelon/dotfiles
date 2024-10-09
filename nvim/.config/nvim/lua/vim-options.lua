@@ -35,7 +35,7 @@ Map('n', 'ge', 'G')
 -- Map('n', '-', ':Nvim:<CR>')
 -- Map('n', 'e', ':Lex<CR>')
 
-Map('i', 'jj', '<esc><CR>')
+Map('i', 'jj', '<esc>')
 
 Map('n', '<leader>h', ':nohlsearch<CR>')
 vim.wo.number = true

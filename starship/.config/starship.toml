@@ -10,3 +10,6 @@ disabled = true
 disabled = true
 [python]
 detect_files = ['Pipfile', '__init__.py', 'pyproject.toml', 'requirements.txt', 'setup.py', 'tox.ini']
+[aws]
+disabled = true
+

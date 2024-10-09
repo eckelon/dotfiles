@@ -5,3 +5,7 @@ tmux/.tmux/plugins/tpm/lib/tmux-test
 *.log
 zed/.config/zed/.tmp*
 zed/.config/zed/embeddings/
+vscodium/Library/Application Support/VSCodium/*
+!vscodium/Library/Application Support/VSCodium/User/settings.json
+!vscodium/Library/Application Support/VSCodium/User/keybindings.json
+zed/.config/zed/**/*.mdb

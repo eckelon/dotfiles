@@ -3,12 +3,12 @@
     {
         "key": "cmd+[",
         "command": "workbench.action.navigateBack",
-        "when": "editorTextFocus"
+        // "when": "editorTextFocus"
     },
     {
         "key": "cmd+]",
         "command": "workbench.action.navigateForward",
-        "when": "editorTextFocus"
+        // "when": "editorTextFocus"
     },
     {
         "command": "editor.action.commentLine",

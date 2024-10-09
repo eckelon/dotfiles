@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
 	name = JA Samitier
-	email = contacto@jasamitier.com
+	email = jesus.samitier@sysdig.com
 [alias]
 	last = log -1 --stat
 	cp = cherry-pick

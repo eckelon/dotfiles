@@ -36,6 +36,10 @@ render = true
 display-messages = true
 display-inlay-hints = true
 
+[editor.inline-diagnostics]
+cursor-line = "error"
+other-lines= "error"
+
 [editor.statusline]
 left = ["mode", "spinner", "version-control"]
 center = ["file-name"]

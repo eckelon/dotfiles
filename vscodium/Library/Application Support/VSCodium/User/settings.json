@@ -127,7 +127,8 @@
     "editor.inlayHints.fontFamily": "FiraCode-Retina",
     "editor.fontSize": 13,
     "editor.lineHeight": 0,
-    "workbench.colorTheme": "Catppuccin Mocha",
     "files.autoSave": "onFocusChange",
-    "window.commandCenter": false
+    "window.commandCenter": false,
+    "workbench.iconTheme": "catppuccin-mocha",
+    "workbench.colorTheme": "Catppuccin Mocha",
 }
