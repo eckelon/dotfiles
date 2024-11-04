@@ -6,7 +6,7 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/nvim-macos/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/Library/Python/3.11/bin/"
-export EDITOR='hx'
+export EDITOR='vim'
 
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
