@@ -1,35 +1,48 @@
 return {
   {
     "williamboman/mason.nvim",
-    lazy = false,
     config = function()
       require("mason").setup()
     end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    lazy = false,
     opts = {
       auto_install = true,
     },
   },
   {
+    "ms-jpq/coq_nvim",
+    branch = "coq",
+    dependencies = {
+      { "ms-jpq/coq.artifacts", branch = "artifacts" },
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
-    lazy = false,
+    dependencies = { "ms-jpq/coq_nvim" },
     config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      local lsp = require("lspconfig")
 
-      local lspconfig = require("lspconfig")
+      vim.g.coq_settings = { auto_start = true }
+      local coq = require("coq")
+      vim.cmd("COQnow")
 
-      lspconfig.tsserver.setup({ capabilites = capabilities })
-      lspconfig.eslint.setup({ capabilites = capabilities, settings = { quiet = true } })
-      lspconfig.html.setup({ capabilites = capabilities })
-      lspconfig.lua_ls.setup({ capabilites = capabilities })
-      lspconfig.zls.setup({ capabilites = capabilities })
-      lspconfig.jedi_language_server.setup({ capabilites = capabilities })
-      lspconfig.bashls.setup({ capabilites = capabilities })
-      lspconfig.jdtls.setup({ capabilites = capabilities })
-      lspconfig.gopls.setup({ capabilites = capabilities })
+      local servers = {
+        'ts_ls',
+        'eslint',
+        'html',
+        'lua_ls',
+        'zls',
+        'jedi_language_server',
+        'bashls',
+        'jdtls',
+        'gopls',
+      }
+
+      for _, config in ipairs(servers) do
+        lsp[config].setup(coq.lsp_ensure_capabilities())
+      end
 
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
       vim.keymap.set('n', 'gr', function()
@@ -43,7 +56,6 @@ return {
       end)
       vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {})
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-
 
       vim.diagnostic.config({
         signs = {
