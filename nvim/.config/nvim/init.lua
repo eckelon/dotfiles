@@ -1,22 +1,2 @@
-
-if vim.g.vscode then
-  require('vscode-options')
-else
-
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-  require("vim-options")
-  require("lazy").setup("plugins")
-end
-
-
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
