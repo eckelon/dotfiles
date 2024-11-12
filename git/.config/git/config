@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
 	name = JA Samitier
-	email = jesus.samitier@sysdig.com
+	email = email@jasamitier.com
 [alias]
 	last = log -1 --stat
 	cp = cherry-pick
@@ -26,12 +26,17 @@
 [core]
 	editor = nvim
 	autocrlf = false
-	pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
 
-[diff]
-	tool = nvim
+[delta]
+    navigate = true
+    side-by-side = true
+
 [merge]
-	tool = nvim
+  conflictstyle = zdiff3
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
