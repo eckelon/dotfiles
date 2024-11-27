@@ -8,11 +8,6 @@ return {
     enabled = false,
   },
   {
-    "folke/tokyonight.nvim",
-    lazy = true,
-    opts = { style = "storm" },
-  },
-  {
     "nvim-neo-tree/neo-tree.nvim",
     keys = {
       { "-", "<leader>fe", desc = "Explorer NeoTree (Root Dir)", remap = true },
@@ -67,5 +62,11 @@ return {
         end, { "i", "s" }),
       })
     end,
+  },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin",
+    },
   },
 }
