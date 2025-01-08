@@ -1,4 +1,4 @@
 font-family = "Cascadia Code NF"
-font-style = "SemiBold"
+font-style = "Regular"
 font-size = 17
-theme = "catppuccin-latte"
+theme = "light:catppuccin-latte,dark:catppuccin-mocha"
