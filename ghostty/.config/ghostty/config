@@ -1,4 +1,4 @@
-font-family = "JetBrainsMono Nerd Font Mono"
+font-family = "Cascadia Code NF"
 font-style = "SemiBold"
 font-size = 17
-theme = "catppuccin-mocha"
+theme = "catppuccin-latte"
