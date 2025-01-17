@@ -13,6 +13,10 @@ source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 source $HOME/.zsh/zsh-private-config/init.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+
+bindkey '^[[A' history-substring-search-up   # Up arrow
+bindkey '^[[B' history-substring-search-down # Down arrow
+
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/zoxide.zsh
 source $HOME/.zsh/gcloud.zsh
