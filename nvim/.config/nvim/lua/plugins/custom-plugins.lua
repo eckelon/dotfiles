@@ -1,5 +1,17 @@
 return {
   {
+    "catppuccin/nvim",
+    config = function()
+      require("catppuccin").setup({
+        flavour = "auto",
+        background = { -- :h background
+          light = "latte",
+          dark = "mocha",
+        },
+      })
+    end,
+  },
+  {
     "folke/noice.nvim",
     enabled = false,
   },
@@ -19,6 +31,12 @@ return {
     keys = {
       { "<leader><space>", "<cmd>Telescope git_files<cr>", desc = "Find Files (git-files)" },
       { "<leader>/", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
+    },
+  },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin",
     },
   },
   {
@@ -62,11 +80,5 @@ return {
         end, { "i", "s" }),
       })
     end,
-  },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "catppuccin",
-    },
   },
 }
