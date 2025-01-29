@@ -45,3 +45,6 @@ export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 source <(fzf --zsh)
 eval "$(starship init zsh)"
 
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/eckelon/.lmstudio/bin"
