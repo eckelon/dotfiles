@@ -6,7 +6,7 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/nvim-macos/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/Library/Python/3.11/bin/"
-export EDITOR='vim'
+export EDITOR='nvim'
 
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
@@ -44,3 +44,6 @@ export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 # PROMPT='%F{#8caaee}%~%f%F{#8caaee}❭ '
 source <(fzf --zsh)
 eval "$(starship init zsh)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/jesus.samitier/.lmstudio/bin"
