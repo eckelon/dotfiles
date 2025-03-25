@@ -1,12 +1,15 @@
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH="$PATH:/usr/local/sbin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/nvim-macos/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/Library/Python/3.11/bin/"
-export EDITOR='nvim'
+export DYLD_LIBRARY_PATH="/usr/local/lib:$DYLD_LIBRARY_PATH"
+
+
 
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
@@ -45,5 +48,6 @@ export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 source <(fzf --zsh)
 eval "$(starship init zsh)"
 
+
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/jesus.samitier/.lmstudio/bin"
+export PATH="$PATH:/Users/eckelon/.lmstudio/bin"
