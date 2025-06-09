@@ -193,22 +193,6 @@
                             "to": [{ "key_code": "right_command" }]
                         }
                     ]
-                },
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 61664,
-                        "vendor_id": 13
-                    },
-                    "ignore": true
-                },
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 32777,
-                        "vendor_id": 44064
-                    },
-                    "ignore": true
                 }
             ],
             "name": "Default profile",
