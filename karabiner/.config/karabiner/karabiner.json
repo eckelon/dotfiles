@@ -5,7 +5,6 @@
                 "rules": [
                     {
                         "description": "Change right_command to hyper key. (Post spacebar if pressed alone)",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -200,7 +199,13 @@
                         "product_id": 61664,
                         "vendor_id": 13
                     },
-                    "ignore": true
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "right_option" },
+                            "to": [{ "key_code": "right_command" }]
+                        }
+                    ]
                 },
                 {
                     "identifiers": {
@@ -208,7 +213,13 @@
                         "product_id": 32777,
                         "vendor_id": 44064
                     },
-                    "ignore": true
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "right_option" },
+                            "to": [{ "key_code": "right_command" }]
+                        }
+                    ]
                 }
             ],
             "name": "Default profile",

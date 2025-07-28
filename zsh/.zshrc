@@ -9,6 +9,8 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/Library/Python/3.11/bin/"
 export DYLD_LIBRARY_PATH="/usr/local/lib:$DYLD_LIBRARY_PATH"
 
+export EDITOR=nvim
+
 
 
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
