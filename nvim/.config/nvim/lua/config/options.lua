@@ -3,3 +3,4 @@
 -- Add any additional options here
 
 vim.opt.clipboard = "unnamed,unnamedplus"
+vim.opt.conceallevel = 0

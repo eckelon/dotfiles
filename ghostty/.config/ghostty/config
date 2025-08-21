@@ -1,5 +1,5 @@
 font-family = "JetBrainsMono Nerd Font Mono"
 font-style = "SemiBold"
 font-size = 15
-theme = "catppuccin-mocha"
+theme = "tokyonight_moon"
 keybind = global:cmd+shift+option+control+q=toggle_quick_terminal
