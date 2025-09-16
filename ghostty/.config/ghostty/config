@@ -3,3 +3,5 @@ font-style = "SemiBold"
 font-size = 15
 theme = "tokyonight_moon"
 keybind = global:cmd+shift+option+control+q=toggle_quick_terminal
+background-opacity = 0.85
+background-blur = true
