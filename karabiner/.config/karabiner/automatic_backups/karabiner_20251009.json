@@ -5,7 +5,6 @@
                 "rules": [
                     {
                         "description": "Change right_command to hyper key. (Post spacebar if pressed alone)",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -186,7 +185,21 @@
                         "product_id": 544,
                         "vendor_id": 1452
                     },
-                    "ignore": false
+                    "ignore": false,
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "right_option" },
+                            "to": [{ "key_code": "right_command" }]
+                        },
+                        {
+                            "from": { "key_code": "left_option" },
+                            "to": [{ "key_code": "left_command" }]
+                        },
+                        {
+                            "from": { "key_code": "left_command" },
+                            "to": [{ "key_code": "left_option" }]
+                        }
+                    ]
                 },
                 {
                     "identifiers": {
