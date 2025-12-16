@@ -5,6 +5,7 @@
                 "rules": [
                     {
                         "description": "Change right_command to hyper key. (Post spacebar if pressed alone)",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
