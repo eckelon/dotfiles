@@ -53,3 +53,10 @@ eval "$(starship init zsh)"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/eckelon/.lmstudio/bin"
+
+# bun completions
+[ -s "/Users/eckelon/.bun/_bun" ] && source "/Users/eckelon/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

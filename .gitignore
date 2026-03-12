@@ -9,3 +9,8 @@ vscodium/Library/Application Support/VSCodium/*
 !vscodium/Library/Application Support/VSCodium/User/settings.json
 !vscodium/Library/Application Support/VSCodium/User/keybindings.json
 zed/.config/zed/**/*.mdb
+emacs/.emacs.d/cache
+emacs/.emacs.d/elpa
+emacs/.emacs.d/custom-vars.el
+emacs/.emacs.d/tree-sitter
+emacs/.emacs.d/eshell

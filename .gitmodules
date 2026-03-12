@@ -46,3 +46,6 @@
 [submodule "claude-skills/.claude/skills"]
 	path = claude-skills/.claude/skills
 	url = git@github.com:eckelon/claude-skills.git
+[submodule "emacs/.emacs.d/emacs-solo"]
+	path = emacs/.emacs.d/emacs-solo
+	url = https://github.com/LionyxML/emacs-solo.git
