@@ -13,6 +13,13 @@ return {
       { "-", "<leader>fe", desc = "Explorer NeoTree (Root Dir)", remap = true },
       { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (Root Dir)", remap = true },
     },
+    opts = {
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+        },
+      },
+    },
   },
   {
     "nvim-telescope/telescope.nvim",

@@ -1,5 +1,4 @@
 alias vim="nvim"
-alias vim="emacs -nw"
 alias vi=vim
 alias ivm="vim"
 alias weather='curl -4 wttr.in/Zaragoza\?lang=es'
@@ -29,7 +28,6 @@ alias ls=eza
 alias pass=pass-cli
 alias agtop='npx github:ldegio/agtop'
 alias prelude='emacs --init-dir ~/Development/prelude/'
-alias emacs='emacs -nw'
 
 function nave {
   # c-o: opens file dir in Finder
@@ -40,7 +38,7 @@ function nave {
   [[ -n "$file" ]] || return
 
   if [[ ! -s "$file" ]] || [[ "$(file -b --mime-encoding "$file")" != "binary" ]]; then
-	command emacs -nw "$file"
+	command $EDITOR -nw "$file"
   else
 	open "$file"
   fi
