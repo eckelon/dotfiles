@@ -9,9 +9,7 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/Library/Python/3.11/bin/"
 export DYLD_LIBRARY_PATH="/usr/local/lib:$DYLD_LIBRARY_PATH"
 
-export EDITOR=nvim
-
-
+export EDITOR="emacs"
 
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh

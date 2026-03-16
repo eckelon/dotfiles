@@ -1,4 +1,5 @@
 alias vim="nvim"
+alias vim="emacs -nw"
 alias vi=vim
 alias ivm="vim"
 alias weather='curl -4 wttr.in/Zaragoza\?lang=es'
@@ -17,7 +18,7 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 alias tmux="tmux -u"
 alias k="kubectl"
 alias huego=hugo
-alias minikubeup="minikube start --driver=virtualbox --memory 4000 --cpus 2 --no-kubernetes"
+# alias minikubeup="minikube start --driver=virtualbox --memory 4000 --cpus 2 --no-kubernetes"
 alias python=$(which python3)
 # alias mvn="docker run --rm -it -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:3.8.4-openjdk-17 mvn"
 alias pip=$(which pip3)
@@ -27,4 +28,20 @@ alias lg=lazygit
 alias ls=eza
 alias pass=pass-cli
 alias agtop='npx github:ldegio/agtop'
+alias prelude='emacs --init-dir ~/Development/prelude/'
 alias emacs='emacs -nw'
+
+function nave {
+  # c-o: opens file dir in Finder
+  # enter: opens file in default app or $EDITOR if it's a text file
+  local file=$(fzf --preview='cat {}' \
+				  --bind 'ctrl-o:execute-silent(open -R {})+abort')
+
+  [[ -n "$file" ]] || return
+
+  if [[ ! -s "$file" ]] || [[ "$(file -b --mime-encoding "$file")" != "binary" ]]; then
+	command emacs -nw "$file"
+  else
+	open "$file"
+  fi
+}
