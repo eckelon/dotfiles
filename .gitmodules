@@ -13,36 +13,9 @@
 [submodule "zsh/.zsh/zsh-private-config"]
 	path = zsh/.zsh/zsh-private-config
 	url = git@github.com:eckelon/zsh-private-config.git
-[submodule "kitty/.config/kitty/catppuccin-theme"]
-	path = kitty/.config/kitty/catppuccin-theme
-	url = https://github.com/catppuccin/kitty
-[submodule "tmux/.tmux/plugins/tpm"]
-	path = tmux/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
-[submodule "vim/.vim/pack/git-plugins/start/vim-lsp"]
-	path = vim/.vim/pack/git-plugins/start/vim-lsp
-	url = https://github.com/prabirshrestha/vim-lsp
-[submodule "vim/.vim/pack/git-plugins/start/vim-commentary"]
-	path = vim/.vim/pack/git-plugins/start/vim-commentary
-	url = https://github.com/tpope/vim-commentary
-[submodule "vim/.vim/pack/git-plugins/start/catppuccin"]
-	path = vim/.vim/pack/git-plugins/start/catppuccin
-	url = https://github.com/catppuccin/vim
-[submodule "vim/.vim/pack/git-plugins/opt/vim-lsp-settings"]
-	path = vim/.vim/pack/git-plugins/opt/vim-lsp-settings
-	url = https://github.com/mattn/vim-lsp-settings
-[submodule "vim/.vim/pack/git-plugins/opt/asyncomplete.vim"]
-	path = vim/.vim/pack/git-plugins/opt/asyncomplete.vim
-	url = https://github.com/prabirshrestha/asyncomplete.vim
-[submodule "vim/.vim/pack/git-plugins/opt/asyncomplete-lsp.vim"]
-	path = vim/.vim/pack/git-plugins/opt/asyncomplete-lsp.vim
-	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim
 [submodule "claude-skills/.claude/skills"]
 	path = claude-skills/.claude/skills
 	url = git@github.com:eckelon/claude-skills.git
 [submodule "emacs/.emacs.d/emacs-solo"]
 	path = emacs/.emacs.d/emacs-solo
 	url = https://github.com/LionyxML/emacs-solo.git
-[submodule "vim/.vim/pack/git-plugins/start/vim-which-key"]
-	path = vim/.vim/pack/git-plugins/start/vim-which-key
-	url = https://github.com/liuchengxu/vim-which-key.git
