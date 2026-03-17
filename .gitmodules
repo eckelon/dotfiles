@@ -37,9 +37,6 @@
 [submodule "vim/.vim/pack/git-plugins/opt/asyncomplete-lsp.vim"]
 	path = vim/.vim/pack/git-plugins/opt/asyncomplete-lsp.vim
 	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim
-[submodule "vim/.vim/pack/git-plugins/opt/editorconfig-vim"]
-	path = vim/.vim/pack/git-plugins/opt/editorconfig-vim
-	url = https://github.com/editorconfig/editorconfig-vim
 [submodule "claude-skills/.claude/skills"]
 	path = claude-skills/.claude/skills
 	url = git@github.com:eckelon/claude-skills.git
