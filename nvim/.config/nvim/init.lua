@@ -154,5 +154,13 @@ vim.diagnostic.config({
 vim.lsp.config.lua_ls = { cmd = {"lua-language-server"}, filetypes = {"lua"}, root_markers = {".luarc.json", ".git"}, settings = { Lua = { runtime = {version="LuaJIT"}, diagnostics = {globals={"vim"}}, workspace = {library = vim.api.nvim_get_runtime_file("", true)} } } }
 vim.lsp.config.gopls = { cmd = {"gopls"}, filetypes = {"go", "gomod", "gowork", "gotmpl"}, root_markers = {"go.work", "go.mod", ".git"}, settings = { gopls = { analyses = {unusedparams=true}, staticcheck=true, completeUnimported=true, usePlaceholders=true } } }
 vim.lsp.config.ts_ls = { cmd = {"typescript-language-server", "--stdio"}, filetypes = {"javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx"}, root_markers = {"package.json", "tsconfig.json", "jsconfig.json", ".git"} }
-vim.lsp.config.pyright = { cmd = {"pyright-langserver", "--stdio"}, filetypes = {"python"}, root_markers = {"pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", ".git"}, settings = { python = { analysis = { autoSearchPaths = true, useLibraryCodeForTypes = true, diagnosticMode = "workspace" } } } }
-vim.lsp.enable({"lua_ls", "gopls", "ts_ls", "pyright"})
+vim.lsp.config.basedpyright = { cmd = {"basedpyright-langserver", "--stdio"}, filetypes = {"python"}, root_markers = {"pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", ".git"}, settings = { basedpyright = { analysis = { autoSearchPaths = true, diagnosticMode = "workspace" } } } }
+vim.lsp.config.ruff = { cmd = {"ruff", "server"}, filetypes = {"python"}, root_markers = {"pyproject.toml", "ruff.toml", ".git"} }
+vim.lsp.enable({"lua_ls", "gopls", "ts_ls", "basedpyright", "ruff"})
+
+autocmd("BufWritePre", { pattern = "*.py", callback = function()
+  vim.lsp.buf.format({ async = false, filter = function(c) return c.name == "ruff" end })
+end })
+autocmd("BufWritePre", { pattern = {"*.go","*.ts","*.tsx","*.js","*.jsx"}, callback = function()
+  vim.lsp.buf.format({ async = false })
+end })
