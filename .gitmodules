@@ -40,9 +40,6 @@
 [submodule "vim/.vim/pack/git-plugins/opt/editorconfig-vim"]
 	path = vim/.vim/pack/git-plugins/opt/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim
-[submodule "vim/.vim/pack/git-plugins/opt/copilot.vim"]
-	path = vim/.vim/pack/git-plugins/opt/copilot.vim
-	url = https://github.com/github/copilot.vim
 [submodule "claude-skills/.claude/skills"]
 	path = claude-skills/.claude/skills
 	url = git@github.com:eckelon/claude-skills.git
