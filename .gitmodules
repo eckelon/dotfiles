@@ -43,3 +43,6 @@
 [submodule "emacs/.emacs.d/emacs-solo"]
 	path = emacs/.emacs.d/emacs-solo
 	url = https://github.com/LionyxML/emacs-solo.git
+[submodule "vim/.vim/pack/git-plugins/start/vim-which-key"]
+	path = vim/.vim/pack/git-plugins/start/vim-which-key
+	url = https://github.com/liuchengxu/vim-which-key.git

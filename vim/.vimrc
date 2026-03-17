@@ -3,16 +3,12 @@ source $VIMRUNTIME/defaults.vim
 
 packadd! matchit
 
-if version>= 901
-  packadd! editorconfig
-else
-  packadd! editorconfig-vim
-endif
-
+"needs version >= 901
+packadd! editorconfig
 
 set termguicolors
 set background=dark
-colorscheme catppuccin_mocha
+colorscheme catppuccin_macchiato
 
 hi Comment cterm=italic
 
@@ -23,9 +19,7 @@ set number
 set clipboard^=unnamed,unnamedplus
 
 set wildmode=longest:full,full
-if has( 'patch-8.2.4325' )
-  set wildoptions+=pum
-endif
+set wildoptions+=pum "Show command-line completions in a vertical popup
 set complete=.,w,b,u,i,k
 set listchars=tab:>-
 nnoremap ; :
@@ -43,7 +37,7 @@ set ignorecase
 set splitright
 set noshowmode
 set cursorline
-set t_ut=
+set t_ut= " visual fix for tmux
 
 set undodir=$HOME/.vim/undodir
 
@@ -78,7 +72,7 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " Faster vimgrep/grep via ripgrep
 
 if executable("rg")
-  set grepprg=rg\ --vimgrep\ --no-heading
+  set grepprg=rg\ --vimgrep\ --no-heading\ --hidden
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
@@ -86,7 +80,7 @@ function! Grep(...)
     return system(join([&grepprg] + [join(a:000, ' ')], ' '))
 endfunction
 command! -nargs=+ -complete=file_in_path Grep cexpr Grep(<f-args>) | copen
-nnoremap <leader>? :Grep
+nnoremap <leader>/ :Grep<space>
 
 " List buffers in quickfix
 function Buffers()
@@ -94,8 +88,12 @@ function Buffers()
 endfunction
 nnoremap <leader>b :call Buffers()<CR>:copen<CR>
 
-" Fuzzy finding in the quickfix
-autocmd! FileType qf nnoremap <buffer> <leader>v <C-w><Enter><C-w>L
+" Quickfix mappings
+augroup QuickfixMappings
+    autocmd!
+    autocmd FileType qf nnoremap <buffer> <leader>v <C-w><Enter><C-w>L
+    autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
+augroup END
 
 if executable("fd")
 	function! Fd(pattern)
@@ -103,9 +101,9 @@ if executable("fd")
 		call setqflist(map(output, '{ "filename": v:val }'))
 		copen
 	endfunction
-	command! -nargs=1 FindFiles call Fd(<q-args>)
-	nnoremap <leader>f :FindFiles<space>
+	command! -nargs=1 Find call Fd(<q-args>)
 endif
+nnoremap <leader>f :Find<space>
 
 if g:lsp_auto_enable == 0
   nnoremap gr :execute 'Grep ' . expand('<cword>')<CR>
@@ -171,6 +169,19 @@ xnoremap <C-c> <Plug>Commentary
 nnoremap <C-c> <Plug>CommentaryLine
 
 set timeoutlen=500
+let g:which_key_map = {
+      \ 'e': 'Opens file tree in the left sidebar',
+      \ 'f': 'Find files',
+      \ 'b': 'List buffers',
+      \ '/': 'Search in project',
+      \ 'c': {
+      \   'name': '+code',
+      \   'o': 'Open quickfix',
+      \   'c': 'Close quickfix',
+      \ },
+      \ }
+call which_key#register('<Space>', "g:which_key_map")
+
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :WhichKeyVisual '<Space>'<CR>
 " vnoremap <silent> <leader> :<c-u>WhichKeyVisual  ','<CR>
