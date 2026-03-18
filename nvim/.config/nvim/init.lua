@@ -34,7 +34,8 @@ map("n", "gh", "0", { desc = "Go to start of line" })
 map("n", "gl", "$", { desc = "Go to end of line" })
 map("n", "<leader>co", ":copen<CR>", { silent = true, desc = "Open quickfix" })
 map("n", "<leader>cc", ":cclose<CR>", { silent = true, desc = "Close quickfix" })
-map("n", "<leader>ff", ":find ", { desc = "Find file" })
+map("n", "<leader>fo", ":find ", { desc = "Open file" })
+map("n", "<leader>ff", ":Fd ", { desc = "fuzzy find" })
 map("n", "<leader>e", function()
   local f = vim.fn.expand("%:t")
   vim.cmd("let g:netrw_liststyle = 3")
@@ -62,11 +63,17 @@ end, { silent = true, desc = "List open buffers" })
 -- Grep & Find Config
 if vim.fn.executable("fd") == 1 then
   function _G.FdFindFunc(pattern)
-    return vim.fn.systemlist({ "fd", "-tf", "-Hi", "-p", "-a", "-c", "never", "-E", ".git",
+    return vim.fn.systemlist({ "fd", "-tf", "--hidden", "--full-path", "--exclude", ".git",
       pattern or "" })
   end
 
   vim.o.findfunc = "v:lua.FdFindFunc"
+
+  vim.api.nvim_create_user_command("Fd", function(args)
+    local files = FdFindFunc(args.args)
+    vim.fn.setqflist(vim.tbl_map(function(f) return { filename = f } end, files))
+    vim.cmd("copen")
+  end, { nargs = "?" })
 end
 if vim.fn.executable("rg") == 1 then
   opt.grepprg, opt.grepformat = "rg --vimgrep --smart-case --hidden --no-messages --glob '!.git'", "%f:%l:%c:%m"
