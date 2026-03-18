@@ -38,7 +38,7 @@ function nave {
   [[ -n "$file" ]] || return
 
   if [[ ! -s "$file" ]] || [[ "$(file -b --mime-encoding "$file")" != "binary" ]]; then
-	command $EDITOR -nw "$file"
+	command $EDITOR "$file"
   else
 	open "$file"
   fi

@@ -12,4 +12,7 @@ disabled = true
 detect_files = ['Pipfile', '__init__.py', 'pyproject.toml', 'requirements.txt', 'setup.py', 'tox.ini']
 [aws]
 disabled = true
-
+[kubernetes]
+disabled = false
+format = '⎈[ ($cluster)](blue) '
+detect_files = ['.usek8s']

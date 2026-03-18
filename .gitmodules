@@ -22,3 +22,12 @@
 [submodule "nvim/.config/nvim/pack/plugins/start/tokyonight.nvim"]
 	path = nvim/.config/nvim/pack/plugins/start/tokyonight.nvim
 	url = https://github.com/folke/tokyonight.nvim.git
+[submodule "nvim/.config/nvim/pack/plugins/start/which-key.nvim"]
+	path = nvim/.config/nvim/pack/plugins/start/which-key.nvim
+	url = https://github.com/folke/which-key.nvim.git
+[submodule "nvim/.config/nvim/pack/plugins/start/fzf-lua"]
+	path = nvim/.config/nvim/pack/plugins/start/fzf-lua
+	url = https://github.com/ibhagwan/fzf-lua.git
+[submodule "nvim/.config/nvim/pack/plugins/start/lualine.nvim"]
+	path = nvim/.config/nvim/pack/plugins/start/lualine.nvim
+	url = https://github.com/nvim-lualine/lualine.nvim.git

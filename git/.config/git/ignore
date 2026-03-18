@@ -7,5 +7,6 @@ plug.vim.old
 .vscode
 .idea
 .helix
+.usek8s
 
 **/.claude/settings.local.json

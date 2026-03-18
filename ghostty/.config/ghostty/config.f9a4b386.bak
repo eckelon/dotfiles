@@ -1,7 +1,0 @@
-font-family = "JetBrainsMono Nerd Font Mono"
-font-style = "SemiBold"
-font-size = 15
-theme = TokyoNight Moon
-keybind = global:cmd+shift+option+control+q=toggle_quick_terminal
-background-opacity = 0.85
-background-blur = true
