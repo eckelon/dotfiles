@@ -19,3 +19,6 @@
 [submodule "emacs/.emacs.d/emacs-solo"]
 	path = emacs/.emacs.d/emacs-solo
 	url = https://github.com/LionyxML/emacs-solo.git
+[submodule "nvim/.config/nvim/pack/plugins/start/tokyonight.nvim"]
+	path = nvim/.config/nvim/pack/plugins/start/tokyonight.nvim
+	url = https://github.com/folke/tokyonight.nvim.git
