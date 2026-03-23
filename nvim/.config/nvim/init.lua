@@ -23,6 +23,7 @@ map("n", ";", ":", { desc = "Enter command mode" })
 map("i", "jj", "<Esc>", { desc = "Return to normal mode" })
 map("i", "<Tab>", function() return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>" end, { expr = true })
 map("i", "<S-Tab>", function() return vim.fn.pumvisible() == 1 and "<C-p>" or "<S-Tab>" end, { expr = true })
+map({ "n", "i" }, "<C-x><C-s>", "<cmd>w<cr>", { desc = "Save file" })
 map("n", "gh", "0", { desc = "Go to start of line" })
 map("n", "gl", "$", { desc = "Go to end of line" })
 map("n", "<leader>co", ":copen<CR>", { silent = true, desc = "Open quickfix" })
@@ -48,16 +49,27 @@ end, { silent = true, desc = "Toggle file tree" })
 local autocmd = vim.api.nvim_create_autocmd
 autocmd("FileType", { pattern = "netrw", callback = function() vim.opt_local.bufhidden = "delete" end })
 
+autocmd("TextYankPost", { callback = function() vim.highlight.on_yank({ higroup = "Visual" }) end })
+
 autocmd("VimEnter", {
   callback = function()
     if vim.fn.argc() == 1 and vim.fn.isdirectory(tostring(vim.fn.argv(0))) == 1 then
-      vim.defer_fn(function() vim.api.nvim_command("FzfLua files") end, 1)
+      local dir = tostring(vim.fn.argv(0))
+      vim.defer_fn(function() require("fzf-lua").files({ cwd = dir }) end, 1)
     end
   end,
   nested = true
 })
 
 -- Commands
+vim.api.nvim_create_user_command("ConfigReload", function()
+  for name, _ in pairs(package.loaded) do
+    package.loaded[name] = nil
+  end
+  dofile(vim.env.MYVIMRC)
+  vim.notify("Config reloaded", vim.log.levels.INFO)
+end, { desc = "Reload init.lua" })
+
 vim.api.nvim_create_user_command("Git", "term lazygit", {})
 map('n', '<leader>lg', '<cmd>Git<cr>')
 map('n', '<leader>ff', '<cmd>FzfLua files<cr>')
@@ -108,5 +120,6 @@ vim.lsp.config.gopls = { cmd = { "gopls" }, filetypes = { "go", "gomod", "gowork
 vim.lsp.config.ts_ls = { cmd = { "typescript-language-server", "--stdio" }, filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }, root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" } }
 vim.lsp.config.basedpyright = { cmd = { "basedpyright-langserver", "--stdio" }, filetypes = { "python" }, root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", ".git" }, settings = { basedpyright = { analysis = { autoSearchPaths = true, diagnosticMode = "workspace" } } } }
 vim.lsp.config.ruff = { cmd = { "ruff", "server" }, filetypes = { "python" }, root_markers = { "pyproject.toml", "ruff.toml", "setup.py", "setup.cfg", "requirements.txt", ".git" } }
+vim.lsp.config.marksman = { cmd = { "/opt/homebrew/bin/marksman", "server" }, filetypes = { "markdown", "markdown.mdx" }, root_markers = { ".marksman.toml", ".git" } }
 
-vim.lsp.enable({ "lua_ls", "gopls", "ts_ls", "basedpyright", "ruff" })
+vim.lsp.enable({ "lua_ls", "gopls", "ts_ls", "basedpyright", "ruff", "marksman" })
