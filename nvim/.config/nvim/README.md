@@ -39,9 +39,11 @@ This configuration uses Neovim's built-in Treesitter engine without the `nvim-tr
    ```
 
 ### Included Mappings
-- `<leader>ff`: Find files using `fd`.
-- `<leader>g`: Grep text using `rg`.
+- `<leader>ff`: Fuzzy find files.
+- `<leader>fF`: Find files using `fd`.
+- `<leader>gr`: Grep word under cursor (visual mode supported).
 - `<leader>e`: Toggle Netrw tree sidebar.
-- `<leader>?`: List all active mappings.
 - `jj`: Return to Normal mode from Insert mode.
-- `Ctrl-c`: Toggle comments.
+- `gh`/`gl`: Go to start/end of line.
+- `-`: Open parent directory.
+- `<leader>co`/`<leader>cc`: Open/close quickfix list.
