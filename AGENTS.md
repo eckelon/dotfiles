@@ -74,3 +74,17 @@ To apply the dotfiles, one simply needs to execute this script from the root of 
     ```
 
 By following this structure, the repository provides a robust and maintainable system for managing dotfiles and their dependencies.
+
+## Homebrew Package Management (`brew/`)
+
+The `brew/` directory manages Homebrew packages declaratively using a Brewfile. It contains three files:
+
+- **`brew/Brewfile`**: Declares all top-level Homebrew formulae, casks, and uv tools. Dependencies are intentionally excluded — they are installed automatically when their parent packages are installed.
+- **`brew/restore-brewfile.sh`**: Restores all packages from the Brewfile. Installs Homebrew first if not present. Use on a fresh machine: `./brew/restore-brewfile.sh`
+- **`brew/update-brewfile.sh`**: Regenerates the Brewfile from the current system state. It runs `brew autoremove` to clean orphaned dependencies, then `brew bundle dump` to capture all packages, and finally filters the output using `brew leaves` to keep only top-level formulae (not dependencies).
+
+### Key Decisions
+
+- The Brewfile only contains **top-level packages**, not dependencies. When a package like `helmfile` is removed and its dependency `helm` should remain, `helm` must be explicitly installed (`brew install helm`) so it becomes a top-level package.
+- Packages that were once explicitly installed but are actually libraries (e.g., `gdbm`, `libffi`) should be uninstalled to keep the Brewfile clean. `brew autoremove` alone won't remove them if they're marked as "installed on request".
+- The `update-brewfile.sh` script should be run after any `brew install` or `brew uninstall` to keep the Brewfile in sync.
