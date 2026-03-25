@@ -1,7 +1,5 @@
 # Yet Another Dotfiles Repo
 
-![](dotfiles.png)
-
 Want to try them?
 
 1. clone the repo
