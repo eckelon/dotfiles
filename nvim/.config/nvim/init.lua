@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-vim.cmd("hi Comment cterm=italic gui=italic")
+vim.cmd("color sorbet | hi Comment cterm=italic gui=italic")
 vim.g.netrw_banner, vim.g.netrw_keepdir, vim.g.netrw_winsize = 0, 1, 25
 vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 vim.opt.number, vim.opt.ignorecase, vim.opt.smartcase, vim.opt.termguicolors = true, true, true, true
@@ -49,7 +49,7 @@ map("n", "<leader>e", toggle_sidebar_tree, { silent = true, desc = "Toggle file 
 
 -- Autocmds
 local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
+-- local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
 autocmd("FileType", { group = augroup, pattern = "netrw", callback = function() vim.opt_local.bufhidden = "delete" end })
 autocmd("TextYankPost", { group = augroup, callback = function() vim.highlight.on_yank({ higroup = "Visual" }) end })
 autocmd("FileType", { group = augroup, callback = function() pcall(vim.treesitter.start) end }) -- Built-in Treesitter
@@ -99,3 +99,13 @@ end
 
 map("n", "<leader>gr", grep_word_under_cursor, { desc = "Grep word" })
 map("x", "<leader>gr", grep_visual_selection, { desc = "Grep selection" })
+
+-- Markdown preview in browser via pandoc
+if vim.fn.executable("pandoc") == 1 then
+  map("n", "<leader>mp", function()
+    local file = vim.fn.expand("%:p")
+    local css_file = vim.fn.stdpath("config") .. "/pandoc-preview.html"
+    vim.fn.system("pandoc " .. vim.fn.shellescape(file) .. " -s -H " .. vim.fn.shellescape(css_file) .. " -o /tmp/preview.html && open /tmp/preview.html")
+    vim.notify("Markdown preview opened")
+  end, { desc = "Markdown preview in browser" })
+end
