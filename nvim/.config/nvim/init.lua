@@ -99,13 +99,3 @@ end
 
 map("n", "<leader>gr", grep_word_under_cursor, { desc = "Grep word" })
 map("x", "<leader>gr", grep_visual_selection, { desc = "Grep selection" })
-
--- Markdown preview in browser via pandoc
-if vim.fn.executable("pandoc") == 1 then
-  map("n", "<leader>mp", function()
-    local file = vim.fn.expand("%:p")
-    local css_file = vim.fn.stdpath("config") .. "/pandoc-preview.html"
-    vim.fn.system("pandoc " .. vim.fn.shellescape(file) .. " -s -H " .. vim.fn.shellescape(css_file) .. " -o /tmp/preview.html && open /tmp/preview.html")
-    vim.notify("Markdown preview opened")
-  end, { desc = "Markdown preview in browser" })
-end
