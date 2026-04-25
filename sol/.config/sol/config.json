@@ -1,0 +1,41 @@
+{
+  "firstTranslationLanguage": "en",
+  "secondTranslationLanguage": "de",
+  "thirdTranslationLanguage": null,
+  "globalShortcut": "command",
+  "showWindowOn": "screenWithFrontmost",
+  "calendarEnabled": false,
+  "showAllDayEvents": true,
+  "launchAtLogin": true,
+  "mediaKeyForwardingEnabled": true,
+  "showUpcomingEvent": true,
+  "scratchPadColor": "SYSTEM",
+  "searchFolders": [
+    "/Users/eckelon/Documents/"
+  ],
+  "searchEngine": "custom",
+  "customSearchUrl": "https://kagi.com/search?q=%s",
+  "shortcuts": {
+    "resize_fullscreen": "command+option+control+shift+M",
+    "lock": "command+option+q",
+    "resize_right_half": "command+option+control+shift+L",
+    "resize_left_half": "command+option+control+shift+H",
+    "resize_top_half": "command+option+control+shift+K",
+    "resize_bottom_half": "command+option+control+shift+J",
+    "move_next_screen": "control+option+command+right",
+    "move_previous_screen": "control+option+command+left",
+    "scratchpad": "command+shift+space",
+    "emoji_picker": "command+control+space",
+    "clipboard_manager": "command+shift+c",
+    "move_center": "command+option+control+shift+C"
+  },
+  "showInAppBrowserBookMarks": true,
+  "hyperKeyEnabled": true,
+  "customItems": [],
+  "disabledItemIds": [
+    "resize_top_left",
+    "resize_top_right",
+    "resize_bottom_left",
+    "resize_bottom_right"
+  ]
+}
