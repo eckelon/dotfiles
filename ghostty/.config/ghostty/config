@@ -7,3 +7,4 @@ background-opacity = 0.85
 background-blur = true
 keybind = shift+enter=text:\x1b\r
 macos-option-as-alt = true
+scrollback-limit = 10000000
