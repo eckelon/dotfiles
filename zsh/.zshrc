@@ -46,7 +46,9 @@ export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 
 # PROMPT='%F{#8caaee}%~%f%F{#8caaee}❭ '
 source <(fzf --zsh)
-eval "$(starship init zsh)"
+fpath+=("$HOME/.zsh/pure")
+autoload -U promptinit; promptinit
+prompt pure
 
 
 # Added by LM Studio CLI (lms)
