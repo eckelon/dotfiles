@@ -1,8 +1,8 @@
 GCLOUD_GLOBALS=("gcloud")
 
 load_gcloud () {
-    if [ -f '/Users/jasamitier/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jasamitier/google-cloud-sdk/path.zsh.inc'; fi
-    if [ -f '/Users/jasamitier/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jasamitier/google-cloud-sdk/completion.zsh.inc'; fi
+    if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+    if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 }
 
 for cmd in "${GCLOUD_GLOBALS[@]}"; do

@@ -28,6 +28,7 @@ alias ls=eza
 alias pass=pass-cli
 alias agtop='npx github:ldegio/agtop'
 alias prelude='emacs --init-dir ~/Development/prelude/'
+alias sudo=doas
 
 function nave {
   # c-o: opens file dir in Finder

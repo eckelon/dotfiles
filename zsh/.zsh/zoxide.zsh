@@ -1,8 +1,10 @@
-declare -a ZOXIDE_GLOBALS=()
-
-ZOXIDE_GLOBALS+=("zoxide")
-ZOXIDE_GLOBALS+=("j")
-
-for cmd in "${ZOXIDE_GLOBALS[@]}"; do
+j() {
+    unset -f j zoxide
     eval "$(zoxide init zsh --cmd j)"
-done
+    j "$@"
+}
+zoxide() {
+    unset -f j zoxide
+    eval "$(zoxide init zsh --cmd j)"
+    zoxide "$@"
+}
