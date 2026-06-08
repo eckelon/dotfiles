@@ -1,20 +1,13 @@
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/opt/homebrew/sbin:$PATH"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
-export PATH="$PATH:/usr/local/sbin"
-export PATH="$PATH:$HOME/go/bin"
-export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:$HOME/nvim-macos/bin"
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/Library/Python/3.11/bin/"
-export DYLD_LIBRARY_PATH="/usr/local/lib:$DYLD_LIBRARY_PATH"
-
-export EDITOR="nvim"
-
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 source $HOME/.zsh/zsh-private-config/init.zsh
-source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+autoload -Uz add-zsh-hook
+_defer_syntax_hl() {
+  source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+  add-zsh-hook -d precmd _defer_syntax_hl
+  unfunction _defer_syntax_hl
+}
+add-zsh-hook precmd _defer_syntax_hl
 
 
 bindkey '^[[A' history-substring-search-up   # Up arrow
@@ -22,7 +15,6 @@ bindkey '^[[B' history-substring-search-down # Down arrow
 
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/zoxide.zsh
-source $HOME/.zsh/gcloud.zsh
 source $HOME/.zsh/completions.zsh
 
 autoload edit-command-line
@@ -45,19 +37,18 @@ setopt histignorealldups sharehistory
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 
 # PROMPT='%F{#8caaee}%~%f%F{#8caaee}❭ '
-source <(fzf --zsh)
+_defer_fzf() {
+  source <(fzf --zsh)
+  add-zsh-hook -d precmd _defer_fzf
+  unfunction _defer_fzf
+}
+add-zsh-hook precmd _defer_fzf
 fpath+=("$HOME/.zsh/pure")
 autoload -U promptinit; promptinit
 prompt pure
 
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:$HOME/.lmstudio/bin"
-
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-. "$HOME/.cargo/env"
+true  # ensure .zshrc exits clean even if optional sources above failed

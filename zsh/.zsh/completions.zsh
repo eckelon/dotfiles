@@ -1,7 +1,7 @@
 autoload bashcompinit
 autoload -Uz compinit
 if [[ -n ~/.zcompdump(#qNmh-24) ]]; then
-  compinit -C
+  compinit -C -u
 else
   compinit
 fi
