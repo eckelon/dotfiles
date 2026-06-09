@@ -38,6 +38,7 @@ export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 
 fpath+=("$HOME/.zsh/pure")
 autoload -U promptinit; promptinit
+PURE_PROMPT_SYMBOL='%Bλ%b'
 prompt pure
 
 true  # ensure .zshrc exits clean even if optional sources above failed
