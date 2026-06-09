@@ -21,3 +21,20 @@ if [ $commands[git] ]; then
     $0 "$@"
   }
 fi
+
+# Deferred completion sources — loaded after first prompt to keep startup snappy.
+autoload -Uz add-zsh-hook
+
+_defer_fzf() {
+  source <(fzf --zsh)
+  add-zsh-hook -d precmd _defer_fzf
+  unfunction _defer_fzf
+}
+add-zsh-hook precmd _defer_fzf
+
+_defer_bun() {
+  [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+  add-zsh-hook -d precmd _defer_bun
+  unfunction _defer_bun
+}
+add-zsh-hook precmd _defer_bun

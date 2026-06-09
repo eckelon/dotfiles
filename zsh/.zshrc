@@ -36,19 +36,8 @@ setopt histignorealldups sharehistory
 
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 
-# PROMPT='%F{#8caaee}%~%f%F{#8caaee}❭ '
-_defer_fzf() {
-  source <(fzf --zsh)
-  add-zsh-hook -d precmd _defer_fzf
-  unfunction _defer_fzf
-}
-add-zsh-hook precmd _defer_fzf
 fpath+=("$HOME/.zsh/pure")
 autoload -U promptinit; promptinit
 prompt pure
-
-
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 true  # ensure .zshrc exits clean even if optional sources above failed
