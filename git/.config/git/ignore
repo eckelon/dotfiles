@@ -8,5 +8,6 @@ plug.vim.old
 .idea
 .helix
 .usek8s
+*.zwc
 
 **/.claude/settings.local.json
