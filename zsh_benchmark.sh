@@ -1,3 +1,3 @@
 #!/bin/bash
 
-for i in $(seq 1 10); do /usr/bin/time $SHELL -i -c exit; done
+hyperfine --warmup 3 --runs 10 'zsh -i -c exit'

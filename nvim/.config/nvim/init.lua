@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-vim.cmd("color sorbet | hi Comment cterm=italic gui=italic")
+vim.cmd("color catppuccin | hi Comment cterm=italic gui=italic")
 vim.g.netrw_banner, vim.g.netrw_keepdir, vim.g.netrw_winsize = 0, 1, 25
 vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 vim.opt.number, vim.opt.ignorecase, vim.opt.smartcase, vim.opt.termguicolors = true, true, true, true
