@@ -41,4 +41,6 @@ autoload -U promptinit; promptinit
 PURE_PROMPT_SYMBOL='%Bλ%b'
 prompt pure
 
+source $HOME/.zsh/dtach.zsh
+
 true  # ensure .zshrc exits clean even if optional sources above failed
