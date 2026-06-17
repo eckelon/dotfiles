@@ -18,4 +18,6 @@ export LANG=en_US.UTF-8
 
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
+[ -f "$HOME/.zsh/zsh-private-config/env.zsh" ] && source "$HOME/.zsh/zsh-private-config/env.zsh"
+
 typeset -gU path
