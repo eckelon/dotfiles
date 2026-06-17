@@ -10,6 +10,7 @@ _defer_syntax_hl() {
 add-zsh-hook precmd _defer_syntax_hl
 
 
+bindkey -e
 bindkey '^[[A' history-substring-search-up   # Up arrow
 bindkey '^[[B' history-substring-search-down # Down arrow
 
