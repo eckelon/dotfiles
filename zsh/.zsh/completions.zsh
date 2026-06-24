@@ -1,10 +1,17 @@
-autoload bashcompinit
-autoload -Uz compinit
-if [[ -n ~/.zcompdump(#qNmh-24) ]]; then
-  compinit -C -u
-else
-  compinit
-fi
+autoload -Uz add-zsh-hook
+
+_defer_compinit() {
+  autoload bashcompinit
+  autoload -Uz compinit
+  if [[ -n ~/.zcompdump(#qNmh-24) ]]; then
+    compinit -C -u
+  else
+    compinit
+  fi
+  add-zsh-hook -d precmd _defer_compinit
+  unfunction _defer_compinit
+}
+add-zsh-hook precmd _defer_compinit
 
 if [ $commands[kubectl] ]; then
   kubectl() {
@@ -23,8 +30,6 @@ if [ $commands[git] ]; then
 fi
 
 # Deferred completion sources — loaded after first prompt to keep startup snappy.
-autoload -Uz add-zsh-hook
-
 _defer_fzf() {
   source <(fzf --zsh)
   add-zsh-hook -d precmd _defer_fzf
