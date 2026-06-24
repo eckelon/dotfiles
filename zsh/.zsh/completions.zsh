@@ -21,14 +21,6 @@ if [ $commands[kubectl] ]; then
   }
 fi
 
-if [ $commands[git] ]; then
-  git() {
-    unfunction "$0"
-    source <(git completion zsh)
-    $0 "$@"
-  }
-fi
-
 # Deferred completion sources — loaded after first prompt to keep startup snappy.
 _defer_fzf() {
   source <(fzf --zsh)
