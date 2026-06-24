@@ -36,7 +36,7 @@ The `apply-dotfiles.sh` script automates the process of applying the dotfiles us
 
 ```sh
 #!/bin/sh
-for symlink in zsh git karabiner nvim editorconfig starship ghostty k9s claude-skills emacs raycast zed; do
+for symlink in zsh git karabiner nvim editorconfig ghostty k9s claude-skills emacs sol; do
   stow -v -t "$HOME" "$symlink"
 done
 ```

@@ -1,21 +1,21 @@
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 typeset -gU path
 
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 source $HOME/.zsh/zsh-private-config/init.zsh
 autoload -Uz add-zsh-hook
-_defer_syntax_hl() {
+_defer_plugins() {
+  source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
   source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-  add-zsh-hook -d precmd _defer_syntax_hl
-  unfunction _defer_syntax_hl
+  bindkey '^[[A' history-substring-search-up
+  bindkey '^[[B' history-substring-search-down
+  add-zsh-hook -d precmd _defer_plugins
+  unfunction _defer_plugins
 }
-add-zsh-hook precmd _defer_syntax_hl
+add-zsh-hook precmd _defer_plugins
 
 
 bindkey -e
-bindkey '^[[A' history-substring-search-up   # Up arrow
-bindkey '^[[B' history-substring-search-down # Down arrow
 
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/zoxide.zsh
@@ -31,9 +31,6 @@ HISTFILE=~/.zsh_history
 
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
 
 setopt auto_cd #automatically cd to a directory without `cd`
 setopt histignorealldups sharehistory
