@@ -1,0 +1,69 @@
+# Minimal Neovim Config
+
+A single-file configuration for Neovim 0.12+, with LSP and fuzzy-finding.
+
+## Plugins
+
+Managed natively with `vim.pack` (no external plugin manager); cloned on first
+launch:
+- [fzf-lua](https://github.com/ibhagwan/fzf-lua) — fuzzy finding / grep.
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) — LSP server configs.
+
+LSP servers enabled via `vim.lsp.enable`: `pyright`, `ts_ls`, `gopls`. Install the
+ones you need and they attach automatically.
+
+## Prerequisites
+- **Nerd Font**: Required for icons in the statusline and diagnostic gutter.
+
+## Optional (Recommended)
+- **fzf** + **ripgrep (rg)**: Required by fzf-lua for files/grep pickers.
+- **fd**: Faster file listing for fzf-lua.
+
+## Treesitter (Manual Installation)
+
+This configuration uses Neovim's built-in Treesitter engine without the `nvim-treesitter` plugin. To enable highlighting for a language, you must manually compile and install its parser.
+
+### How to install a new language (e.g., Go)
+
+1. **Find the parser source**: Most are on GitHub under `tree-sitter/tree-sitter-<lang>`.
+2. **Compile the parser**:
+   ```bash
+   # Clone the source
+   git clone --depth 1 https://github.com/tree-sitter/tree-sitter-go.git /tmp/ts-go
+   cd /tmp/ts-go
+
+   # Compile to a shared object (.so)
+   gcc -o go.so -shared src/parser.c src/scanner.c -I./src -fPIC -Os
+   # Note: Some languages don't have src/scanner.c, just omit it if missing.
+   ```
+3. **Install the parser and queries**:
+   Move the `.so` file and the `.scm` query files to your Neovim data directory. Without the queries, Neovim can parse the file but won't know how to color it.
+   ```bash
+   # 1. Install the binary parser
+   mkdir -p ~/.local/share/nvim/site/parser
+   mv go.so ~/.local/share/nvim/site/parser/
+
+   # 2. Install the syntax highlighting rules
+   mkdir -p ~/.local/share/nvim/site/queries/go
+   cp queries/*.scm ~/.local/share/nvim/site/queries/go/
+   ```
+
+### Included Mappings
+- `<leader>ff`: Find files (fzf-lua).
+- `<leader>fb`: Buffers (fzf-lua).
+- `<leader>fg`: Live grep (fzf-lua).
+- `<leader>fd`: Workspace diagnostics (fzf-lua).
+- `<leader>gr`: Grep word under cursor / selection (fzf-lua, visual supported).
+- `<leader>gd`: Git diff (fzf-lua).
+- `<leader>e`: Toggle Netrw tree sidebar.
+- `jj`: Return to Normal mode from Insert mode.
+- `gh`/`gl`: Go to start/end of line.
+- `-`: Open parent directory.
+- `<leader>co`/`<leader>cc`: Open/close quickfix list.
+
+### LSP Navigation
+- `gd`: Go to definition (native `vim.lsp.buf`, quickfix on multiple results).
+- `gD`: Go to declaration (native).
+- `gy`: Go to type definition (native).
+- `grr` references, `gri` implementations, `grn` rename, `gra` code action,
+  `grt` type def, `gO` symbols, `K` hover: Neovim built-in defaults.
