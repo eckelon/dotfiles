@@ -1,0 +1,10 @@
+font-family = "JetBrainsMono Nerd Font Mono"
+font-style = "SemiBold"
+font-size = 18
+theme = TokyoNight Moon
+keybind = global:cmd+shift+option+control+q=toggle_quick_terminal
+background-opacity = 0.85
+background-blur = true
+keybind = shift+enter=text:\x1b\r
+macos-option-as-alt = true
+scrollback-limit = 10000000
