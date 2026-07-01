@@ -1,0 +1,12 @@
+#!/bin/sh
+# zsh-source-hash: {{ include "dot_zshrc" | sha256sum }}{{ include "dot_zshenv" | sha256sum }}{{ include "dot_zsh/aliases.zsh.tmpl" | sha256sum }}{{ include "dot_zsh/completions.zsh" | sha256sum }}{{ include "dot_zsh/zoxide.zsh" | sha256sum }}{{ include "dot_zsh/dtach.zsh" | sha256sum }}
+D="{{ .chezmoi.destDir }}"
+zsh -c '
+  for f in "$1"/.zshrc "$1"/.zshenv "$1"/.zsh/*.zsh \
+           "$1"/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh \
+           "$1"/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh \
+           "$1"/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh \
+           "$1"/.zsh/pure/pure.zsh; do
+    [ -f "$f" ] && zcompile -R "$f"
+  done
+' _ "$D" 2>/dev/null || true
