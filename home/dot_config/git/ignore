@@ -1,0 +1,13 @@
+.netrwhist
+.vim/plugged
+.config/karabiner/automatic_backups
+.config/joplin-desktop/
+.config/coc/
+plug.vim.old
+.vscode
+.idea
+.helix
+.usek8s
+*.zwc
+
+**/.claude/settings.local.json
