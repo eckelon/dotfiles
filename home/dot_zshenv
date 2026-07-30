@@ -13,6 +13,7 @@ export DYLD_LIBRARY_PATH="/usr/local/lib:$DYLD_LIBRARY_PATH"
 export EDITOR="nvim"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export XDG_CONFIG_HOME="$HOME/.config"
 
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 

@@ -22,3 +22,11 @@ title = "lazygit"
 split = "right"
 ratio = 0.35
 command = "lazygit"
+
+[tabs.review]
+label = "review"
+
+[[tabs.review.panes]]
+id = "review"
+title = "review"
+command = "lazygit"
