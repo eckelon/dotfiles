@@ -1,0 +1,50 @@
+{
+  "firstTranslationLanguage": "es",
+  "secondTranslationLanguage": "en",
+  "thirdTranslationLanguage": null,
+  "globalShortcut": "command",
+  "showWindowOn": "screenWithFrontmost",
+  "calendarEnabled": true,
+  "showAllDayEvents": true,
+  "launchAtLogin": true,
+  "mediaKeyForwardingEnabled": true,
+  "showUpcomingEvent": false,
+  "scratchPadColor": "SYSTEM",
+  "searchFolders": [
+{{- if .is_work }}
+    "{{ .chezmoi.homeDir }}/Development/",
+    "{{ .chezmoi.homeDir }}/Documents/",
+    "{{ .chezmoi.homeDir }}/Library/CloudStorage/GoogleDrive-{{ .git_email }}/"
+{{- else }}
+    "{{ .chezmoi.homeDir }}/Documents/"
+{{- end }}
+  ],
+  "searchEngine": "custom",
+  "customSearchUrl": "https://kagi.com/search?q=%s",
+  "shortcuts": {
+    "resize_fullscreen": "command+option+control+shift+m",
+    "lock": "",
+    "resize_right_half": "command+option+control+shift+l",
+    "resize_left_half": "command+option+control+shift+h",
+    "move_next_screen": "command+option+control+shift+n",
+    "move_previous_screen": "command+option+control+shift+p",
+    "scratchpad": "command+shift+space",
+    "emoji_picker": "command+control+space",
+    "clipboard_manager": "command+shift+c",
+    "move_center": "command+option+control+shift+c"
+  },
+  "showInAppBrowserBookMarks": true,
+  "hasDismissedGettingStarted": true,
+  "hyperKeyEnabled": true,
+  "customItems": [],
+  "disabledItemIds": [
+    "resize_top_left",
+    "resize_top_right",
+    "resize_bottom_left",
+    "resize_bottom_right",
+    "move_to_previous_space",
+    "move_to_next_space",
+    "resize_bottom_half",
+    "resize_top_half"
+  ]
+}
