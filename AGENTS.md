@@ -53,6 +53,28 @@ They refresh on `chezmoi apply` per their `refreshPeriod` (168h).
 `.zwc` bytecode for faster shell startup. It is keyed to the hash of the zsh
 sources, so it only reruns when they change.
 
+## herdr plugins
+
+herdr plugins are installed per-machine (they compile from source) and are **not**
+tracked by chezmoi — only their config under
+`home/dot_config/herdr/plugins/config/<id>/` is tracked. Install on a new machine:
+
+```sh
+herdr plugin install persiyanov/herdr-reviewr        # code-review sidebar
+herdr plugin install andrewchng/herdr-sessionizer    # fuzzy project/worktree picker + layouts
+herdr plugin install JanTvrdik/herdr-command-palette # fzf palette that runs any plugin action
+```
+
+`herdr-sessionizer` needs `bun` and `fzf`; the command palette needs `fzf` + `jq`
+(all in the Brewfile). sessionizer's project roots and claude+lazygit layout live in
+`~/.config/herdr/plugins/config/sessionizer/config.toml` (tracked); it replaces the
+old custom `ai`/`ai-pick` shell.
+
+The single entry point is the **command palette**: `prefix+p` (bound in
+`~/.config/herdr/config.toml`) opens a fuzzy list of every plugin action — pick e.g.
+`sessionizer.open` (open project) or `sessionizer.worktree-open` (open/create worktree).
+No per-action keybindings.
+
 ## Private content
 
 Anything private lives in a separate private repo referenced as an external, or

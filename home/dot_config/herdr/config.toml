@@ -1,0 +1,13 @@
+onboarding = false
+
+[ui]
+agent_panel_sort = "spaces"
+
+[keys]
+prefix = "ctrl+space"
+
+[[keys.command]]
+key = "prefix+p"
+type = "plugin_action"
+command = "jt.command-palette.open"
+description = "command palette (all plugin actions)"

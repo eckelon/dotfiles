@@ -54,7 +54,4 @@ _prompt_git_branch() {
 }
 add-zsh-hook precmd _prompt_git_branch
 
-source $HOME/.zsh/dtach.zsh
-source $HOME/.zsh/ai.zsh
-
 true  # ensure .zshrc exits clean even if optional sources above failed
