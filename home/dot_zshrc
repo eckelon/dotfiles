@@ -35,6 +35,10 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
 setopt auto_cd #automatically cd to a directory without `cd`
 setopt histignorealldups sharehistory
 
+# Reset mouse tracking left over by TUI apps (opencode, herdr, etc.)
+_reset_mouse_tracking() { printf '\e[?1000l\e[?1002l\e[?1003l\e[?1006l' > /dev/tty }
+add-zsh-hook precmd _reset_mouse_tracking
+
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 
 PROMPT=$'%F{#7dcfff}%1~\n%f%B%b '
