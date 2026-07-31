@@ -1,0 +1,179 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Read(*)",
+      "Edit(~/Development/**)",
+      "Edit(~/.claude/**)",
+      "Edit(/tmp/**)",
+      "Glob(*)",
+      "Grep(*)",
+      "Skill(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "mcp__sysdig__*",
+      "mcp__claude_ai_Asana__*",
+      "mcp__claude_ai_Atlassian__*",
+      "mcp__claude_ai_Aws-integration-01_Sysdig_Secure_MCP_Server__*",
+      "mcp__claude_ai_Aws-us1_Sysdig_Secure_MCP_Server__*",
+      "mcp__claude_ai_AU1_Sysdig_Secure_MCP_Server__*",
+      "mcp__claude_ai_EU1_Sysdig_Secure_MCP_Server__*",
+      "mcp__claude_ai_EU2_Sysdig_Secure_MCP_Server__*",
+      "mcp__claude_ai_IN1_Sysdig_Secure_MCP_Server__*",
+      "mcp__claude_ai_US2_Sysdig_Secure_MCP_Server__*",
+      "mcp__claude_ai_Prodmon_Sysdig_Secure_MCP_Server__*",
+      "mcp__claude_ai_Gmail__*",
+      "mcp__claude_ai_Google_Calendar__*",
+      "mcp__claude_ai_Google_Drive__*",
+      "mcp__claude_ai_Salesforce__*",
+      "mcp__claude_ai_Sigma__*",
+      "mcp__claude_ai_Zoom_for_Claude__*"
+    ]
+  },
+  "model": "claude-opus-4-6",
+  "hooks": {
+    "PermissionRequest": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -x '/Users/jesus.samitier/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/jesus.samitier/.orca/agent-hooks/claude-hook.sh'; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -x '/Users/jesus.samitier/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/jesus.samitier/.orca/agent-hooks/claude-hook.sh'; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -x '/Users/jesus.samitier/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/jesus.samitier/.orca/agent-hooks/claude-hook.sh'; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -x '/Users/jesus.samitier/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/jesus.samitier/.orca/agent-hooks/claude-hook.sh'; fi",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Grep|Glob",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/cbm-code-discovery-gate",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/cbm-session-reminder"
+          }
+        ]
+      },
+      {
+        "matcher": "resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/cbm-session-reminder"
+          }
+        ]
+      },
+      {
+        "matcher": "clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/cbm-session-reminder"
+          }
+        ]
+      },
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/cbm-session-reminder"
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/jesus.samitier/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -x '/Users/jesus.samitier/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/jesus.samitier/.orca/agent-hooks/claude-hook.sh'; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -x '/Users/jesus.samitier/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/jesus.samitier/.orca/agent-hooks/claude-hook.sh'; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -x '/Users/jesus.samitier/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/jesus.samitier/.orca/agent-hooks/claude-hook.sh'; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {},
+  "extraKnownMarketplaces": {},
+  "effortLevel": "xhigh",
+  "theme": "dark"
+}
