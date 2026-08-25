@@ -1,5 +1,9 @@
 Library/Application Support/Superkey
 
+{{ if not .is_work }}
+.claude
+{{ end }}
+
 {{ if ne .chezmoi.os "darwin" }}
 .config/sol
 .config/superkey
@@ -7,5 +11,4 @@ Library/Application Support/Superkey
 Library
 .brew
 .emacs.d
-.claude
 {{ end }}
