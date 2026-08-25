@@ -1,4 +1,5 @@
-export PATH="$HOME/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+[[ -d /opt/homebrew ]] && export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 typeset -gU path
 
 [ -f "$HOME/.zsh/zsh-private-config/init.zsh" ] && source "$HOME/.zsh/zsh-private-config/init.zsh"

@@ -68,6 +68,17 @@ Keybindings are in `home/dot_config/herdr/config.toml`.
 sources, so it only reruns when they change.
 
 
+## Homelab profile (Linux/Ubuntu)
+
+`chezmoi init --apply eckelon` on an Ubuntu machine prompts `is_homelab = true`.
+The run_onchange script `run_onchange_after_install-homelab-packages.sh.tmpl`
+installs fd, ripgrep, fzf, lazygit, herdr, pi, eza, bat, delta, zoxide, nvim,
+and sets zsh as the default shell. macOS-only configs (Sol, Superkey, Karabiner,
+Ghostty, Library, Brewfile) are excluded via `.chezmoiignore`.
+
+Shared across platforms: zsh config, git config, lazygit config, herdr config +
+local plugins, nvim config.
+
 ## Private content
 
 Anything private lives in a separate private repo referenced as an external, or

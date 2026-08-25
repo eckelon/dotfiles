@@ -1,4 +1,6 @@
 {{- $isWork := promptBoolOnce . "is_work" "Is this a work machine" -}}
+{{- $isHomelab := promptBoolOnce . "is_homelab" "Is this a homelab machine" -}}
 [data]
     is_work = {{ $isWork }}
+    is_homelab = {{ $isHomelab }}
     git_email = {{ if $isWork }}{{ promptStringOnce . "git_email" "Git email (used for git identity and paths like Google Drive)" | quote }}{{ else }}""{{ end }}
