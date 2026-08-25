@@ -6,4 +6,6 @@ Library/Application Support/Superkey
 .config/ghostty
 Library
 .brew
+.emacs.d
+.claude
 {{ end }}
