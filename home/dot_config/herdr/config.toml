@@ -7,7 +7,13 @@ agent_panel_sort = "spaces"
 prefix = "ctrl+space"
 
 [[keys.command]]
-key = "prefix+p"
+key = "prefix+y"
 type = "plugin_action"
-command = "jt.command-palette.open"
-description = "command palette (all plugin actions)"
+command = "lazygit.toggle"
+description = "Toggle lazygit sidebar"
+
+[[keys.command]]
+key = "prefix+."
+type = "plugin_action"
+command = "nvim.toggle"
+description = "Toggle nvim sidebar"

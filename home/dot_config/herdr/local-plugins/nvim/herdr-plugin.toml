@@ -1,0 +1,19 @@
+id = "nvim"
+name = "Nvim sidebar"
+version = "0.1.0"
+description = "Toggle nvim in a right split pane."
+min_herdr_version = "0.7.0"
+platforms = ["macos", "linux"]
+
+[[panes]]
+id = "nvim"
+title = "nvim"
+placement = "split"
+command = ["nvim", "."]
+
+[[actions]]
+id = "toggle"
+title = "Toggle nvim sidebar"
+description = "Open or close nvim in a right split pane."
+contexts = ["workspace", "tab", "pane"]
+command = ["bash", "scripts/toggle.sh"]

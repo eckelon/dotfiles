@@ -47,33 +47,95 @@ To add a per-machine difference: rename the file to `*.tmpl` and use
 
 They refresh on `chezmoi apply` per their `refreshPeriod` (168h).
 
+## herdr local plugins
+
+`home/dot_config/herdr/local-plugins/` contains local herdr plugins deployed by
+chezmoi to `~/.config/herdr/local-plugins/`. The run_onchange script
+`run_onchange_after_link-herdr-plugins.sh.tmpl` links them into herdr
+automatically on `chezmoi apply`.
+
+| Plugin | Keybinding | What it does |
+|---|---|---|
+| `lazygit` | `prefix+y` | Toggle lazygit in a right split pane |
+| `nvim` | `prefix+.` | Toggle nvim (opens `.` in repo dir) in a right split pane |
+
+Keybindings are in `home/dot_config/herdr/config.toml`.
+
 ## Scripts
 
 `home/run_onchange_after_compile-zsh.sh.tmpl` precompiles the zsh files to
 `.zwc` bytecode for faster shell startup. It is keyed to the hash of the zsh
 sources, so it only reruns when they change.
 
-## herdr plugins
 
-herdr plugins are installed per-machine (they compile from source) and are **not**
-tracked by chezmoi — only their config under
-`home/dot_config/herdr/plugins/config/<id>/` is tracked. Install on a new machine:
+## pi coding agent
 
-```sh
-herdr plugin install persiyanov/herdr-reviewr        # code-review sidebar
-herdr plugin install andrewchng/herdr-sessionizer    # fuzzy project/worktree picker + layouts
-herdr plugin install JanTvrdik/herdr-command-palette # fzf palette that runs any plugin action
+[pi](https://pi.dev) is installed as a global npm package, so it is tracked in the
+Brewfile (`npm "@earendil-works/pi-coding-agent"`) rather than as a formula.
+
+Unlike herdr plugins, pi packages **are** fully declarative: `pi install` records
+every package in `~/.pi/agent/settings.json`, which is tracked at
+`home/dot_pi/agent/settings.json`. The downloaded payloads
+(`~/.pi/agent/npm/`, `~/.pi/agent/git/`) are not tracked — they are rebuilt from
+the settings file by `home/run_onchange_after_install-pi-packages.sh.tmpl`, which
+runs `pi update --extensions` whenever `settings.json` changes. That single command
+reconciles the whole package list, so a fresh machine needs no manual installs.
+
+Currently installed:
+
+| Package | What it adds |
+|---|---|
+| `npm:pi-mcp-adapter` | Run MCP servers as pi tools (`--mcp-config <file>`) |
+| `npm:context-mode` | Context-saving sandboxed execution + FTS5 knowledge base |
+| `npm:pi-lens` | LSP diagnostics, formatters, linters, autofix, test runner, Opengrep |
+| `npm:pi-web-access` | Web search, URL fetch, repo cloning, PDF/YouTube extraction |
+| `npm:@bacnh85/pi-fff` | fff-powered fuzzy file and content search |
+| `npm:pi-autoresearch` | Autonomous experiment loop (run, measure, keep or discard) |
+| `npm:pi-safe-compact` | Overflow-safe compaction and guarded continuation |
+| `npm:@aliou/pi-guardrails` | Secret/path/shell guardrails (4 extensions, incl. herdr reporting) |
+| `git:github.com/DietrichGebert/ponytail` | "Lazy senior dev" skill — bias toward writing less code |
+
+### Per-extension config and shortcut conflicts
+
+Extensions read their own config from `~/.pi/agent/extensions/<name>.json`, tracked
+under `home/dot_pi/agent/extensions/`. Use this to resolve shortcut clashes with pi's
+built-in keybindings — `pi-autoresearch` bound `ctrl+shift+f`, which shadowed the
+built-in `tui.altScreen.search`, so it is disabled in
+`home/dot_pi/agent/extensions/pi-autoresearch.json`:
+
+```json
+{
+  "shortcuts": {
+    "fullscreenDashboard": null
+  }
+}
 ```
 
-`herdr-sessionizer` needs `bun` and `fzf`; the command palette needs `fzf` + `jq`
-(all in the Brewfile). sessionizer's project roots and claude+lazygit layout live in
-`~/.config/herdr/plugins/config/sessionizer/config.toml` (tracked); it replaces the
-old custom `ai`/`ai-pick` shell.
+`null` skips registering the shortcut entirely; a string rebinds it instead. Note that
+an unrecognised config shape fails soft — pi warns and silently keeps the default
+binding — so verify the conflict is actually gone after editing.
 
-The single entry point is the **command palette**: `prefix+p` (bound in
-`~/.config/herdr/config.toml`) opens a fuzzy list of every plugin action — pick e.g.
-`sessionizer.open` (open project) or `sessionizer.worktree-open` (open/create worktree).
-No per-action keybindings.
+pi's own actions are rebound in `~/.pi/agent/keybindings.json` (not currently tracked);
+`[]` disables an action there.
+
+### Install scripts
+
+pi installs npm packages with lifecycle scripts blocked, so `npm warn install-scripts`
+lines during `pi install` are expected. Packages with native deps work only when they
+ship prebuilt binaries (`better-sqlite3` and `@ast-grep/cli` do); one that truly needs
+a local build would have to be approved with `npm install-scripts approve <pkg>` inside
+`~/.pi/agent/npm/`.
+
+pi rewrites `settings.json` itself when you change model, theme or package
+settings from the TUI (`pi config`), so treat it like Sol/Karabiner: after
+changing anything in-app, run `chezmoi re-add ~/.pi/agent/settings.json`.
+
+To add or remove a package: `pi install npm:<pkg>` / `pi remove npm:<pkg>`, then
+`chezmoi re-add ~/.pi/agent/settings.json`.
+
+Provider credentials are **not** tracked — pi keeps them outside `settings.json`.
+Authenticate per machine (`pi auth check --provider <name>`, or the provider env
+vars listed in `pi --help`).
 
 ## Private content
 

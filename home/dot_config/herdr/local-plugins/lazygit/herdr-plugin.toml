@@ -1,0 +1,19 @@
+id = "lazygit"
+name = "Lazygit sidebar"
+version = "0.1.0"
+description = "Toggle lazygit in a right split pane."
+min_herdr_version = "0.7.0"
+platforms = ["macos", "linux"]
+
+[[panes]]
+id = "lazygit"
+title = "lazygit"
+placement = "split"
+command = ["lazygit"]
+
+[[actions]]
+id = "toggle"
+title = "Toggle lazygit sidebar"
+description = "Open or close lazygit in a right split pane."
+contexts = ["workspace", "tab", "pane"]
+command = ["bash", "scripts/toggle.sh"]
