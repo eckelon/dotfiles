@@ -1,5 +1,5 @@
 #!/bin/sh
-# herdr-plugins-hash: {{ joinPath .chezmoi.homeDir ".config/herdr/local-plugins/lazygit/herdr-plugin.toml" | include | sha256sum }}-{{ joinPath .chezmoi.homeDir ".config/herdr/local-plugins/nvim/herdr-plugin.toml" | include | sha256sum }}
+# herdr-plugins-hash: {{ include "dot_config/herdr/local-plugins/lazygit/herdr-plugin.toml" | sha256sum }}-{{ include "dot_config/herdr/local-plugins/nvim/herdr-plugin.toml" | sha256sum }}
 command -v herdr >/dev/null 2>&1 || exit 0
 
 for plugin in "$HOME/.config/herdr/local-plugins/lazygit" "$HOME/.config/herdr/local-plugins/nvim"; do
