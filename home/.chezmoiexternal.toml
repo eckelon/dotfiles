@@ -1,3 +1,17 @@
+{{- if not .is_homelab -}}
+# Private configs over SSH. Excluded on homelab: no GitHub SSH key registered there.
+
+[".zsh/zsh-private-config"]
+    type = "git-repo"
+    url = "git@github.com:eckelon/zsh-private-config.git"
+    refreshPeriod = "168h"
+
+[".claude/skills"]
+    type = "git-repo"
+    url = "git@github.com:eckelon/skills.git"
+    refreshPeriod = "168h"
+{{- end -}}
+
 [".zsh/zsh-autosuggestions"]
     type = "git-repo"
     url = "https://github.com/zsh-users/zsh-autosuggestions.git"
@@ -16,16 +30,6 @@
 [".zsh/fast-syntax-highlighting"]
     type = "git-repo"
     url = "https://github.com/zdharma-continuum/fast-syntax-highlighting.git"
-    refreshPeriod = "168h"
-
-[".zsh/zsh-private-config"]
-    type = "git-repo"
-    url = "git@github.com:eckelon/zsh-private-config.git"
-    refreshPeriod = "168h"
-
-[".claude/skills"]
-    type = "git-repo"
-    url = "git@github.com:eckelon/skills.git"
     refreshPeriod = "168h"
 
 [".emacs.d/emacs-solo"]
