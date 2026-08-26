@@ -60,3 +60,14 @@ _prompt_git_branch() {
 add-zsh-hook precmd _prompt_git_branch
 
 true  # ensure .zshrc exits clean even if optional sources above failed
+
+# pass-cli: herdr shells inherit a revoked kernel session keyring (pam_keyinit
+# force revoke) -> keyring provider fails with NoStorageAccess(KeyRevoked).
+# Use the filesystem provider (local.key, mode 0600) so it works everywhere.
+export PROTON_PASS_KEY_PROVIDER=fs
+
+# nvm (installed by homelab provisioning to ~/.config/nvm). Must live in the
+# repo (chezmoi sources) or every `chezmoi apply`/re-provision wipes it.
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

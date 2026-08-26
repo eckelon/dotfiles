@@ -1,6 +1,6 @@
 {{- if and .is_homelab (eq .chezmoi.os "linux") -}}
 #!/bin/bash
-# homelab-packages-hash: {{ "homelab-v1" | sha256sum }}
+# homelab-packages-hash: {{ "homelab-v2" | sha256sum }}
 set -euo pipefail
 
 echo "Installing homelab packages..."
@@ -17,9 +17,19 @@ sudo apt-get install -y -qq \
     eza \
     zoxide \
     delta \
-    neovim \
     jq \
     python3
+
+# neovim (apt's 0.9 on Ubuntu 24.04 is ancient; install stable from GitHub)
+# True when nvim is missing or older than 0.11 (min of [installed, 0.11] != 0.11).
+NVIM_MIN="$(nvim --version 2>/dev/null | head -1 | grep -oE 'v[0-9.]+' | cut -c2- || true)"
+if ! command -v nvim >/dev/null 2>&1 || [ "$(printf '%s\n0.11\n' "$NVIM_MIN" | sort -V | head -1)" != "0.11" ]; then
+    NVIM_VERSION=$(curl -fsSL https://api.github.com/repos/neovim/neovim/releases/latest | grep '"tag_name"' | sed -E 's/.*"v([^"]+)".*/\1/')
+    curl -fsSL "https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim-linux-x86_64.tar.gz" -o /tmp/nvim.tar.gz
+    sudo tar xzf /tmp/nvim.tar.gz -C /opt nvim-linux-x86_64
+    sudo ln -sf /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin/nvim
+    rm -f /tmp/nvim.tar.gz
+fi
 
 # fd
 if ! command -v fd >/dev/null 2>&1; then
@@ -32,9 +42,25 @@ if ! command -v rg >/dev/null 2>&1; then
     sudo apt-get install -y -qq ripgrep
 fi
 
-# fzf
-if ! command -v fzf >/dev/null 2>&1; then
-    sudo apt-get install -y -qq fzf
+# fzf (apt's 0.44 on Ubuntu 24.04 predates `fzf --zsh`; install latest from GitHub)
+# True when fzf is missing or older than 0.48 (min of [installed, 0.48] != 0.48).
+FZF_MIN="$(fzf --version 2>/dev/null | awk '{print $1}' || true)"
+if ! command -v fzf >/dev/null 2>&1 || [ "$(printf '%s\n0.48\n' "$FZF_MIN" | sort -V | head -1)" != "0.48" ]; then
+    FZF_VERSION=$(curl -fsSL https://api.github.com/repos/junegunn/fzf/releases/latest | grep '"tag_name"' | sed -E 's/.*"v([^"]+)".*/\1/')
+    curl -fsSL "https://github.com/junegunn/fzf/releases/download/v${FZF_VERSION}/fzf-${FZF_VERSION}-linux_amd64.tar.gz" -o /tmp/fzf.tar.gz
+    sudo tar xzf /tmp/fzf.tar.gz -C /usr/local/bin fzf
+    rm -f /tmp/fzf.tar.gz
+fi
+
+# nvm — installs to ~/.config/nvm (matches NVM_DIR in dot_zshrc).
+# Old setups used ~/.nvm; both work, but this is the canonical location.
+if [ ! -s "$HOME/.config/nvm/nvm.sh" ]; then
+    curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.7/install.sh | NVM_DIR="$HOME/.config/nvm" bash
+    # load nvm in this script so the install/alias below works
+    export NVM_DIR="$HOME/.config/nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    nvm install --lts
+    nvm alias default node
 fi
 
 # lazygit (not in apt, install from GitHub releases)
