@@ -5,6 +5,10 @@
     type = "git-repo"
     url = "git@github.com:eckelon/zsh-private-config.git"
     refreshPeriod = "168h"
+{{- end -}}
+
+{{- if .is_work -}}
+# Claude skills, work machine only.
 
 [".claude/skills"]
     type = "git-repo"
