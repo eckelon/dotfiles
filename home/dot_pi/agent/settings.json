@@ -1,0 +1,46 @@
+{
+  "$schema": "https://pi.dev/config.json",
+  "compaction": {
+    "enabled": true,
+    "reserveTokens": 70000,
+    "keepRecentTokens": 20000
+  },
+  "projectTrust": "ask",
+  "defaultProjectTrust": "ask",
+  "steeringMode": "one-at-a-time",
+  "followUpMode": "all",
+  "externalEditor": "nvim",
+  "packages": [
+    "npm:pi-mcp-adapter",
+    "git:github.com/DietrichGebert/ponytail",
+    "npm:context-mode",
+    "npm:pi-lens",
+    "npm:pi-web-access",
+    "npm:@bacnh85/pi-fff",
+    "npm:pi-autoresearch",
+    "npm:pi-safe-compact",
+    "npm:@narumitw/pi-subagents",
+    "npm:@aliou/pi-guardrails",
+    "npm:@nguyenquangthai/pi-omp-theme"
+  ],
+  "lastChangelogVersion": "0.84.3",
+  "defaultThinkingLevel": "max",
+  "piOmpTheme": {
+    "preset": "claude",
+    "statusLine": {
+      "layout": {
+        "left": [
+          "model_effort",
+          "path",
+          "git",
+          "context_pct"
+        ],
+        "right": [],
+        "secondary": []
+      }
+    }
+  },
+  "defaultProvider": "default",
+  "defaultModel": "deepseek-v4-flash",
+  "theme": "titanium"
+}
