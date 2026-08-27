@@ -20,7 +20,6 @@
     "npm:pi-autoresearch",
     "npm:pi-safe-compact",
     "npm:@narumitw/pi-subagents",
-    "npm:@aliou/pi-guardrails",
     "npm:@nguyenquangthai/pi-omp-theme"
   ],
   "lastChangelogVersion": "0.84.3",
@@ -41,6 +40,6 @@
     }
   },
   "defaultProvider": "default",
-  "defaultModel": "deepseek-v4-flash",
+  "defaultModel": "glm5.3-flash",
   "theme": "titanium"
 }
