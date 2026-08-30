@@ -1,0 +1,10 @@
+/* Gruvbox Dark palette — imported by waybar style.css */
+@define-color bg rgba(40, 40, 40, 0.88);
+@define-color bg2 #1d2021;
+@define-color border rgba(250, 189, 47, 0.25);
+@define-color fg #ebdbb2;
+@define-color dim #a89984;
+@define-color accent #fabd2f;
+@define-color red #fb4934;
+@define-color yellow #fe8019;
+@define-color hover rgba(80, 73, 69, 0.4);

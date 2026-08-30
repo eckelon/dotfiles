@@ -1,4 +1,7 @@
-/* Catppuccin Mocha — floating pill bar to match Hyprland borders */
+/* Floating pill bar to match Hyprland borders.
+   Palette lives in theme.css — a symlink switched by ~/.config/hypr/theme.sh */
+@import "theme.css";
+
 * {
   font-family: "JetBrainsMono Nerd Font", sans-serif;
   font-size: 13px;
@@ -6,39 +9,39 @@
 }
 
 window#waybar {
-  background: rgba(30, 30, 46, 0.82); /* base */
-  border: 1px solid rgba(203, 166, 247, 0.25); /* mauve */
+  background: @bg;
+  border: 1px solid @border;
   border-radius: 14px;
-  color: #cdd6f4; /* text */
+  color: @fg;
 }
 
 tooltip {
-  background: #181825; /* mantle */
-  border: 1px solid rgba(203, 166, 247, 0.3);
+  background: @bg2;
+  border: 1px solid @border;
   border-radius: 8px;
 }
 
 #workspaces button {
   padding: 0 6px;
-  color: #a6adc8; /* subtext0 */
+  color: @dim;
   border-radius: 8px;
 }
 
 #workspaces button.active {
-  color: #cba6f7; /* mauve */
+  color: @accent;
 }
 
 #workspaces button.urgent {
-  color: #f38ba8; /* red */
+  color: @red;
 }
 
 #workspaces button:hover {
-  background: rgba(88, 91, 112, 0.4); /* surface2 */
+  background: @hover;
 }
 
 #window {
   margin-left: 8px;
-  color: #cdd6f4;
+  color: @fg;
 }
 
 #tray,
@@ -52,25 +55,25 @@ tooltip {
 }
 
 #network.disconnected {
-  color: #f38ba8; /* red */
+  color: @red;
 }
 
 #pulseaudio.muted {
-  color: #f38ba8;
+  color: @red;
 }
 
 #battery.warning {
-  color: #f9e2af; /* yellow */
+  color: @yellow;
 }
 
 #battery.critical:not(.charging) {
-  color: #f38ba8;
+  color: @red;
 }
 
 #custom-caffeine.on {
-  color: #cdd6f4; /* text — awake */
+  color: @fg;
 }
 
 #custom-caffeine.off {
-  color: #585b70; /* surface2 — dim */
+  color: @dim;
 }

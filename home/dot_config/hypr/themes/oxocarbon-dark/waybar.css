@@ -1,0 +1,10 @@
+/* Oxocarbon palette — imported by waybar style.css */
+@define-color bg rgba(22, 22, 22, 0.85);
+@define-color bg2 #262626;
+@define-color border rgba(51, 177, 255, 0.3);
+@define-color fg #f2f4f8;
+@define-color dim #8d8d8d;
+@define-color accent #33b1ff;
+@define-color red #fa4d56;
+@define-color yellow #f1c21b;
+@define-color hover rgba(57, 57, 57, 0.5);

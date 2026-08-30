@@ -1,0 +1,10 @@
+/* Catppuccin Mocha palette — imported by waybar style.css */
+@define-color bg rgba(30, 30, 46, 0.82);
+@define-color bg2 #181825;
+@define-color border rgba(203, 166, 247, 0.25);
+@define-color fg #cdd6f4;
+@define-color dim #a6adc8;
+@define-color accent #cba6f7;
+@define-color red #f38ba8;
+@define-color yellow #f9e2af;
+@define-color hover rgba(88, 91, 112, 0.4);
