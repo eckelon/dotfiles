@@ -54,7 +54,6 @@ brew "tw93/tap/mole"
 
 cask "coteditor"
 cask "db-browser-for-sqlite"
-cask "emacs-app"
 cask "font-jetbrains-mono-nerd-font"
 cask "ghostty"
 cask "github"

@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
 	name = Jesús Ángel Samitier
-	email = {{ if .is_work }}{{ .git_email }}{{ else }}email@jasamitier.com{{ end }}
+	email = {{ if .is_work }}{{ .git_email }}{{ else }}{{ .git_personal_email }}{{ end }}
 [alias]
 	last = log -1 --stat
 	cp = cherry-pick

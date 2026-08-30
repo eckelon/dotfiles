@@ -4,3 +4,4 @@
     is_work = {{ $isWork }}
     is_homelab = {{ $isHomelab }}
     git_email = {{ if $isWork }}{{ promptStringOnce . "git_email" "Git email (used for git identity and paths like Google Drive)" | quote }}{{ else }}""{{ end }}
+    git_personal_email = {{ if $isWork }}""{{ else }}{{ promptStringOnce . "git_personal_email" "Personal git email" | quote }}{{ end }}

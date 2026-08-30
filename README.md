@@ -8,14 +8,15 @@ Want to try them?
 2. `chezmoi init --apply eckelon`
 
 `chezmoi init` clones this repo, asks whether the machine is a work machine,
-pulls in the external repos (zsh plugins, Pure, fast-syntax-highlighting,
-emacs-solo, and the private configs), and writes everything into `$HOME`.
+pulls in the external repos (zsh plugins, Pure, fast-syntax-highlighting, and
+the private configs), and writes everything into `$HOME`.
 Re-run `chezmoi apply` after pulling changes, or `chezmoi update` to pull and
 apply in one step.
 
 ## Homebrew Package Management
 
-The `brew/` directory manages Homebrew packages declaratively:
+The `brew/` directory manages Homebrew packages declaratively (**macOS only** —
+it is not part of the `home/` source tree and is never deployed to Linux):
 
 - **`brew/Brewfile`** — Lists all top-level formulae, casks, and uv tools (dependencies are excluded since they get installed automatically).
 - **`brew/restore-brewfile.sh`** — Installs Homebrew if missing, then installs all packages from the Brewfile. Run this on a fresh machine.
@@ -34,7 +35,7 @@ The `brew/` directory manages Homebrew packages declaratively:
 Settings live in two places and are tracked separately:
 
 | What | Where | How it restores |
-|---|---|---|
+| --- | --- | --- |
 | App config (`.padl`) | `home/Library/Application Support/Superkey/750314.padl` | `chezmoi apply` copies it directly |
 | Plist preferences | `home/run_onchange_after_apply-superkey-settings.sh.tmpl` | `chezmoi apply` runs the script → writes `defaults` |
 | License (`.spadl`) | **Not tracked** in dotfiles (`*.spadl` is gitignored) | Reactivate on each machine |

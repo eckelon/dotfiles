@@ -9,11 +9,6 @@
       "args": [
         "{{ .chezmoi.homeDir }}/.pi/agent/npm/node_modules/context-mode/cli.bundle.mjs"
       ]
-    }{{ if .is_homelab }},{{ end }}
-{{- if .is_homelab }}
-    "prometheus-mcp": {
-      "url": "http://127.0.0.1:9095/mcp"
     }
-{{- end }}
   }
 }

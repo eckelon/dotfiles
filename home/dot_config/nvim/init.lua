@@ -3,13 +3,14 @@ vim.g.mapleader = " "
 vim.pack.add({
   "https://github.com/ibhagwan/fzf-lua",
   "https://github.com/neovim/nvim-lspconfig",
+  "https://github.com/folke/which-key.nvim",
 })
 
 vim.cmd("color catppuccin | hi Comment cterm=italic gui=italic")
 vim.g.netrw_banner, vim.g.netrw_keepdir, vim.g.netrw_winsize = 0, 1, 25
 vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
-vim.opt.number, vim.opt.ignorecase, vim.opt.smartcase, vim.opt.termguicolors = true, true, true, true
-vim.opt.shortmess:append("atTFc")
+vim.opt.number, vim.opt.ignorecase, vim.opt.smartcase = true, true, true
+vim.opt.shortmess:append("ac")
 vim.opt.swapfile, vim.opt.backup, vim.opt.writebackup, vim.opt.undofile = false, false, false, true
 
 vim.opt.path = ".,**"
@@ -23,13 +24,7 @@ map("n", "<C-c>", "gcc", { remap = true, desc = "Toggle comment line" })
 map("i", "<C-c>", "<C-o>gcc", { remap = true, desc = "Toggle comment line" })
 map("x", "<C-c>", "gc", { remap = true, desc = "Toggle comment selection" })
 
-local function toggle_mappings_panel()
-  local bn = vim.fn.bufnr("KeyMappings")
-  if bn ~= -1 then return vim.cmd("bwipeout " .. bn) end
-  vim.cmd("botright vnew KeyMappings | put =execute('verbose nmap') | setl nomod buftype=nofile bufhidden=wipe")
-end
-
-map("n", "<leader>?", toggle_mappings_panel, { silent = true, desc = "Toggle mappings panel" })
+map("n", "<leader>?", function() require("which-key").show() end, { desc = "Show all mappings" })
 
 local function highlight_current_file(f)
   if f ~= "" then vim.fn.search(vim.fn.escape(f, "\\.*[]^$"), "wc") end
@@ -57,7 +52,7 @@ map("n", "<leader>e", toggle_sidebar_tree, { silent = true, desc = "Toggle file 
 
 -- Autocmds
 local autocmd = vim.api.nvim_create_autocmd
--- local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
+local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
 autocmd("FileType", { group = augroup, pattern = "netrw", callback = function() vim.opt_local.bufhidden = "delete" end })
 autocmd("TextYankPost", { group = augroup, callback = function() vim.highlight.on_yank({ higroup = "Visual" }) end })
 autocmd("FileType", { group = augroup, callback = function() pcall(vim.treesitter.start) end }) -- Built-in Treesitter
@@ -114,6 +109,9 @@ autocmd("BufWritePre", {
 })
 
 vim.lsp.enable({ "basedpyright", "ruff", "ts_ls", "gopls", "bashls" })
+
+-- Which-key: popup with keymap descriptions on <leader> (reads the desc= fields)
+require("which-key").setup()
 
 -- FZF-Lua
 require("fzf-lua").setup({ defaults = { git_icons = false } })

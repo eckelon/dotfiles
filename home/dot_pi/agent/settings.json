@@ -12,17 +12,29 @@
   "externalEditor": "nvim",
   "packages": [
     "npm:pi-mcp-adapter",
-    "git:github.com/DietrichGebert/ponytail",
-    "npm:context-mode",
-    "npm:pi-lens",
+    {
+      "source": "git:github.com/DietrichGebert/ponytail",
+      "skills": [
+        "!skills/ponytail-audit",
+        "!skills/ponytail-debt",
+        "!skills/ponytail-gain",
+        "!skills/ponytail-help"
+      ]
+    },
+    {
+      "source": "npm:context-mode",
+      "skills": ["!skills/ctx-*"]
+    },
+    {
+      "source": "npm:pi-lens",
+      "skills": ["!skills/pi-lens-write-*"]
+    },
     "npm:pi-web-access",
-    "npm:@bacnh85/pi-fff",
-    "npm:pi-autoresearch",
+    "npm:@ff-labs/pi-fff",
     "npm:pi-safe-compact",
-    "npm:@narumitw/pi-subagents",
     "npm:@nguyenquangthai/pi-omp-theme"
   ],
-  "lastChangelogVersion": "0.84.3",
+  "lastChangelogVersion": "0.84.4",
   "defaultThinkingLevel": "max",
   "piOmpTheme": {
     "preset": "claude",
@@ -41,5 +53,13 @@
   },
   "defaultProvider": "default",
   "defaultModel": "glm5.3-flash",
-  "theme": "titanium"
+  "theme": "titanium",
+  "images": {
+    "blockImages": true
+  },
+  "hideThinkingBlock": true,
+  "warnings": {
+    "anthropicExtraUsage": true
+  },
+  "tuiMode": "fullscreen"
 }

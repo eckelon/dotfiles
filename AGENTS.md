@@ -19,7 +19,6 @@ chezmoi maps source names to target paths via attribute prefixes:
 
 - `dot_zshrc` → `~/.zshrc`
 - `dot_config/ghostty/config` → `~/.config/ghostty/config`
-- `dot_emacs.d/init.el` → `~/.emacs.d/init.el`
 - `Library/Application Support/k9s/...` → `~/Library/Application Support/k9s/...`
 - files ending in `.tmpl` are rendered as Go templates (e.g. `dot_config/git/config.tmpl`)
 
@@ -34,6 +33,16 @@ identity (`~/.git-private-config/config`) on work machines.
 To add a per-machine difference: rename the file to `*.tmpl` and use
 `{{ if .is_work }}…{{ else }}…{{ end }}`.
 
+Two things are guarded this way and must stay that way:
+
+- **`dot_claude/` → `~/.claude` is work-machine only**: `.chezmoiignore` excludes
+  `.claude` on personal machines, and the `.claude/skills` external only pulls
+  where `is_work` is true.
+- **The personal git email is not in this repo**: `home/.chezmoi.toml.tmpl`
+  prompts for it on personal machines and stores it in the local, unversioned
+  `~/.config/chezmoi/chezmoi.toml` (`git_personal_email`); the work email uses
+  the same mechanism (`git_email`).
+
 ## External repositories
 
 `home/.chezmoiexternal.toml` declares upstream repos that chezmoi clones into
@@ -41,7 +50,6 @@ To add a per-machine difference: rename the file to `*.tmpl` and use
 
 - zsh plugins: `zsh-autosuggestions`, `zsh-completions`,
   `zsh-history-substring-search`, `pure`, `fast-syntax-highlighting`
-- `emacs-solo`
 - private: `zsh-private-config` and `claude-skills` (SSH URLs — the content
   stays in those private repos; only the URL is public here)
 
@@ -55,7 +63,7 @@ chezmoi to `~/.config/herdr/local-plugins/`. The run_onchange script
 automatically on `chezmoi apply`.
 
 | Plugin | Keybinding | What it does |
-|---|---|---|
+| --- | --- | --- |
 | `lazygit` | `prefix+y` | Toggle lazygit in a right split pane |
 | `nvim` | `prefix+.` | Toggle nvim (opens `.` in repo dir) in a right split pane |
 
@@ -67,14 +75,15 @@ Keybindings are in `home/dot_config/herdr/config.toml`.
 `.zwc` bytecode for faster shell startup. It is keyed to the hash of the zsh
 sources, so it only reruns when they change.
 
-
 ## Homelab profile (Linux/Ubuntu)
 
 `chezmoi init --apply eckelon` on an Ubuntu machine prompts `is_homelab = true`.
 The run_onchange script `run_onchange_after_install-homelab-packages.sh.tmpl`
 installs fd, ripgrep, fzf, lazygit, herdr, pi, eza, bat, delta, zoxide, nvim,
 and sets zsh as the default shell. macOS-only configs (Sol, Superkey, Karabiner,
-Ghostty, Library, Brewfile) are excluded via `.chezmoiignore`.
+Ghostty, `~/Library`, `~/.brew`) are excluded via `.chezmoiignore` — they never
+deploy to Linux. The root-level `brew/` directory (Brewfile tooling) is also
+macOS-only and lives outside the `home/` source tree, so chezmoi never deploys it.
 
 Shared across platforms: zsh config, git config, lazygit config, herdr config +
 local plugins, nvim config.
@@ -84,6 +93,17 @@ local plugins, nvim config.
 Anything private lives in a separate private repo referenced as an external, or
 behind the `is_work` template guard — it never enters this public repo. For true
 secrets, chezmoi templates can also pull from a password manager at apply time.
+
+## Commit policy
+
+Never create docs-only or chore-only commits — no matter how small. Every
+change (including README/AGENTS.md edits and formatting autofixes) is folded
+into the main session commit with `git commit --amend`. One body of work =
+one commit.
+
+Commit title: the main purpose of the change, as the user frames it (e.g.
+"lighten nvim config"); everything else goes in the body. Never mention
+sessions, agents, AI, dates or meta-work in commit messages.
 
 ## Common commands
 
