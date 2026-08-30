@@ -39,7 +39,7 @@
     "tooltip-format-wifi": "{essid} ({signalStrength}%)",
     "tooltip-format-ethernet": "{ifaddr}",
     "on-click": "ghostty --title=dotfloat -e netpanel",
-    "on-click-right": "ghostty --title=dotfloat -e nmtui"
+    "on-click-right": "nm-connection-editor"
   },
 
   "pulseaudio": {
