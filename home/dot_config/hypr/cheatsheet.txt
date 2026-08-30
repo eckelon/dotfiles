@@ -12,6 +12,8 @@ SUPER+←↑→↓          move focus
 SUPER+1-5           go to workspace N
 SUPER+SHIFT+1-4     send window to workspace N
 SUPER+SHIFT+←→     previous / next workspace
+SUPER+Tab           cycle windows
+SUPER+SHIFT+Tab     cycle windows backwards
 SUPER+wheel         previous / next workspace
 SUPER+drag          move window
 SUPER+right-drag    resize window
