@@ -14,7 +14,8 @@ window {
   border-bottom: solid 2px rgba(203, 166, 247, 0.8);
 }
 
-button, image {
+button,
+image {
   background: none;
   border-style: none;
   box-shadow: none;
