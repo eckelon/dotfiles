@@ -6,7 +6,7 @@
   "margin-left": 12,
   "margin-right": 12,
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
-  "modules-right": ["tray", "pulseaudio", "bluetooth", "network", "battery", "clock"],
+  "modules-right": ["tray", "pulseaudio", "bluetooth", "network", "battery", "custom/caffeine", "clock"],
 
   "hyprland/workspaces": {
     "on-click": "activate"
@@ -55,5 +55,13 @@
     "format-charging": "󰂄 {capacity}%",
     "format-icons": ["", "", "", "", ""],
     "on-click": "ghostty --title=dotfloat -e sudo powertop"
+  },
+
+  "custom/caffeine": {
+    "format": "{}",
+    "exec": "~/.config/hypr/caffeinate.sh icon",
+    "return-type": "json",
+    "signal": 8,
+    "on-click": "~/.config/hypr/caffeinate.sh toggle; pkill -RTMIN+8 waybar"
   }
 }

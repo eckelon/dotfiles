@@ -56,3 +56,11 @@ tooltip {
 #battery.critical:not(.charging) {
   color: #f38ba8;
 }
+
+#custom-caffeine.on {
+  color: #f9e2af; /* yellow — awake */
+}
+
+#custom-caffeine.off {
+  color: #585b70; /* surface2 — dim */
+}

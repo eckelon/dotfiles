@@ -33,6 +33,14 @@ toggle)
   [ "$($0 status)" = on ] && "$0" off || "$0" on
   "$0" status
   ;;
+icon)
+  # waybar module: nerd-font coffee glyph, state shown via class (styled in style.css)
+  if [ "$($0 status)" = on ]; then
+    printf '{"text":"","class":"on","tooltip":"caffeine: ON — no idle/suspend/lid"}\n'
+  else
+    printf '{"text":"","class":"off","tooltip":"caffeine: off"}\n'
+  fi
+  ;;
 *)
   echo "usage: $0 on|off|toggle|status" >&2
   exit 2
