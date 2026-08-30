@@ -1,0 +1,59 @@
+/* Catppuccin Mocha — floating pill bar to match Hyprland borders */
+* {
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 13px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(30, 30, 46, 0.82); /* base */
+  border: 1px solid rgba(203, 166, 247, 0.25); /* mauve */
+  border-radius: 14px;
+  margin: 6px 12px 0 12px;
+  color: #cdd6f4; /* text */
+}
+
+tooltip {
+  background: #181825; /* mantle */
+  border: 1px solid rgba(203, 166, 247, 0.3);
+  border-radius: 8px;
+}
+
+#workspaces button {
+  padding: 0 6px;
+  color: #a6adc8; /* subtext0 */
+  border-radius: 8px;
+}
+
+#workspaces button.active {
+  color: #cba6f7; /* mauve */
+}
+
+#workspaces button.urgent {
+  color: #f38ba8; /* red */
+}
+
+#workspaces button:hover {
+  background: rgba(88, 91, 112, 0.4); /* surface2 */
+}
+
+#window {
+  margin-left: 8px;
+  color: #cdd6f4;
+}
+
+.modules-right > widget:not(:last-child) {
+  padding: 0 6px;
+}
+
+#pulseaudio.muted {
+  color: #f38ba8;
+}
+
+#battery.warning {
+  color: #f9e2af; /* yellow */
+}
+
+#battery.critical:not(.charging) {
+  color: #f38ba8;
+}

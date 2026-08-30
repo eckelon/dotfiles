@@ -1,0 +1,36 @@
+/* Catppuccin Mocha — matches waybar pill */
+window {
+  background: rgba(30, 30, 46, 0.85); /* base */
+  border-radius: 14px;
+  border: 1px solid rgba(203, 166, 247, 0.3); /* mauve */
+}
+
+#box {
+  padding: 8px;
+}
+
+/* underline on the button of the focused client */
+#active {
+  border-bottom: solid 2px rgba(203, 166, 247, 0.8);
+}
+
+button, image {
+  background: none;
+  border-style: none;
+  box-shadow: none;
+  color: #cdd6f4;
+}
+
+button {
+  padding: 6px;
+  margin: 3px 4px;
+}
+
+button:hover {
+  background-color: rgba(88, 91, 112, 0.5); /* surface2 */
+  border-radius: 8px;
+}
+
+button:focus {
+  box-shadow: none;
+}

@@ -89,7 +89,11 @@ via `.chezmoiignore` — they never deploy to Linux. The root-level `brew/` dire
 macOS-only and lives outside the `home/` source tree, so chezmoi never deploys it.
 
 Shared across platforms: zsh config, git config, lazygit config, herdr config +
-local plugins, nvim config.
+local plugins, nvim config. Linux-only desktop configs (Hyprland, waybar,
+nwg-dock-hyprland) deploy on Linux machines and are excluded on macOS via
+`.chezmoiignore`. The pinned-apps list of the dock lives in `~/.cache`
+(`nwg-dock-pinned`) and is runtime state, not versioned — manage it by
+right-clicking apps in the dock.
 
 ## Private content
 

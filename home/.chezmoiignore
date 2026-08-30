@@ -15,3 +15,9 @@ Library/Application Support/Superkey
 Library
 .brew
 {{ end }}
+
+{{ if eq .chezmoi.os "darwin" }}
+.config/hypr
+.config/waybar
+.config/nwg-dock-hyprland
+{{ end }}
