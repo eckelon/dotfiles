@@ -41,14 +41,13 @@ tooltip {
   color: #cdd6f4;
 }
 
-#clock,
 #tray,
 #pulseaudio,
 #bluetooth,
 #network,
 #battery,
 #custom-caffeine {
-  padding: 0 7px;
+  padding: 0 10px;
   margin: 0;
 }
 
@@ -69,7 +68,7 @@ tooltip {
 }
 
 #custom-caffeine.on {
-  color: #f9e2af; /* yellow — awake */
+  color: #cdd6f4; /* text — awake */
 }
 
 #custom-caffeine.off {

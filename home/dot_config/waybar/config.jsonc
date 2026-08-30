@@ -45,8 +45,8 @@
   },
 
   "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-muted": " muted",
+    "format": "{icon}",
+    "format-muted": "",
     "format-icons": { "default": ["", "", "", "", ""] },
     "on-click": "ghostty --title=dotfloat -e alsamixer",
     "on-click-right": "pamixer -t"
@@ -54,8 +54,8 @@
 
   "battery": {
     "states": { "warning": 30, "critical": 15 },
-    "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
+    "format": "{icon}",
+    "format-charging": "{icon}",
     "format-icons": ["", "", "", "", ""],
     "on-click": "ghostty --title=dotfloat -e sudo powertop"
   },
