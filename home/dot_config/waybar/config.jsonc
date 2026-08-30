@@ -53,7 +53,7 @@
     "format": "{icon} {capacity}%",
     "format-charging": "󰂄 {capacity}%",
     "format-icons": ["", "", "", "", ""],
-    "on-click": "tlpui",
-    "on-click-right": "ghostty -e bash -c 'sudo -n tlp-stat -b; read -n 1 -s -r -p \"Press any key to close\"'"
+    "on-click": "ghostty -e bash -c 'sudo -n tlp-stat -b; read -n 1 -s -r -p \"Press any key to close\"'",
+    "on-click-right": "ghostty -e bash -c 'sudo -n tlp-stat; read -n 1 -s -r -p \"Press any key to close\"'"
   }
 }
