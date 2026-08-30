@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# netpanel — floating network info panel built on official tools only
+# (nmcli, iw, ip, coreutils). Refreshes every 2s; q or Esc quits.
+set -u
+
+CY=$'\033[36m' GN=$'\033[32m' BO=$'\033[1m' DI=$'\033[2m' RS=$'\033[0m'
+
+iface() {
+	local w e
+	w=$(nmcli -t -f DEVICE,TYPE,STATE device status 2>/dev/null | awk -F: '$2=="wifi" && $3=="connected"{print $1; exit}')
+	e=$(nmcli -t -f DEVICE,TYPE,STATE device status 2>/dev/null | awk -F: '$2=="ethernet" && $3=="connected"{print $1; exit}')
+	echo "${w:-${e:-$(ip route show default 2>/dev/null | awk '{print $5; exit}')}}"
+}
+
+render() {
+	local if ssid sig chan freq ip4 ip6 gw dns mac rx tx
+	if=$(iface)
+	if [ -z "$if" ]; then printf '%s\n' "${DI}sin interfaz conectada${RS}"; return; fi
+
+	ssid=$(iw dev "$if" link 2>/dev/null | awk -F'SSID: ' '/SSID: /{print $2; exit}')
+	[ -z "$ssid" ] && ssid=$(nmcli -g GENERAL.CONNECTION device show "$if" 2>/dev/null)
+	read -r sig chan freq < <(nmcli -t -f IN-USE,SIGNAL,CHAN,FREQ dev wifi list --rescan no 2>/dev/null | awk -F: '$1=="*"{print $2, $3, $4; exit}')
+	local rates
+	rates=$(iw dev "$if" link 2>/dev/null | awk '/tx bitrate/{t=$3" "$4} /rx bitrate/{r=$3" "$4} END{print "rx "r" · tx "t}')
+	ip4=$(ip -4 addr show dev "$if" 2>/dev/null | awk '/inet /{print $2; exit}')
+	ip6=$(ip -6 addr show dev "$if" scope global 2>/dev/null | awk '/inet6/{printf "%s ", $2} END{print ""}')
+	gw=$(ip route show default dev "$if" 2>/dev/null | awk '{print $3; exit}')
+	dns=$(nmcli dev show "$if" 2>/dev/null | sed -n 's/^IP[46]\.DNS\[[0-9]*\]: *//p' | sort -u | paste -sd', ' -)
+	mac=$(cat "/sys/class/net/$if/address" 2>/dev/null)
+	rx=$(numfmt --to=iec-i --suffix=B "$(cat "/sys/class/net/$if/statistics/rx_bytes" 2>/dev/null || echo 0)")
+	tx=$(numfmt --to=iec-i --suffix=B "$(cat "/sys/class/net/$if/statistics/tx_bytes" 2>/dev/null || echo 0)")
+
+	printf '%sNET%s · %s%s%s (%s) %s%s%s\n' "$CY" "$RS" "$BO" "$ssid" "$RS" "$if" "$DI" "$(date +%H:%M)" "$RS"
+	printf '\n'
+	printf '  %sSeñal%s     %s%s%%%s\n' "$CY" "$RS" "$GN" "${sig:-—}" "$RS"
+	printf '  %sCanal%s     %s%s%s %s%s%s\n' "$CY" "$RS" "$GN" "${chan:-—}" "$RS" "$DI" "${freq:+· $freq}" "$RS"
+	printf '  %sEnlace%s    %s%s%s\n' "$CY" "$RS" "$GN" "${rates:-—}" "$RS"
+	printf '\n'
+	printf '  %sIPv4%s      %s%s%s\n' "$CY" "$RS" "$GN" "${ip4:-—}" "$RS"
+	printf '  %sGateway%s   %s%s%s\n' "$CY" "$RS" "$GN" "${gw:-—}" "$RS"
+	printf '  %sDNS%s       %s%s%s\n' "$CY" "$RS" "$GN" "${dns:-—}" "$RS"
+	printf '  %sIPv6%s      %s%s%s\n' "$CY" "$RS" "$GN" "${ip6:-—}" "$RS"
+	printf '  %sMAC%s       %s%s%s\n' "$CY" "$RS" "$GN" "${mac:-—}" "$RS"
+	printf '\n'
+	printf '  %sTráfico%s   %s↓ %s  ↑ %s%s\n' "$CY" "$RS" "$DI" "$rx" "$tx" "$RS"
+	printf '\n  %sq/Esc salir · refresco 2s%s\n' "$DI" "$RS"
+}
+
+case "${1:-}" in
+--once) render; exit 0 ;;
+esac
+
+while true; do
+	clear
+	render
+	read -r -t 2 -n 1 -s k && {
+		[ "$k" = q ] || [ "$k" = $'\e' ] && exit 0
+	} || true
+done

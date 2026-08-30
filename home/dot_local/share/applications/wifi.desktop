@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 Name=WiFi
-Comment=Wireless monitor TUI (wavemon)
-Exec=ghostty --title=dotfloat -e wavemon
+Comment=Network info panel (IP, DNS, gateway)
+Exec=ghostty --title=dotfloat -e netpanel
 Icon=network-wireless
 Categories=Network;Settings;
 Keywords=wifi;network;red;wifi;

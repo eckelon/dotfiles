@@ -17,5 +17,6 @@ SUPER+wheel         previous / next workspace
 SUPER+drag          move window
 SUPER+right-drag    resize window
 SUPER+L             lock screen
+SUPER+C             caffeinate toggle (keep awake over SSH)
 Print               screenshot to clipboard
 SUPER+?             toggle this cheat sheet

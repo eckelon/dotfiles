@@ -38,7 +38,7 @@
     "format-disconnected": "󰖪 ",
     "tooltip-format-wifi": "{essid} ({signalStrength}%)",
     "tooltip-format-ethernet": "{ifaddr}",
-    "on-click": "ghostty --title=dotfloat -e wavemon",
+    "on-click": "ghostty --title=dotfloat -e netpanel",
     "on-click-right": "ghostty --title=dotfloat -e nmtui"
   },
 
