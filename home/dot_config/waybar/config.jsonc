@@ -29,7 +29,7 @@
     "format-connected": "󰂱",
     "tooltip-format": "{controller_alias} · {controller_address}",
     "tooltip-format-connected": "{device_alias} · {device_battery_percentage}%",
-    "on-click": "blueman-manager"
+    "on-click": "ghostty --title=dotfloat -e bluetoothctl"
   },
 
   "network": {
@@ -38,7 +38,7 @@
     "format-disconnected": "󰖪 ",
     "tooltip-format-wifi": "{essid} ({signalStrength}%)",
     "tooltip-format-ethernet": "{ifaddr}",
-    "on-click": "nm-connection-editor"
+    "on-click": "ghostty --title=dotfloat -e nmtui"
   },
 
   "pulseaudio": {
@@ -53,7 +53,6 @@
     "format": "{icon} {capacity}%",
     "format-charging": "󰂄 {capacity}%",
     "format-icons": ["", "", "", "", ""],
-    "on-click": "ghostty -e bash -c 'sudo -n tlp-stat -b; read -n 1 -s -r -p \"Press any key to close\"'",
-    "on-click-right": "ghostty -e bash -c 'sudo -n tlp-stat; read -n 1 -s -r -p \"Press any key to close\"'"
+    "on-click": "ghostty --title=dotfloat -e sudo powertop"
   }
 }

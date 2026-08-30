@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=WiFi
+Comment=NetworkManager TUI (nmtui)
+Exec=ghostty --title=dotfloat -e nmtui
+Icon=network-wireless
+Categories=Network;Settings;
+Keywords=wifi;network;red;wifi;

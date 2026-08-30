@@ -19,5 +19,5 @@ Library
 .config/hypr
 .config/waybar
 .config/nwg-dock-hyprland
-.local/share/applications/nm-connection-editor.desktop
+.local/share/applications
 {{ end }}

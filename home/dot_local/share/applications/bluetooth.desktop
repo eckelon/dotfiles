@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Bluetooth
+Comment=BlueZ interactive control (bluetoothctl)
+Exec=ghostty --title=dotfloat -e bluetoothctl
+Icon=bluetooth
+Categories=System;Settings;
+Keywords=bluetooth;bt;pair;
