@@ -1,24 +1,44 @@
-{{- if and .is_homelab (eq .chezmoi.os "linux") -}}
+{{- if eq .chezmoi.os "linux" -}}
 #!/bin/bash
-# homelab-packages-hash: {{ "homelab-v2" | sha256sum }}
+# linux-packages-hash: {{ "linux-v3" | sha256sum }}
 set -euo pipefail
 
-echo "Installing homelab packages..."
+echo "Installing Linux packages..."
 
-sudo apt-get update -qq
+if command -v pacman >/dev/null 2>&1; then
+    # Arch (personal laptops): everything current in the official repos
+    sudo pacman -S --needed --noconfirm \
+        zsh \
+        git \
+        curl \
+        unzip \
+        jq \
+        python3 \
+        eza \
+        lazygit \
+        bat \
+        fd \
+        ripgrep \
+        fzf \
+        zoxide \
+        git-delta \
+        neovim
+else
+    # Ubuntu (homelab): apt + GitHub builds for tools apt ships stale
+    sudo apt-get update -qq
 
-sudo apt-get install -y -qq \
-    zsh \
-    git \
-    curl \
-    unzip \
-    build-essential \
-    bat \
-    eza \
-    zoxide \
-    delta \
-    jq \
-    python3
+    sudo apt-get install -y -qq \
+        zsh \
+        git \
+        curl \
+        unzip \
+        build-essential \
+        bat \
+        eza \
+        zoxide \
+        delta \
+        jq \
+        python3
 
 # neovim (apt's 0.9 on Ubuntu 24.04 is ancient; install stable from GitHub)
 # True when nvim is missing or older than 0.11 (min of [installed, 0.11] != 0.11).
@@ -52,21 +72,22 @@ if ! command -v fzf >/dev/null 2>&1 || [ "$(printf '%s\n0.48\n' "$FZF_MIN" | sor
     rm -f /tmp/fzf.tar.gz
 fi
 
-# nvm — installs to ~/.config/nvm (matches NVM_DIR in dot_zshrc).
-# Old setups used ~/.nvm; both work, but this is the canonical location.
-if [ ! -s "$HOME/.config/nvm/nvm.sh" ]; then
-    curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.7/install.sh | NVM_DIR="$HOME/.config/nvm" bash
-    # load nvm in this script so the install/alias below works
-    export NVM_DIR="$HOME/.config/nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    nvm install --lts
-    nvm alias default node
-fi
+    # nvm — installs to ~/.config/nvm (matches NVM_DIR in dot_zshrc).
+    # Old setups used ~/.nvm; both work, but this is the canonical location.
+    if [ ! -s "$HOME/.config/nvm/nvm.sh" ]; then
+        curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.7/install.sh | NVM_DIR="$HOME/.config/nvm" bash
+        # load nvm in this script so the install/alias below works
+        export NVM_DIR="$HOME/.config/nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        nvm install --lts
+        nvm alias default node
+    fi
 
-# lazygit (not in apt, install from GitHub releases)
-if ! command -v lazygit >/dev/null 2>&1; then
-    LAZYGIT_VERSION=$(curl -fsSL https://api.github.com/repos/jesseduffield/lazygit/releases/latest | grep '"tag_name"' | sed -E 's/.*"v([^"]+)".*/\1/')
-    curl -fsSL "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" | sudo tar xzf - -C /usr/local/bin lazygit
+    # lazygit (not in apt, install from GitHub releases)
+    if ! command -v lazygit >/dev/null 2>&1; then
+        LAZYGIT_VERSION=$(curl -fsSL https://api.github.com/repos/jesseduffield/lazygit/releases/latest | grep '"tag_name"' | sed -E 's/.*"v([^"]+)".*/\1/')
+        curl -fsSL "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" | sudo tar xzf - -C /usr/local/bin lazygit
+    fi
 fi
 
 # herdr
@@ -84,5 +105,5 @@ if [ "$SHELL" != "$(command -v zsh)" ]; then
     sudo chsh -s "$(command -v zsh)" "$(whoami)"
 fi
 
-echo "Homelab packages installed."
+echo "Linux packages installed."
 {{ end -}}

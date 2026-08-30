@@ -78,11 +78,14 @@ sources, so it only reruns when they change.
 ## Homelab profile (Linux/Ubuntu)
 
 `chezmoi init --apply eckelon` on an Ubuntu machine prompts `is_homelab = true`.
-The run_onchange script `run_onchange_after_install-homelab-packages.sh.tmpl`
-installs fd, ripgrep, fzf, lazygit, herdr, pi, eza, bat, delta, zoxide, nvim,
-and sets zsh as the default shell. macOS-only configs (Sol, Superkey, Karabiner,
-Ghostty, `~/Library`, `~/.brew`) are excluded via `.chezmoiignore` — they never
-deploy to Linux. The root-level `brew/` directory (Brewfile tooling) is also
+The run_onchange script `run_onchange_after_install-linux-packages.sh.tmpl`
+runs on every Linux machine: on Arch (personal laptop) it installs the CLI
+toolset from the official repos with pacman (eza, lazygit, bat, fd, ripgrep,
+fzf, zoxide, git-delta, neovim); on the Ubuntu homelab it apt-installs the same
+plus GitHub builds where apt ships stale versions (nvim, fzf, lazygit). On both
+it also installs herdr and pi, and sets zsh as the default shell. macOS-only
+configs (Sol, Superkey, Karabiner, Ghostty, `~/Library`, `~/.brew`) are excluded
+via `.chezmoiignore` — they never deploy to Linux. The root-level `brew/` directory (Brewfile tooling) is also
 macOS-only and lives outside the `home/` source tree, so chezmoi never deploys it.
 
 Shared across platforms: zsh config, git config, lazygit config, herdr config +
