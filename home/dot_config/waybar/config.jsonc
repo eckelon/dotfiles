@@ -2,6 +2,9 @@
   "layer": "top",
   "position": "top",
   "height": 34,
+  "margin-top": 6,
+  "margin-left": 12,
+  "margin-right": 12,
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
   "modules-right": ["tray", "pulseaudio", "network", "battery", "clock"],
 

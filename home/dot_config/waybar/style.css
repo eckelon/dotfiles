@@ -9,7 +9,6 @@ window#waybar {
   background: rgba(30, 30, 46, 0.82); /* base */
   border: 1px solid rgba(203, 166, 247, 0.25); /* mauve */
   border-radius: 14px;
-  margin: 6px 12px 0 12px;
   color: #cdd6f4; /* text */
 }
 
