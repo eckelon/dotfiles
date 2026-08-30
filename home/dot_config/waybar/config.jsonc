@@ -20,7 +20,8 @@
 
   "clock": {
     "format": "{:%a %d %b  %H:%M}",
-    "tooltip-format": "{:%A, %d %B %Y}"
+    "tooltip-format": "{:%A, %d %B %Y}",
+    "on-click": "rencal"
   },
 
   "bluetooth": {
