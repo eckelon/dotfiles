@@ -1,6 +1,6 @@
 {{- if eq .chezmoi.os "linux" -}}
 #!/bin/bash
-# linux-packages-hash: {{ "linux-v3" | sha256sum }}
+# linux-packages-hash: {{ "linux-v4-blueman" | sha256sum }}
 set -euo pipefail
 
 echo "Installing Linux packages..."
@@ -22,7 +22,8 @@ if command -v pacman >/dev/null 2>&1; then
         fzf \
         zoxide \
         git-delta \
-        neovim
+        neovim \
+        blueman
 else
     # Ubuntu (homelab): apt + GitHub builds for tools apt ships stale
     sudo apt-get update -qq

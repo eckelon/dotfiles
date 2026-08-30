@@ -31,7 +31,7 @@
     "format-connected": "",
     "tooltip-format": "{controller_alias} · {controller_address}",
     "tooltip-format-connected": "{device_alias} · {device_battery_percentage}%",
-    "on-click": "ghostty --title=dotfloat -e ~/.config/hypr/bt-panel.sh"
+    "on-click": "blueman-manager"
   },
 
   "network": {
