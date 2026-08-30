@@ -11,7 +11,6 @@ Library/Application Support/Superkey
 {{ if ne .chezmoi.os "darwin" }}
 .config/sol
 .config/superkey
-.config/ghostty
 Library
 .brew
 {{ end }}
@@ -20,4 +19,5 @@ Library
 .config/hypr
 .config/waybar
 .config/nwg-dock-hyprland
+.local/share/applications/nm-connection-editor.desktop
 {{ end }}
