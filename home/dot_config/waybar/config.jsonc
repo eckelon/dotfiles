@@ -7,7 +7,7 @@
   "margin-right": 12,
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
   "modules-center": ["clock"],
-  "modules-right": ["tray", "pulseaudio", "bluetooth", "network", "battery", "custom/caffeine"],
+  "modules-right": ["custom/caffeine", "tray", "pulseaudio", "bluetooth", "network", "battery"],
 
   "hyprland/workspaces": {
     "on-click": "activate"
@@ -25,12 +25,13 @@
 
   "bluetooth": {
     "format": "{icon}",
+    "format-icons": { "enabled": "", "disabled": "" },
     "format-disabled": "",
     "format-off": "",
     "format-connected": "",
     "tooltip-format": "{controller_alias} · {controller_address}",
     "tooltip-format-connected": "{device_alias} · {device_battery_percentage}%",
-    "on-click": "ghostty --title=dotfloat -e bluetoothctl"
+    "on-click": "~/.config/hypr/bt-menu.sh"
   },
 
   "network": {

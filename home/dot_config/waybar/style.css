@@ -48,8 +48,8 @@ tooltip {
 #network,
 #battery,
 #custom-caffeine {
-  padding: 0 8px;
-  margin: 0 3px;
+  padding: 0 7px;
+  margin: 0;
 }
 
 #network.disconnected {
