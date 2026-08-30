@@ -55,7 +55,7 @@
   "defaultModel": "glm5.3-flash",
   "theme": "titanium",
   "images": {
-    "blockImages": true
+    "blockImages": false
   },
   "hideThinkingBlock": true,
   "warnings": {
