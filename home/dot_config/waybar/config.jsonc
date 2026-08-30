@@ -38,7 +38,8 @@
     "format-disconnected": "󰖪 ",
     "tooltip-format-wifi": "{essid} ({signalStrength}%)",
     "tooltip-format-ethernet": "{ifaddr}",
-    "on-click": "ghostty --title=dotfloat -e nmtui"
+    "on-click": "ghostty --title=dotfloat -e wavemon",
+    "on-click-right": "ghostty --title=dotfloat -e nmtui"
   },
 
   "pulseaudio": {
