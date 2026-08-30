@@ -2,7 +2,8 @@ HYPRLAND KEYBINDINGS
 ────────────────────
 SUPER+Return        terminal
 SUPER+W             browser (helium)
-SUPER+R / SUPER     app launcher (fuzzel)
+SUPER+R / SUPER     app launcher (walker)
+SUPER+SHIFT+V       clipboard history
 SUPER+Q             close window
 SUPER+M             exit Hyprland
 SUPER+V             float / unfloat window
@@ -19,4 +20,5 @@ SUPER+right-drag    resize window
 SUPER+L             lock screen
 SUPER+C             caffeinate toggle (keep awake over SSH)
 Print               screenshot to clipboard
+  (walker: ':' searches clipboard, ctrl+d deletes, ctrl+shift+d clears)
 SUPER+?             toggle this cheat sheet

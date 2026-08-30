@@ -1,12 +1,12 @@
 {{- if eq .chezmoi.os "linux" -}}
 #!/bin/bash
-# linux-packages-hash: {{ "linux-v4-blueman" | sha256sum }}
+# linux-packages-hash: {{ "linux-v5-walker" | sha256sum }}
 set -euo pipefail
 
 echo "Installing Linux packages..."
 
 if command -v pacman >/dev/null 2>&1; then
-    # Arch (personal laptops): everything current in the official repos
+    # Arch (personal laptops): official repos + AUR via paru (walker launcher)
     sudo pacman -S --needed --noconfirm \
         zsh \
         git \
@@ -23,7 +23,18 @@ if command -v pacman >/dev/null 2>&1; then
         zoxide \
         git-delta \
         neovim \
-        blueman
+        blueman \
+        imagemagick
+    # walker + elephant (AUR): launcher with clipboard history etc.
+    # elephant-clipboard-bin needs a separate transaction: it depends on the
+    # AUR source package 'elephant', which conflicts with elephant-bin when
+    # both are resolved in one go.
+    if command -v paru >/dev/null 2>&1; then
+        paru -S --needed --noconfirm walker-bin elephant-bin elephant-desktopapplications-bin
+        paru -S --needed --noconfirm elephant-clipboard-bin
+        # installs + enables the systemd user unit (starts with the session)
+        elephant service enable
+    fi
 else
     # Ubuntu (homelab): apt + GitHub builds for tools apt ships stale
     sudo apt-get update -qq
