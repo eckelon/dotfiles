@@ -41,8 +41,19 @@ tooltip {
   color: #cdd6f4;
 }
 
-.modules-right > widget:not(:last-child) {
-  padding: 0 6px;
+#clock,
+#tray,
+#pulseaudio,
+#bluetooth,
+#network,
+#battery,
+#custom-caffeine {
+  padding: 0 8px;
+  margin: 0 3px;
+}
+
+#network.disconnected {
+  color: #f38ba8; /* red */
 }
 
 #pulseaudio.muted {
