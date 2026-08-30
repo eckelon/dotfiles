@@ -6,7 +6,7 @@
   "margin-left": 12,
   "margin-right": 12,
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
-  "modules-right": ["tray", "pulseaudio", "network", "battery", "clock"],
+  "modules-right": ["tray", "pulseaudio", "bluetooth", "network", "battery", "clock"],
 
   "hyprland/workspaces": {
     "on-click": "activate"
@@ -22,12 +22,23 @@
     "tooltip-format": "{:%A, %d %B %Y}"
   },
 
+  "bluetooth": {
+    "format": "{icon}",
+    "format-disabled": "󰂲",
+    "format-off": "󰂲",
+    "format-connected": "󰂱",
+    "tooltip-format": "{controller_alias} · {controller_address}",
+    "tooltip-format-connected": "{device_alias} · {device_battery_percentage}%",
+    "on-click": "blueman-manager"
+  },
+
   "network": {
     "format-wifi": "󰖩 ",
     "format-ethernet": "󰈀 ",
     "format-disconnected": "󰖪 ",
     "tooltip-format-wifi": "{essid} ({signalStrength}%)",
-    "tooltip-format-ethernet": "{ifaddr}"
+    "tooltip-format-ethernet": "{ifaddr}",
+    "on-click": "nm-connection-editor"
   },
 
   "pulseaudio": {
