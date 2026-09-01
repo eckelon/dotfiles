@@ -100,7 +100,10 @@ Shared across platforms: zsh config, git config, lazygit config, herdr config +
 local plugins, nvim config. The keyboard is `us`/`altgr-intl` plus a keyd layout
 (`dot_config/keyd/default.conf`; the package script installs and enables keyd,
 `run_onchange_after_keyd-layout.sh` pushes the layout to root-owned `/etc/keyd`)
--- read that file's header before changing any of it. Linux-only desktop configs
+-- read that file's header before changing any of it. `dot_config/hypr/clipkeys.py`
+runs under Hyprland (`exec-once`) and re-binds Super+C/V through keyd's socket on
+every focus change, so terminals get Ctrl+Shift+C/V; keyd restarts drop those
+bindings and the script re-applies them within a minute. Linux-only desktop configs
 (Hyprland, waybar,
 nwg-dock-hyprland) deploy on Linux machines and are excluded on macOS via
 `.chezmoiignore`. The pinned-apps list of the dock lives in `~/.cache`
