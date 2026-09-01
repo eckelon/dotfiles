@@ -1,6 +1,6 @@
 {{- if eq .chezmoi.os "linux" -}}
 #!/bin/bash
-# linux-packages-hash: {{ "linux-v5-walker" | sha256sum }}
+# linux-packages-hash: {{ "linux-v6-keyd" | sha256sum }}
 set -euo pipefail
 
 echo "Installing Linux packages..."
@@ -24,7 +24,12 @@ if command -v pacman >/dev/null 2>&1; then
         git-delta \
         neovim \
         blueman \
-        imagemagick
+        imagemagick \
+        keyd
+    # keyd holds the keyboard layout (see dot_config/keyd/default.conf): it has
+    # to run from boot, and the layout itself is pushed there by the
+    # keyd-layout script. Ubuntu is keyboard-less (homelab), hence pacman only.
+    sudo systemctl enable --now keyd
     # walker + elephant (AUR): launcher with clipboard history etc.
     # elephant-clipboard-bin needs a separate transaction: it depends on the
     # AUR source package 'elephant', which conflicts with elephant-bin when

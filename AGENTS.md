@@ -22,6 +22,14 @@ chezmoi maps source names to target paths via attribute prefixes:
 - `Library/Application Support/k9s/...` → `~/Library/Application Support/k9s/...`
 - files ending in `.tmpl` are rendered as Go templates (e.g. `dot_config/git/config.tmpl`)
 
+## Where chezmoi reads from
+
+This clone is the source dir: `~/.config/chezmoi/chezmoi.toml` sets
+`sourceDir = "/home/eckelon/dotfiles"` (top-level key, not under `[chezmoi]`).
+Without it chezmoi uses its default `~/.local/share/chezmoi`, which on this box
+was a second clone of the same repo and silently drifted from what was edited
+here. If you re-run `chezmoi init`, put that line back.
+
 ## Per-machine config (work vs personal)
 
 `home/.chezmoi.toml.tmpl` prompts once per machine ("Is this a work machine")
@@ -89,7 +97,11 @@ via `.chezmoiignore` — they never deploy to Linux. The root-level `brew/` dire
 macOS-only and lives outside the `home/` source tree, so chezmoi never deploys it.
 
 Shared across platforms: zsh config, git config, lazygit config, herdr config +
-local plugins, nvim config. Linux-only desktop configs (Hyprland, waybar,
+local plugins, nvim config. The keyboard is `us`/`altgr-intl` plus a keyd layout
+(`dot_config/keyd/default.conf`; the package script installs and enables keyd,
+`run_onchange_after_keyd-layout.sh` pushes the layout to root-owned `/etc/keyd`)
+-- read that file's header before changing any of it. Linux-only desktop configs
+(Hyprland, waybar,
 nwg-dock-hyprland) deploy on Linux machines and are excluded on macOS via
 `.chezmoiignore`. The pinned-apps list of the dock lives in `~/.cache`
 (`nwg-dock-pinned`) and is runtime state, not versioned — manage it by

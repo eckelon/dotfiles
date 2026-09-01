@@ -1,0 +1,21 @@
+{{- if eq .chezmoi.os "linux" -}}
+#!/bin/sh
+# keyd-layout-hash: {{ include "dot_config/keyd/default.conf" | sha256sum }}
+# keyd only reads /etc/keyd, so push the versioned copy there. Root is needed
+# because /etc is not owned by the user; the script is a no-op without keyd.
+set -eu
+
+src="$HOME/.config/keyd/default.conf"
+dst="/etc/keyd/default.conf"
+
+command -v keyd >/dev/null 2>&1 || { echo "keyd not installed: keyboard layout not deployed"; exit 0; }
+[ -r "$src" ] || exit 0
+if cmp -s "$src" "$dst"; then
+  exit 0
+fi
+
+sudo cp "$src" "$dst"
+keyd check "$dst"
+sudo systemctl restart keyd
+echo "keyd: layout deployed to $dst"
+{{- end -}}
