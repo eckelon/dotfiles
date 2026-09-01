@@ -1,4 +1,4 @@
 # Walker launcher (https://github.com/abenz1267/walker).
 # Only overrides live here; unset keys fall back to /etc/xdg/walker/config.toml.
-# Clipboard history: ':' prefix, or `walker -m clipboard` (hyprland: SUPER+SHIFT+V).
+# Clipboard history: ':' prefix, or `walker -m clipboard` (hyprland: SUPER+SHIFT+C).
 theme = "catppuccin"

@@ -3,10 +3,11 @@ HYPRLAND KEYBINDINGS
 SUPER+Return        terminal
 SUPER+W             browser (helium)
 SUPER+R / SUPER     app launcher (walker)
-SUPER+SHIFT+V       clipboard history
+SUPER+C / SUPER+V   copy / paste (in a terminal: Ctrl+Shift+C/V)
+SUPER+SHIFT+C       clipboard history
 SUPER+Q             close window
 SUPER+M             exit Hyprland
-SUPER+V             float / unfloat window
+SUPER+SPACE         float / unfloat window
 SUPER+F             fullscreen
 SUPER+J             toggle split direction
 SUPER+←↑→↓          move focus
@@ -18,7 +19,7 @@ SUPER+wheel         previous / next workspace
 SUPER+drag          move window
 SUPER+right-drag    resize window
 SUPER+L             lock screen
-SUPER+C             caffeinate toggle (keep awake over SSH)
+SUPER+X             caffeinate toggle (keep awake over SSH)
 Print               screenshot to clipboard
   (walker: ':' searches clipboard, ctrl+d deletes, ctrl+shift+d clears)
 SUPER+?             toggle this cheat sheet
