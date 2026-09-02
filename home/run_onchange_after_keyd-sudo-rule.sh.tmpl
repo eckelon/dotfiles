@@ -1,0 +1,24 @@
+{{- if eq .chezmoi.os "linux" -}}
+#!/bin/sh
+# hypr/clipkeys.py re-binds Super+C/V through `keyd bind` on every focus change.
+# Those bindings are runtime-only (a binding in /etc/keyd/default.conf outranks
+# them), so the script is the feature: without it the chords do nothing. It runs
+# from exec-once, where no sudo password can be typed, and a cached sudo
+# timestamp dies with every reboot - hence one narrow, validated NOPASSWD rule.
+set -eu
+
+command -v keyd >/dev/null 2>&1 || exit 0
+keyd_bin="$(command -v keyd)"
+rule="/etc/sudoers.d/keyd-bind"
+line="$(id -un) ALL=(ALL) NOPASSWD: $keyd_bin bind *"
+
+[ "$(sudo cat "$rule" 2>/dev/null)" = "$line" ] && exit 0
+
+tmp="$(mktemp)"
+printf '%s\n' "$line" > "$tmp"
+chmod 0440 "$tmp"
+sudo visudo -cf "$tmp" >/dev/null
+sudo install -m 0440 -o root -g root "$tmp" "$rule"
+rm -f "$tmp"
+echo "keyd: NOPASSWD rule installed for '$keyd_bin bind' (used by hypr/clipkeys.py)"
+{{- end -}}
