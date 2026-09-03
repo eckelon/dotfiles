@@ -35,7 +35,7 @@
     "npm:@nguyenquangthai/pi-omp-theme"
   ],
   "lastChangelogVersion": "0.84.4",
-  "defaultThinkingLevel": "max",
+  "defaultThinkingLevel": {{ if .is_work }}"high"{{ else }}"max"{{ end }},
   "piOmpTheme": {
     "preset": "claude",
     "statusLine": {
@@ -52,7 +52,7 @@
     }
   },
   "defaultProvider": "default",
-  "defaultModel": "glm5.3-flash",
+  "defaultModel": {{ if .is_work }}"anthropic.claude-opus-4-6-v1"{{ else }}"glm5.3-flash"{{ end }},
   "theme": "titanium",
   "images": {
     "blockImages": false

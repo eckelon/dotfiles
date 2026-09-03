@@ -4,10 +4,6 @@ Library/Application Support/Superkey
 .claude
 {{ end }}
 
-{{ if .is_work }}
-.pi
-{{ end }}
-
 {{ if ne .chezmoi.os "darwin" }}
 .config/sol
 .config/superkey
