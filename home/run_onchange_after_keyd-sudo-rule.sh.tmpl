@@ -4,21 +4,25 @@
 # Those bindings are runtime-only (a binding in /etc/keyd/default.conf outranks
 # them), so the script is the feature: without it the chords do nothing. It runs
 # from exec-once, where no sudo password can be typed, and a cached sudo
-# timestamp dies with every reboot - hence one narrow, validated NOPASSWD rule.
+# timestamp dies with every reboot - hence these narrow, validated NOPASSWD
+# rules: bind installs a pair, reload empties keyd's runtime table when it has
+# filled up (keyd appends bindings, it never replaces them).
 set -eu
 
 command -v keyd >/dev/null 2>&1 || exit 0
 keyd_bin="$(command -v keyd)"
+user="$(id -un)"
 rule="/etc/sudoers.d/keyd-bind"
-line="$(id -un) ALL=(ALL) NOPASSWD: $keyd_bin bind *"
+want="$user ALL=(ALL) NOPASSWD: $keyd_bin bind *
+$user ALL=(ALL) NOPASSWD: $keyd_bin reload"
 
-[ "$(sudo cat "$rule" 2>/dev/null)" = "$line" ] && exit 0
+[ "$(sudo cat "$rule" 2>/dev/null)" = "$want" ] && exit 0
 
 tmp="$(mktemp)"
-printf '%s\n' "$line" > "$tmp"
+printf '%s\n' "$want" > "$tmp"
 chmod 0440 "$tmp"
 sudo visudo -cf "$tmp" >/dev/null
 sudo install -m 0440 -o root -g root "$tmp" "$rule"
 rm -f "$tmp"
-echo "keyd: NOPASSWD rule installed for '$keyd_bin bind' (used by hypr/clipkeys.py)"
+echo "keyd: NOPASSWD rules installed for '$keyd_bin bind/reload' (used by hypr/clipkeys.py)"
 {{- end -}}

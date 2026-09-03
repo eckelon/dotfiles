@@ -10,9 +10,7 @@ plain Ctrl+C is SIGINT (and Ctrl+Shift+C/V is Ghostty's own copy/paste).
 The bindings cannot live in /etc/keyd/default.conf: a binding in that file
 outranks anything installed at runtime, so the file leaves c and v alone and
 whatever runs this script owns them. Without it Super+C/V does nothing at all.
-It needs `sudo -n keyd bind`; on a machine where sudo asks for a password, add
-a NOPASSWD rule for that one command. keyd restarts drop the bindings - switch
-a window once and they come back.
+It needs passwordless `keyd bind` (see run_onchange_after_keyd-sudo-rule.sh).
 """
 import json
 import os
@@ -33,13 +31,25 @@ def hypr_json(args: list[str]):
         return None
 
 
-def keyd(bindings: tuple[str, str]) -> None:
-    for binding in bindings:  # one per call: keyd applies only the first argument
+def keyd_pid() -> str:
+    return subprocess.run(["systemctl", "show", "keyd", "-p", "MainPID", "--value"],
+                          capture_output=True, text=True).stdout.strip()
+
+
+def keyd(*bindings: str) -> None:
+    for binding in bindings:  # one call per binding: keyd applies only the first
         run = subprocess.run(["sudo", "-n", "keyd", "bind", binding],
                              capture_output=True, text=True)
-        if "Success" not in run.stdout:  # catches a typo'd key name, which keyd
-            print(f"keyd bind failed: {binding} {run.stdout.strip()} {run.stderr.strip()}",
-                  file=sys.stderr, flush=True)  # only reports when the key is used
+        if "max macros" in run.stdout + run.stderr:
+            # keyd appends runtime bindings, it never replaces them, so after a
+            # few hundred the table fills up. reload re-reads the config and
+            # empties it, then the same binding fits again.
+            subprocess.run(["sudo", "-n", "keyd", "reload"], capture_output=True)
+            run = subprocess.run(["sudo", "-n", "keyd", "bind", binding],
+                                 capture_output=True, text=True)
+        if "Success" not in run.stdout:  # a typo'd key name only surfaces here
+            print(f"keyd bind failed: {binding} {run.stdout.strip()} "
+                  f"{run.stderr.strip()}", file=sys.stderr, flush=True)
 
 
 def focused_is_terminal() -> bool:
@@ -52,14 +62,18 @@ def main() -> int:
                         os.environ["HYPRLAND_INSTANCE_SIGNATURE"], ".socket2.sock")
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     sock.connect(path)
-    sock.settimeout(60.0)  # re-apply on a timer: a keyd restart drops the bindings
+    sock.settimeout(60.0)  # timer: catch a keyd restart, which drops the bindings
+    pid = keyd_pid()
     terminal = focused_is_terminal()
-    keyd(TERM if terminal else GUI)
+    keyd(*(TERM if terminal else GUI))
     while True:
         try:
             data = sock.recv(4096)
         except TimeoutError:
-            keyd(TERM if terminal else GUI)
+            now = keyd_pid()
+            if now != pid:  # a bind now would only duplicate: keyd appends
+                pid = now
+                keyd(*(TERM if terminal else GUI))
             continue
         if not data:
             return 0
@@ -67,8 +81,8 @@ def main() -> int:
             head, _, payload = event.partition(">>")
             if head == "activewindow":
                 now = payload.split(",")[0].lower() in TERMS
-                if now != terminal:
-                    keyd(TERM if now else GUI)
+                if now != terminal:  # never re-send an unchanged state: keyd
+                    keyd(*(TERM if now else GUI))  # appends, it does not replace
                     terminal = now
 
 
