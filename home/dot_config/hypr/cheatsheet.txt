@@ -20,6 +20,8 @@ SUPER+drag          move window
 SUPER+right-drag    resize window
 SUPER+L             lock screen
 SUPER+X             caffeinate toggle (keep awake over SSH)
-Print               screenshot to clipboard
+Print / SUPER+CTRL+SHIFT+4
+                    screenshot to clipboard
+SUPER+SHIFT+4       screenshot: annotate, copy on close
   (walker: ':' searches clipboard, ctrl+d deletes, ctrl+shift+d clears)
 SUPER+?             toggle this cheat sheet
