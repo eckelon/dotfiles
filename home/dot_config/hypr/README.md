@@ -12,11 +12,11 @@ land as executable scripts (`theme.sh`, …) once chezmoi applies them.
   screen, a second splits it in halves, extras open as off-view columns you
   scroll to with `mod+arrows`. Column width via `mod+ctrl+arrows` (±5%,
   ±15% with shift, `mod+ctrl+0` resets to 50%).
-- **Keybindings** (`$mod` = Super): terminal, browser (Helium), walker
-  launcher (`SUPER+R` or Super released alone), clipboard history
-  (`SUPER+SHIFT+C`), workspaces 1–5, float/fullscreen, mouse binds,
-  brightness/volume/media keys via `bindel`/`bindl` (repeat while held),
-  screenshot (`Print` → grim+slurp → wl-copy), lock (`SUPER+L`).
+- **Keybindings** (`$mod` = Super, physically on the Alt keys — keyd swaps
+  Alt/Super): terminal, browser (Helium), walker launcher (`SUPER+SPACE`),
+  clipboard history (`SUPER+SHIFT+C`), workspaces 1–5, float/fullscreen,
+  mouse binds, brightness/volume/media keys via `bindel`/`bindl` (repeat
+  while held), screenshot (`Print` → grim+slurp → wl-copy), lock (`SUPER+L`).
 - **Window rules** match by *title* where Ghostty is involved — Ghostty 1.3
   ignores `--class` on Wayland, but `--title` survives map time:
   - `dotfloat` — the floating TUI popups waybar opens (alsamixer, netpanel, powertop).
@@ -28,7 +28,7 @@ land as executable scripts (`theme.sh`, …) once chezmoi applies them.
   1. `theme.sh boot` — restores the last theme (writes the symlinks below)
      *before* waybar starts, because waybar imports the theme CSS.
   2. `elephant.service` then `walker --gapplication-service` — data backend
-     first, then a warm walker instance so `SUPER+R` pops instantly.
+     first, then a warm walker instance so `SUPER+SPACE` pops instantly.
   3. `waybar`, `nwg-dock-hyprland`, `mako`, `hypridle`, polkit agent, and a
      `dbus-update-activation-environment` call so GTK apps get the Wayland env.
   4. `helium-ws.py` and `clipkeys.py` — event listeners, see below.

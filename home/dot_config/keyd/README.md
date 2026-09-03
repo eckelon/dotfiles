@@ -24,9 +24,10 @@ run_onchange scripts bridge the gap (see `home/run_onchange_after_keyd-*.sh.tmpl
   One binding per accent instead of one per key. Known consequence: in apps
   where BackSpace isn't "delete left" (vim normal mode, pagers) a gesture
   sends a stray backspace.
-- **Right Alt = Super** — the macOS command key. Nothing is mapped to XKB
-  level 3: the accent gestures reach level-3 keysyms via `rightalt` inside
-  their own macros, so plain Alt/Ctrl keep working (Alt+Tab, Ctrl+C).
+- **Alt and Super are swapped** — the Alt keys (left and right) are the macOS
+  command key, the Super key is Alt. Nothing is mapped to XKB level 3: the
+  accent gestures reach level-3 keysyms via `rightalt` inside their own
+  macros, and macros bypass remapping, so the swap never touches them.
 - **Caps Lock overload** — tap = Escape, hold = nav layer (`hjkl` = arrows).
 - **`[meta+shift] c`** — passes `SUPER+SHIFT+C` through to Hyprland (clipboard
   history). Composite layers outrank `[meta]`, so it can be static.

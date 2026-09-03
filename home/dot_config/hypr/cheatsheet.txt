@@ -1,13 +1,15 @@
 HYPRLAND KEYBINDINGS
 ────────────────────
+(SUPER is physically the Alt key and ALT the Super key: keyd swaps them)
+
 SUPER+Return        terminal
 SUPER+W             browser (helium)
-SUPER+R / SUPER     app launcher (walker)
+SUPER+SPACE         app launcher (walker)
 SUPER+C / SUPER+V   copy / paste (a terminal gets Ctrl+Shift+C/V)
 SUPER+SHIFT+C       clipboard history
 SUPER+Q             close window
 SUPER+M             exit Hyprland
-SUPER+SPACE         float / unfloat window
+SUPER+SHIFT+SPACE   float / unfloat window
 SUPER+F             fullscreen
 SUPER+J             toggle split direction
 SUPER+←↑→↓          move focus
