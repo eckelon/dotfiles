@@ -51,7 +51,7 @@
       }
     }
   },
-  "defaultProvider": "default",
+  "defaultProvider": {{ if .is_work }}"anthropic"{{ else }}"default"{{ end }},
   "defaultModel": {{ if .is_work }}"anthropic.claude-opus-4-6-v1"{{ else }}"glm5.3-flash"{{ end }},
   "theme": "titanium",
   "images": {
