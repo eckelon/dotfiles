@@ -15,7 +15,8 @@ land as executable scripts (`theme.sh`, …) once chezmoi applies them.
 - **Keybindings** (`$mod` = Super, physically on the Alt keys — keyd swaps
   Alt/Super): terminal, browser (Helium), walker launcher (`SUPER+SPACE`),
   clipboard history (`SUPER+SHIFT+C`), workspaces 1–5, workspace overview
-  (`SUPER+Tab`, hyprexpo plugin), float/fullscreen, mouse binds,
+  (`SUPER+Tab`, hyprexpo plugin), alt-tab window cycling (`ALT+Tab`, the
+  physical Super+Tab), float/fullscreen, mouse binds,
   brightness/volume/media keys via `bindel`/`bindl` (repeat
   while held), screenshot (`Print` → grim+slurp → wl-copy), lock (`SUPER+L`).
 - **Window rules** match by *title* where Ghostty is involved — Ghostty 1.3
