@@ -1,8 +1,0 @@
-(
-    version: 4,
-    windows: (
-        switch: (
-            modifier: "super",
-        ),
-    ),
-)

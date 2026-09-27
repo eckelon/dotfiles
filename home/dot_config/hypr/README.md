@@ -14,8 +14,9 @@ land as executable scripts (`theme.sh`, …) once chezmoi applies them.
   ±15% with shift, `mod+ctrl+0` resets to 50%).
 - **Keybindings** (`$mod` = Super, physically on the Alt keys — keyd swaps
   Alt/Super): terminal, browser (Helium), walker launcher (`SUPER+SPACE`),
-  clipboard history (`SUPER+SHIFT+C`), workspaces 1–5, float/fullscreen,
-  mouse binds, brightness/volume/media keys via `bindel`/`bindl` (repeat
+  clipboard history (`SUPER+SHIFT+C`), workspaces 1–5, workspace overview
+  (`SUPER+Tab`, hyprexpo plugin), float/fullscreen, mouse binds,
+  brightness/volume/media keys via `bindel`/`bindl` (repeat
   while held), screenshot (`Print` → grim+slurp → wl-copy), lock (`SUPER+L`).
 - **Window rules** match by *title* where Ghostty is involved — Ghostty 1.3
   ignores `--class` on Wayland, but `--title` survives map time:
