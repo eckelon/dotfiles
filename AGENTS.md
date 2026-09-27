@@ -85,6 +85,11 @@ sources, so it only reruns when they change.
 
 ## Homelab profile (Linux/Ubuntu)
 
+Two Linux profiles coexist in this repo — the Arch personal laptop and the Ubuntu
+homelab. The agent usually runs on the Arch laptop; **always check
+`/etc/os-release` on the current machine before choosing pacman vs apt** — never
+assume the homelab from this section alone.
+
 `chezmoi init --apply eckelon` on an Ubuntu machine prompts `is_homelab = true`.
 The run_onchange script `run_onchange_after_install-linux-packages.sh.tmpl`
 runs on every Linux machine: on Arch (personal laptop) it installs the CLI
