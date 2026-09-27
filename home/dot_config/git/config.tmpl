@@ -1,4 +1,6 @@
 # This is Git's per-user configuration file.
+[credential]
+	helper = !gh auth git-credential
 [user]
 	name = Jesús Ángel Samitier
 	email = {{ if .is_work }}{{ .git_email }}{{ else }}{{ .git_personal_email }}{{ end }}
