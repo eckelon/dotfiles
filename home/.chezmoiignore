@@ -5,8 +5,8 @@ Library/Application Support/Superkey
 {{ end }}
 
 {{ if ne .chezmoi.os "darwin" }}
-.config/sol
 .config/superkey
+.config/tinycast
 Library
 .brew
 {{ end }}

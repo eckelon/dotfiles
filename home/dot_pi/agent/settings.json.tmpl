@@ -32,7 +32,8 @@
     "npm:pi-web-access",
     "npm:@ff-labs/pi-fff",
     "npm:pi-safe-compact",
-    "npm:@nguyenquangthai/pi-omp-theme"
+    "npm:@nguyenquangthai/pi-omp-theme",
+    "npm:@tintinweb/pi-subagents"
   ],
   "lastChangelogVersion": "0.87.1",
   "defaultThinkingLevel": {{ if .is_work }}"high"{{ else }}"max"{{ end }},
@@ -52,7 +53,7 @@
     }
   },
   "defaultProvider": {{ if .is_work }}"anthropic"{{ else }}"default"{{ end }},
-  "defaultModel": {{ if .is_work }}"anthropic.claude-opus-4-6-v1"{{ else }}"glm5.3-flash"{{ end }},
+  "defaultModel": {{ if .is_work }}"claude-opus-4-6"{{ else }}"glm5.3-flash"{{ end }},
   "theme": "titanium",
   "images": {
     "blockImages": false

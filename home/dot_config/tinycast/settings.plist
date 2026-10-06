@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>boundCustomCommandIDs</key>
+	<array/>
+	<key>boundCustomWindowSizeIDs</key>
+	<array/>
+	<key>boundQuickActionIDs</key>
+	<array/>
+	<key>boundQuicklinkIDs</key>
+	<array/>
+	<key>boundWindowLayoutIDs</key>
+	<array/>
+	<key>boundWindowRoomIDs</key>
+	<array/>
+	<key>calendarMenuBarDisplay</key>
+	<integer>0</integer>
+	<key>clipboardDefaultAction</key>
+	<string>copy</string>
+	<key>clipboardRetentionDays</key>
+	<integer>-1</integer>
+	<key>clipboardTextSearchEnabled</key>
+	<true/>
+	<key>hotkey.command:clipboard-history</key>
+	<string>{"combo":{"_0":{"carbonKeyCode":8,"carbonModifiers":768}}}</string>
+	<key>hotkey.command:switch-windows</key>
+	<string>{"combo":{"_0":{"carbonKeyCode":44,"carbonModifiers":6912}}}</string>
+	<key>hotkey.systemAction.lock-screen</key>
+	<string>{"combo":{"_0":{"carbonModifiers":768,"carbonKeyCode":37}}}</string>
+	<key>hotkey.togglePalette</key>
+	<string>{"combo":{"_0":{"carbonModifiers":256,"carbonKeyCode":49}}}</string>
+	<key>hotkey.windowCommand.almost-maximize</key>
+	<string>{"combo":{"_0":{"carbonModifiers":6912,"carbonKeyCode":46}}}</string>
+	<key>hotkey.windowCommand.center</key>
+	<string>{"combo":{"_0":{"carbonKeyCode":8,"carbonModifiers":6912}}}</string>
+	<key>hotkey.windowCommand.left-half</key>
+	<string>{"combo":{"_0":{"carbonKeyCode":4,"carbonModifiers":6912}}}</string>
+	<key>hotkey.windowCommand.make-larger</key>
+	<string>{"combo":{"_0":{"carbonModifiers":6912,"carbonKeyCode":24}}}</string>
+	<key>hotkey.windowCommand.make-smaller</key>
+	<string>{"combo":{"_0":{"carbonModifiers":6912,"carbonKeyCode":27}}}</string>
+	<key>hotkey.windowCommand.next-display</key>
+	<string>{"combo":{"_0":{"carbonModifiers":6912,"carbonKeyCode":45}}}</string>
+	<key>hotkey.windowCommand.previous-display</key>
+	<string>{"combo":{"_0":{"carbonModifiers":6912,"carbonKeyCode":35}}}</string>
+	<key>hotkey.windowCommand.right-half</key>
+	<string>{"combo":{"_0":{"carbonModifiers":6912,"carbonKeyCode":37}}}</string>
+	<key>hotkey.windowCommand.toggle-fullscreen</key>
+	<string>{"combo":{"_0":{"carbonKeyCode":3,"carbonModifiers":6912}}}</string>
+	<key>navigationEnabled</key>
+	<true/>
+	<key>showInMenuBar</key>
+	<false/>
+	<key>windowManagementCycleMode</key>
+	<string>sizes</string>
+	<key>windowManagementEnabled</key>
+	<true/>
+</dict>
+</plist>

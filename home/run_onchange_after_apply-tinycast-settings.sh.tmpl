@@ -1,0 +1,6 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+# tinycast-settings-hash: {{ include "dot_config/tinycast/settings.plist" | sha256sum }}
+
+exec "$HOME/.config/tinycast/apply-defaults.sh"
+{{ end -}}

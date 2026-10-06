@@ -3,12 +3,26 @@
 This repository manages dotfiles with [chezmoi](https://chezmoi.io). chezmoi
 keeps a *source* tree under `home/` and renders it into `$HOME`, writing real
 files (not symlinks) — so it works even with apps that rewrite their own config
-(Karabiner, Sol, …).
+file in place. Apps that keep their settings in `UserDefaults` instead of a config
+file (Tinycast, Superkey) are handled by the capture + `defaults import` mechanism
+described below.
 
 ## Requirements
 
 - **Nerd Font** (e.g. JetBrainsMono Nerd Font) — the zsh prompt uses Nerd Font
   icons (``, ``). Without a Nerd Font these will render as boxes.
+
+## Workflow — never the other way round
+
+Two rules, and they are not the same thing:
+
+1. **The repo records the real config.** If the live state has settings the repo lacks — a
+   hotkey set in an app's GUI, a pref an app upgrade added — run the matching
+   `scripts/capture-*-settings.sh` so the repo reflects reality. Never write off a live
+   setting as "drift" just because the repo does not have it yet.
+2. **Every change goes into the source tree first, then `chezmoi apply`.** Never edit a file
+   in `$HOME`, and never `defaults write` a managed domain by hand. Edit `home/...`, apply,
+   verify. Back-filling the repo after poking `$HOME` is not the workflow.
 
 ## Source layout
 
@@ -83,6 +97,25 @@ Keybindings are in `home/dot_config/herdr/config.toml`.
 `.zwc` bytecode for faster shell startup. It is keyed to the hash of the zsh
 sources, so it only reruns when they change.
 
+## Tinycast (launcher)
+
+Tinycast replaced Sol as the launcher and window manager. It keeps its config in
+`UserDefaults` rather than a config file, so it is managed the same way Superkey
+is: `scripts/capture-tinycast-settings.sh` exports the live preferences to
+`home/dot_config/tinycast/settings.plist`, and
+`run_onchange_after_apply-tinycast-settings.sh.tmpl` — keyed to that file's hash
+— runs `~/.config/tinycast/apply-defaults.sh`, which `defaults import`s it and
+restarts the app.
+
+`defaults import` replaces the whole domain, so `settings.plist` is the single
+source of truth: change settings in the GUI, then re-run the capture script or
+the next `chezmoi apply` reverts them.
+
+`home/dot_config/tinycast/scripts/` holds the shell scripts that used to be Sol
+custom items. Tinycast does not auto-discover them — register them under
+**Settings → Custom Commands** (the feature ships disabled), then re-capture so
+the bindings are versioned.
+
 ## Homelab profile (Linux/Ubuntu)
 
 Two Linux profiles coexist in this repo — the Arch personal laptop and the Ubuntu
@@ -97,7 +130,7 @@ toolset from the official repos with pacman (eza, lazygit, bat, fd, ripgrep,
 fzf, zoxide, git-delta, neovim); on the Ubuntu homelab it apt-installs the same
 plus GitHub builds where apt ships stale versions (nvim, fzf, lazygit). On both
 it also installs herdr and pi, and sets zsh as the default shell. macOS-only
-configs (Sol, Superkey, Karabiner, Ghostty, `~/Library`, `~/.brew`) are excluded
+configs (Tinycast, Superkey, Ghostty, `~/Library`, `~/.brew`) are excluded
 via `.chezmoiignore` — they never deploy to Linux. The root-level `brew/` directory (Brewfile tooling) is also
 macOS-only and lives outside the `home/` source tree, so chezmoi never deploys it.
 

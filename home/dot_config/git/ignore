@@ -1,6 +1,5 @@
 .netrwhist
 .vim/plugged
-.config/karabiner/automatic_backups
 .config/joplin-desktop/
 .config/coc/
 plug.vim.old
