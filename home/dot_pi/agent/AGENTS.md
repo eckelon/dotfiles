@@ -15,7 +15,7 @@ Everything here is intentional and verified — read before you touch.
 - **Model routing removed (2026-08-23)**: the `por-tarea` router (`@kylebrodeur/pi-model-router`) and its config were deleted — the user does not use it. Model selection is direct: `defaultModel` in `settings.json` for interactive, explicit `provider/model` refs in agents. Do not reintroduce a router unless the user asks.
 - **Agents (2026-08-15)**: engineer and devops on the default (uncapped score) model, with `-deepseek` variants for hard rounds; architect, QA and ux-ui on the paid model. Pins live in the agent definitions, not here — names intentionally omitted from this public repo.
 - **NEVER edit third-party package code** under `~/.pi/agent/npm/node_modules/` (or any extension package). It is reinstalled on updates and every manual edit is lost; if a bug lives there, work around it with config or report it. This is a hard rule (user, 2026-08-07).
-- **mcp-adapter.json is a template** — replace `${MCP_TOKEN}` with your own; never commit real tokens.
+- **MCP config**: the built-in MCP extension reads `~/.pi/agent/mcp.json` (team file, see above). `pi-mcp-adapter` and its `mcp-adapter.json` were removed 2026-11-14 — the built-in replaced them.
 - **Before touching `~/.pi/agent`**: check for parallel agents that might overwrite config (e.g. other AI editors).
 
 ## Verification
