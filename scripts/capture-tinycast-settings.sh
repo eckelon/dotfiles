@@ -6,6 +6,9 @@
 # dropped: the first two are churn, the last is consent to keystroke listening
 # and Tinycast keeps it out of its own backups for that reason.
 #
+# key listing avoids `plutil -convert json`: the customCommands key is a <data>
+# blob of JSON and plutil refuses to convert a plist that holds data to json.
+#
 # Usage: ./scripts/capture-tinycast-settings.sh
 
 set -euo pipefail
@@ -19,12 +22,15 @@ trap 'rm -f "$tmp"' EXIT
 
 defaults export "$domain" - > "$tmp"
 
-while IFS= read -r key; do
+python3 -c '
+import plistlib, sys
+d = plistlib.load(open(sys.argv[1], "rb"))
+print("\n".join(k for k in d if k.startswith(("NS", "Apple")) or k == "snippetsEnabled"))
+' "$tmp" | while IFS= read -r key; do
   [ -n "$key" ] || continue
   /usr/libexec/PlistBuddy -c "Delete :\"$key\"" "$tmp" >/dev/null
   echo "⊘ Dropped $key"
-done < <(plutil -convert json -o - "$tmp" |
-  jq -r 'keys[] | select(startswith("NS") or startswith("Apple") or . == "snippetsEnabled")')
+done
 
 plutil -convert xml1 "$tmp"
 mv "$tmp" "$settings"

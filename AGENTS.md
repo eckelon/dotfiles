@@ -112,9 +112,12 @@ source of truth: change settings in the GUI, then re-run the capture script or
 the next `chezmoi apply` reverts them.
 
 `home/dot_config/tinycast/scripts/` holds the shell scripts that used to be Sol
-custom items. Tinycast does not auto-discover them — register them under
-**Settings → Custom Commands** (the feature ships disabled), then re-capture so
-the bindings are versioned.
+custom items. Tinycast does not auto-discover them: the registrations live in the
+`customCommands` key of `settings.plist`, so `defaults import` re-registers them
+on every machine. Add or edit one under **Settings → Commands** (the feature
+ships disabled), re-run the capture script, apply. That key is a `<data>` blob of
+JSON — `plutil -convert json` refuses a plist holding data, which is why the
+capture script lists the keys it drops with python instead of jq.
 
 ## Homelab profile (Linux/Ubuntu)
 
