@@ -13,6 +13,8 @@ Library
 
 {{ if eq .chezmoi.os "darwin" }}
 .config/hypr
+.config/keyd
+.config/walker
 .config/waybar
 .config/nwg-dock-hyprland
 .local/share/applications
