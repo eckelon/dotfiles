@@ -1,0 +1,7 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+# Delegates to the shared apply script. Revert in-app ("install updates
+# automatically") if Helium asks, then re-run `chezmoi apply`.
+
+exec "$HOME/.config/helium/apply-defaults.sh"
+{{ end -}}
