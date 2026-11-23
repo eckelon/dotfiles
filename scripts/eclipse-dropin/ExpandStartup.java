@@ -1,12 +1,15 @@
 package local.expand;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.ui.IPackagesViewPart;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.FontData;
@@ -89,10 +92,36 @@ public class ExpandStartup implements IStartup {
 				log("[attempt " + attempt + "] tree viewer is null");
 				return;
 			}
-			viewer.expandAll();
+			expandContainers(viewer, viewer.getInput());
 			log("[attempt " + attempt + "] expanded " + viewer.getExpandedElements().length + " nodes");
 		} catch (Throwable t) {
 			log("[attempt " + attempt + "] failed: " + t);
+		}
+	}
+
+	/**
+	 * Expands containers down to file level. Files are left collapsed on purpose: expanding a
+	 * compilation unit would list its fields, methods and constructors.
+	 */
+	private static void expandContainers(TreeViewer viewer, Object input) {
+		if (input == null || !(viewer.getContentProvider() instanceof ITreeContentProvider provider)) {
+			return;
+		}
+		for (Object root : provider.getElements(input)) {
+			expandContainer(viewer, provider, root);
+		}
+	}
+
+	private static void expandContainer(TreeViewer viewer, ITreeContentProvider provider, Object element) {
+		if (element instanceof IFile || element instanceof ICompilationUnit) {
+			return;
+		}
+		if (!provider.hasChildren(element)) {
+			return;
+		}
+		viewer.expandToLevel(element, 1);
+		for (Object child : provider.getChildren(element)) {
+			expandContainer(viewer, provider, child);
 		}
 	}
 

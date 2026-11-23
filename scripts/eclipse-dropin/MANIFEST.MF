@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Expand Package Explorer
 Bundle-SymbolicName: local.expand;singleton:=true
-Bundle-Version: 1.0.7
-Require-Bundle: org.eclipse.ui,org.eclipse.jdt.ui,org.eclipse.jface,org.eclipse.swt,org.eclipse.core.runtime,org.eclipse.osgi
+Bundle-Version: 1.0.8
+Require-Bundle: org.eclipse.ui,org.eclipse.jdt.ui,org.eclipse.jdt.core,org.eclipse.jface,org.eclipse.swt,org.eclipse.core.runtime,org.eclipse.core.resources,org.eclipse.osgi
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-ClassPath: .
