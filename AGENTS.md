@@ -218,9 +218,15 @@ tracked `eclipse.ini`:
   `home/run_onchange_after_install-eclipse-dropin.sh.tmpl` compiles and copies into
   `<install>/dropins/`. Nothing compiled is versioned: the Java source, the manifest and
   `plugin.xml` live inside that script, so editing them makes chezmoi rebuild on the next
-  apply. The script aborts if `plugin.xml` is not at the jar root (a bundle without it installs
+  apply (rebuild by hand: `chezmoi execute-template <
+  home/run_onchange_after_install-eclipse-dropin.sh.tmpl | sh`). The script aborts if
+  `plugin.xml` is not at the jar root (a bundle without it installs
   cleanly, logs nothing and contributes no extension) and keeps the `bundles.info` entry
   pointing at the version it installs. The bundle runs on `org.eclipse.ui.startup` and:
+  - scales the theme UI fonts (`dialogfont`, `bannerfont`, `headerfont`) by 15% from the system
+    font (`UI_SCALE` in the script), which grows dialogs and wizards. **macOS menus cannot be
+    changed**: SWT's `Menu` is a native `NSMenu` and takes its font from the OS, so the menu bar
+    and the context menus only react to the macOS display/text settings.
   - writes the editor fonts (JetBrainsMono Nerd Font Mono, 12) into the workbench preference
     store on **every start, for every workspace** — a preferences file would not work, because
     those keys are read through `ScopedPreferenceStore`, which has no `ConfigurationScope`

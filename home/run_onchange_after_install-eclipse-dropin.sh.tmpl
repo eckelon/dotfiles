@@ -9,7 +9,7 @@ set -e
 
 INSTALL="$HOME/eclipse/java-2026-09/Eclipse.app/Contents/Eclipse"
 JAVA="${JAVA:-/Library/Java/JavaVirtualMachines/temurin-27.jdk/Contents/Home/bin}"
-VERSION=1.1.0
+VERSION=1.2.0
 INFO="$INSTALL/configuration/org.eclipse.equinox.simpleconfigurator/bundles.info"
 
 [ -d "$INSTALL" ] || exit 0
@@ -25,7 +25,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Expand Package Explorer
 Bundle-SymbolicName: local.expand;singleton:=true
-Bundle-Version: 1.1.0
+Bundle-Version: 1.2.0
 Require-Bundle: org.eclipse.ui,org.eclipse.jdt.ui,org.eclipse.jdt.core,org.eclipse.jface,org.eclipse.swt,org.eclipse.core.runtime,org.eclipse.core.resources,org.eclipse.osgi
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-ClassPath: .
@@ -80,6 +80,15 @@ public class ExpandStartup implements IStartup {
 	// Same typeface as Ghostty's font-family. SWT has no semibold style, so the Regular face is used.
 	private static final FontData FONT = new FontData("JetBrainsMono Nerd Font Mono", 12, SWT.NONE);
 
+	// Everything Eclipse draws itself (dialogs, wizards, banners) grows 15% from the system font.
+	// macOS menus are native NSMenu: no Eclipse setting can touch their font.
+	private static final float UI_SCALE = 1.15f;
+
+	private static final String[] UI_FONT_KEYS = {
+			"org.eclipse.jface.dialogfont",
+			"org.eclipse.jface.bannerfont",
+			"org.eclipse.jface.headerfont" };
+
 	private static final String[] FONT_KEYS = {
 			"org.eclipse.jface.textfont",
 			"org.eclipse.jdt.ui.editors.textfont",
@@ -118,10 +127,28 @@ public class ExpandStartup implements IStartup {
 			}
 			// Registered fonts are cached by the registry; update it so already created viewers follow too.
 			JFaceResources.getFontRegistry().put("org.eclipse.jface.textfont", fonts);
-			log("fonts set to " + FONT);
+
+			FontData[] uiFonts = scaledSystemFont();
+			if (uiFonts.length > 0) {
+				for (String key : UI_FONT_KEYS) {
+					PreferenceConverter.setValue(store, key, uiFonts);
+				}
+				JFaceResources.getFontRegistry().put("org.eclipse.jface.dialogfont", uiFonts);
+			}
+			log("fonts set to " + FONT + " and UI fonts scaled x" + UI_SCALE);
 		} catch (Throwable t) {
 			log("font update failed: " + t);
 		}
+	}
+
+	private static FontData[] scaledSystemFont() {
+		FontData[] data = PlatformUI.getWorkbench().getDisplay().getSystemFont().getFontData();
+		FontData[] scaled = new FontData[data.length];
+		for (int i = 0; i < data.length; i++) {
+			int height = Math.max(1, Math.round(data[i].getHeight() * UI_SCALE));
+			scaled[i] = new FontData(data[i].getName(), height, data[i].getStyle());
+		}
+		return scaled;
 	}
 
 	private static void expand(int attempt) {
