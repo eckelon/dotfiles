@@ -224,7 +224,12 @@ tracked `eclipse.ini`:
     The face/size live in `ExpandStartup.java`.
   - expands the Package Explorer tree 3 s after startup (retry at 8 s). JDT does not persist
     expansion state, so there is no preference for this. It logs to `.metadata/.log`
-    (`fonts set to ...`, `[attempt 1] expanded, ...`) — check there first if it misbehaves.
+    (`fonts set to ...`, `[attempt 1] expanded N nodes`) — check there first if it misbehaves.
+  Everything the bundle does happens inside a `Display.asyncExec`: `earlyStartup` runs on a
+  background job thread, and both the font registry (creates SWT `Font`/`Device` resources) and
+  the preference listeners behind the editor fonts (they touch `StyledText`) throw
+  `SWTException: Invalid thread access` otherwise — that showed up as a "Multiple problems have
+  occurred" dialog at startup.
   `bundles.info` is **not** versioned: p2's dropins reconcile rewrites it from the jars it
   finds. Only one `local.expand_*.jar` belongs in `dropins/`.
 - **The dark theme is not an Eclipse setting**: Eclipse's packaged themes are only `Dark`

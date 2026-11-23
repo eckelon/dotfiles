@@ -42,9 +42,11 @@ public class ExpandStartup implements IStartup {
 
 	@Override
 	public void earlyStartup() {
-		applyFonts();
-		// earlyStartup runs on a background job thread: hop to the UI thread first.
+		// earlyStartup runs on a background job thread. Everything below touches SWT (the font
+		// registry creates Device resources, preference listeners poke StyledText widgets), so it
+		// all has to run on the UI thread.
 		PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+			applyFonts();
 			Display display = PlatformUI.getWorkbench().getDisplay();
 			// Delay so the perspective finishes restoring; retry in case the tree was still empty.
 			display.timerExec(3000, () -> expand(1));
@@ -88,7 +90,7 @@ public class ExpandStartup implements IStartup {
 				return;
 			}
 			viewer.expandAll();
-			log("[attempt " + attempt + "] expanded, root=" + viewer.getInput());
+			log("[attempt " + attempt + "] expanded " + viewer.getExpandedElements().length + " nodes");
 		} catch (Throwable t) {
 			log("[attempt " + attempt + "] failed: " + t);
 		}

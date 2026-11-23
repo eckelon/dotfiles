@@ -15,8 +15,8 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 ECLIPSE_INSTALL=${ECLIPSE_INSTALL:-$HOME/eclipse/java-2026-09/Eclipse.app/Contents/Eclipse}
 JAVA=${JAVA:-/Library/Java/JavaVirtualMachines/temurin-27.jdk/Contents/Home/bin}
 VERSION=$(sed -n 's/^Bundle-Version: //p' "$HERE/MANIFEST.MF")
-JAR="$HERE/local.expand_$VERSION.jar"
 TMP=$(mktemp -d)
+JAR="$TMP/local.expand_$VERSION.jar"
 trap 'rm -rf "$TMP"' EXIT
 
 "$JAVA/javac" --release 21 -nowarn -cp "$HOME/.p2/pool/plugins/*" -d "$TMP" "$HERE/ExpandStartup.java"
