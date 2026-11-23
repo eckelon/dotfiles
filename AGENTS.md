@@ -198,12 +198,13 @@ contains three files:
 
 Two things are worth knowing, because neither of them is a normal preference file:
 
-- **The sponsor popup at startup** is Oomph fetching a URL list. The list lives in
-  `~/.eclipse/org.eclipse.oomph.setup/setups/notificationURIs.txt` and points at
-  `https://www.eclipse.org/setups/notification/sponsor/`. The repo tracks it as
-  `readonly_empty_notificationURIs.txt`, so applying the dotfiles leaves it **empty and
-  read-only** and the popup never has anything to show. If it starts appearing again, the
-  app rewrote the file: re-run `chezmoi apply` on it.
+- **The sponsor popup at startup** is Oomph reading a URL list that Eclipse **recreates on
+  every start**: `~/.eclipse/org.eclipse.oomph.setup/setups/brandingNotificationURIs.txt`
+  (`https://www.eclipse.org/sponsor/ide/...`). Emptying it by hand does nothing, it comes
+  back. The repo tracks it as `readonly_empty_brandingNotificationURIs.txt`, so it is empty
+  and **mode 0444** — Eclipse cannot rewrite it. `notificationURIs.txt` is tracked the same
+  way as a second line of defence. If the popup appears again, check those two files are 0
+  bytes and read-only.
 - **The dark theme is not an Eclipse setting**: Eclipse's packaged themes are only `Dark`
   and `Light`, and on macOS it follows the system dark mode. The old "Classic" 3.x theme was
   removed from the platform (commit `8059976`). The current setup uses the community
