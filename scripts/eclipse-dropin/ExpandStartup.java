@@ -8,6 +8,9 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.IPackageFragment;
+import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.ui.IPackagesViewPart;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -114,8 +117,13 @@ public class ExpandStartup implements IStartup {
 			return false;
 		}
 		boolean found = false;
-		for (Object root : provider.getElements(input)) {
+		Object[] roots = provider.getElements(input);
+		for (Object root : roots) {
 			found |= revealSrc(viewer, provider, root);
+		}
+		if (!found) {
+			// Diagnostic: what sits at the top, so a missing src can be explained from the log.
+			log("no src under input=" + name(input) + " roots=" + describe(provider, roots));
 		}
 		return found;
 	}
@@ -158,10 +166,37 @@ public class ExpandStartup implements IStartup {
 		return element instanceof IPackageFragmentRoot root && SRC.equals(root.getElementName());
 	}
 
-	/** Only project/folder structure is worth walking: never the JRE roots or java.* packages. */
+	/**
+	 * Walk structure only: never into binary roots (the JRE container) or java packages, which is
+	 * where a full model walk would spend all its time.
+	 */
 	private static boolean isSearchable(Object element) {
-		return element instanceof IProject || element instanceof IFolder
-				|| element instanceof IPackageFragmentRoot root && root.getJavaProject() != null;
+		if (element instanceof IFile || element instanceof ICompilationUnit || element instanceof IPackageFragment) {
+			return false;
+		}
+		if (element instanceof IPackageFragmentRoot root) {
+			try {
+				return root.getKind() == IPackageFragmentRoot.K_SOURCE;
+			} catch (JavaModelException e) {
+				return false;
+			}
+		}
+		return true; // IJavaProject, IProject, IFolder, working sets, JDT wrappers
+	}
+
+	private static String name(Object element) {
+		return element == null ? "null" : element.getClass().getSimpleName() + "(" + element + ")";
+	}
+
+	private static String describe(ITreeContentProvider provider, Object[] elements) {
+		StringBuilder text = new StringBuilder();
+		for (Object element : elements) {
+			text.append(name(element)).append(' ');
+			for (Object child : provider.getChildren(element)) {
+				text.append('>').append(name(child)).append(' ');
+			}
+		}
+		return text.toString();
 	}
 
 	private static void log(String message) {
