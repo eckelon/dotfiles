@@ -10,6 +10,7 @@ Library/Application Support/Superkey
 .config/tinycast
 Library
 .brew
+eclipse
 {{ end }}
 
 {{ if eq .chezmoi.os "darwin" }}

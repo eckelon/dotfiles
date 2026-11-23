@@ -196,28 +196,48 @@ contains three files:
 
 ## Eclipse
 
-Two things are worth knowing, because neither of them is a normal preference file:
+The install is `~/eclipse/java-2026-09/Eclipse.app` (not `/Applications`, that path is stale).
+Its `eclipse.ini` and its `dropins/` directory are tracked in `home/eclipse/...`, so the
+install-level settings survive a chezmoi apply. **Caveat:** the app bundle name carries the
+release (`java-2026-09`); installing a newer release lands in a new directory and neither the
+ini nor the dropin apply there automatically.
 
-- **The sponsor popup at startup** is Oomph reading a URL list that Eclipse **recreates on
-  every start**: `~/.eclipse/org.eclipse.oomph.setup/setups/brandingNotificationURIs.txt`
-  (`https://www.eclipse.org/sponsor/ide/...`). Emptying it by hand does nothing, it comes
-  back. The repo tracks it as `readonly_empty_brandingNotificationURIs.txt`, so it is empty
-  and **mode 0444** — Eclipse cannot rewrite it. `notificationURIs.txt` is tracked the same
-  way as a second line of defence. If the popup appears again, check those two files are 0
-  bytes and read-only.
+- **The sponsor popup at startup** has two independent sources, both now switched off in the
+tracked `eclipse.ini`:
+  - `-Dorg.eclipse.oomph.setup.donate=false` — the donate command (`DonateHandler`), which
+    opened both an internal browser tab and the external donate page.
+  - `-Dorg.eclipse.oomph.setup.notification=false` — the branding *notification* annotation
+    (`https://www.eclipse.org/sponsor/ide/?scope=...`, label `SPONSOR`), opened by
+    `NotificationViewPart` in an internal tab. Nothing to do with the donate flag.
+  The old 0444 empty `brandingNotificationURIs.txt` / `notificationURIs.txt` in `dot_eclipse`
+  are only the "don't nag again" memory files and never stopped the popup on their own. Keep
+  them; they are harmless.
+- **Heap** is pinned in the same `eclipse.ini`: `-Xms1g -Xmx4g` (16 GB machine — the JVM's own
+  ceiling was already 4 GB, the gain is committing 1 GB instead of starting at 8 MB).
+- **Fonts and the fully expanded Package Explorer** come from a small bundle the repo tracks
+  as a jar in `home/eclipse/.../dropins/`, sources in `scripts/eclipse-dropin/` (`build.sh`
+  rebuilds and installs it). The bundle runs on `org.eclipse.ui.startup` and:
+  - writes the editor fonts (JetBrainsMono Nerd Font Mono, 12) into the workbench preference
+    store on **every start, for every workspace** — a preferences file would not work, because
+    those keys are read through `ScopedPreferenceStore`, which has no `ConfigurationScope`
+    fallback. Consequence: changing the font in *Colors and Fonts* is reverted on restart.
+    The face/size live in `ExpandStartup.java`.
+  - expands the Package Explorer tree 3 s after startup (retry at 8 s). JDT does not persist
+    expansion state, so there is no preference for this. It logs to `.metadata/.log`
+    (`fonts set to ...`, `[attempt 1] expanded, ...`) — check there first if it misbehaves.
+  `bundles.info` is **not** versioned: p2's dropins reconcile rewrites it from the jars it
+  finds. Only one `local.expand_*.jar` belongs in `dropins/`.
 - **The dark theme is not an Eclipse setting**: Eclipse's packaged themes are only `Dark`
   and `Light`, and on macOS it follows the system dark mode. The old "Classic" 3.x theme was
   removed from the platform (commit `8059976`). The current setup uses the community
   **Planet Themes** plugin (PyvesB, update site
   `https://raw.githubusercontent.com/PyvesB/eclipse-planet-themes/updatesite`, theme `Moon`)
-  which has to be installed once by hand into `/Applications/Eclipse Java.app` — it is not
-  versioned here.
+  which has to be installed once by hand — it is not versioned here.
 
-Everything left that is worth setting lives **inside each workspace**, not in `$HOME`, so it
-cannot be tracked as a dotfile: run `scripts/eclipse-workspace-settings.sh` (no arguments
-covers `~/Developer/2dgame` and `~/eclipse-workspace`, or pass workspace paths). It sets the
-`Moon` theme and keeps Oomph out of the startup list. **Close Eclipse first**: it rewrites
-its own preferences on exit.
+What still has to be set **inside each workspace** cannot be tracked as a dotfile: run
+`scripts/eclipse-workspace-settings.sh` (no arguments covers `~/Developer/2dgame` and
+`~/eclipse-workspace`, or pass workspace paths). It sets the `Moon` theme and keeps Oomph out
+of the startup list. **Close Eclipse first**: it rewrites its own preferences on exit.
 
 Package Explorer nesting (`Package Presentation → Hierarchical`) has no preference behind
 it — it is view state (`layout=1` in the view's memento), so it is per-workspace and must be
