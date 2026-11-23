@@ -1,10 +1,14 @@
 package local.expand;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.ui.IPackagesViewPart;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
@@ -21,9 +25,10 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.Bundle;
 
-/** Install-wide tweaks: editor fonts (every workspace) and a fully expanded Package Explorer. */
+/** Install-wide tweaks: editor fonts (every workspace) and a predictable Package Explorer tree. */
 public class ExpandStartup implements IStartup {
 	private static final String VIEW_ID = "org.eclipse.jdt.ui.PackageExplorer";
+	private static final String SRC = "src";
 
 	// Same typeface as Ghostty's font-family. SWT has no semibold style, so the Regular face is used.
 	private static final FontData FONT = new FontData("JetBrainsMono Nerd Font Mono", 12, SWT.NONE);
@@ -92,37 +97,71 @@ public class ExpandStartup implements IStartup {
 				log("[attempt " + attempt + "] tree viewer is null");
 				return;
 			}
-			expandContainers(viewer, viewer.getInput());
-			log("[attempt " + attempt + "] expanded " + viewer.getExpandedElements().length + " nodes");
+			boolean found = expandSrcFolders(viewer, viewer.getInput());
+			log("[attempt " + attempt + "] src " + (found ? "expanded" : "not found") + ", "
+					+ viewer.getExpandedElements().length + " nodes open");
 		} catch (Throwable t) {
 			log("[attempt " + attempt + "] failed: " + t);
 		}
 	}
 
 	/**
-	 * Expands containers down to file level. Files are left collapsed on purpose: expanding a
-	 * compilation unit would list its fields, methods and constructors.
+	 * Opens the branches that lead to a "src" folder and expands that folder down to file level.
+	 * Everything else (JRE library, other folders, packages) stays collapsed.
 	 */
-	private static void expandContainers(TreeViewer viewer, Object input) {
+	private static boolean expandSrcFolders(TreeViewer viewer, Object input) {
 		if (input == null || !(viewer.getContentProvider() instanceof ITreeContentProvider provider)) {
-			return;
+			return false;
 		}
+		boolean found = false;
 		for (Object root : provider.getElements(input)) {
-			expandContainer(viewer, provider, root);
+			found |= revealSrc(viewer, provider, root);
 		}
+		return found;
 	}
 
-	private static void expandContainer(TreeViewer viewer, ITreeContentProvider provider, Object element) {
-		if (element instanceof IFile || element instanceof ICompilationUnit) {
-			return;
+	private static boolean revealSrc(TreeViewer viewer, ITreeContentProvider provider, Object element) {
+		if (isSrc(element)) {
+			expandToFiles(viewer, provider, element);
+			return true;
 		}
+		if (!isSearchable(element) || !provider.hasChildren(element)) {
+			return false;
+		}
+		boolean found = false;
+		for (Object child : provider.getChildren(element)) {
+			found |= revealSrc(viewer, provider, child);
+		}
+		if (found) {
+			viewer.expandToLevel(element, 1); // only the branch that leads to src
+		}
+		return found;
+	}
+
+	/** Files are left collapsed on purpose: expanding one would list its fields and methods. */
+	private static void expandToFiles(TreeViewer viewer, ITreeContentProvider provider, Object element) {
 		if (!provider.hasChildren(element)) {
 			return;
 		}
 		viewer.expandToLevel(element, 1);
 		for (Object child : provider.getChildren(element)) {
-			expandContainer(viewer, provider, child);
+			if (!(child instanceof IFile || child instanceof ICompilationUnit)) {
+				expandToFiles(viewer, provider, child);
+			}
 		}
+	}
+
+	private static boolean isSrc(Object element) {
+		if (element instanceof IResource resource) {
+			return SRC.equals(resource.getName());
+		}
+		return element instanceof IPackageFragmentRoot root && SRC.equals(root.getElementName());
+	}
+
+	/** Only project/folder structure is worth walking: never the JRE roots or java.* packages. */
+	private static boolean isSearchable(Object element) {
+		return element instanceof IProject || element instanceof IFolder
+				|| element instanceof IPackageFragmentRoot root && root.getJavaProject() != null;
 	}
 
 	private static void log(String message) {

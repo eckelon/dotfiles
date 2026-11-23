@@ -223,10 +223,11 @@ tracked `eclipse.ini`:
     those keys are read through `ScopedPreferenceStore`, which has no `ConfigurationScope`
     fallback. Consequence: changing the font in *Colors and Fonts* is reverted on restart.
     The face/size live in `ExpandStartup.java`.
-  - expands the Package Explorer 3 s after startup (retry at 8 s) **down to file level**:
-    containers (projects, folders, packages, JRE roots) are expanded, `IFile` /
-    `ICompilationUnit` are left collapsed so class members do not spill into the tree. JDT does
-    not persist expansion state, so there is no preference for this. It logs to `.metadata/.log`
+  - expands the Package Explorer 3 s after startup (retry at 8 s), and only the `src` branch:
+    the folders leading to a source folder named `src` are opened and `src` is expanded down to
+    `.java` level. `IFile` / `ICompilationUnit` stay collapsed so class members never spill into
+    the tree, and everything else (JRE library, other folders) stays closed. JDT does not
+    persist expansion state, so there is no preference for this. It logs to `.metadata/.log`
     (`fonts set to ...`, `[attempt 1] expanded N nodes`) — check there first if it misbehaves.
   Everything the bundle does happens inside a `Display.asyncExec`: `earlyStartup` runs on a
   background job thread, and both the font registry (creates SWT `Font`/`Device` resources) and
