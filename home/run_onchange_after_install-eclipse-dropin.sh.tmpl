@@ -1,3 +1,47 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+# Installs the local Eclipse dropin (editor fonts + Package Explorer tree).
+#
+# No compiled artifact is versioned: the sources below are compiled here, so any edit to them
+# changes this script and chezmoi reruns it on the next apply. Rebuild by hand with
+#   chezmoi execute-template < home/run_onchange_after_install-eclipse-dropin.sh.tmpl | sh
+set -e
+
+INSTALL="$HOME/eclipse/java-2026-09/Eclipse.app/Contents/Eclipse"
+JAVA="${JAVA:-/Library/Java/JavaVirtualMachines/temurin-27.jdk/Contents/Home/bin}"
+VERSION=1.1.0
+INFO="$INSTALL/configuration/org.eclipse.equinox.simpleconfigurator/bundles.info"
+
+[ -d "$INSTALL" ] || exit 0
+[ -x "$JAVA/javac" ] || { echo "eclipse-dropin: no javac in $JAVA" >&2; exit 0; }
+
+BIN=$(mktemp -d)
+OUT=$(mktemp -d)
+trap 'rm -rf "$BIN" "$OUT"' EXIT
+mkdir -p "$BIN/META-INF" "$BIN/local/expand"
+
+cat > "$BIN/META-INF/MANIFEST.MF" <<'MANIFEST_EOF'
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Expand Package Explorer
+Bundle-SymbolicName: local.expand;singleton:=true
+Bundle-Version: 1.1.0
+Require-Bundle: org.eclipse.ui,org.eclipse.jdt.ui,org.eclipse.jdt.core,org.eclipse.jface,org.eclipse.swt,org.eclipse.core.runtime,org.eclipse.core.resources,org.eclipse.osgi
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Bundle-ClassPath: .
+MANIFEST_EOF
+
+cat > "$BIN/plugin.xml" <<'PLUGIN_EOF'
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.ui.startup">
+      <startup class="local.expand.ExpandStartup"/>
+   </extension>
+</plugin>
+PLUGIN_EOF
+
+cat > "$BIN/local/expand/ExpandStartup.java" <<'JAVA_EOF'
 package local.expand;
 
 import org.eclipse.core.resources.IFile;
@@ -206,3 +250,26 @@ public class ExpandStartup implements IStartup {
 		}
 	}
 }
+JAVA_EOF
+
+"$JAVA/javac" --release 21 -nowarn -cp "$HOME/.p2/pool/plugins/*" -d "$BIN" "$BIN/local/expand/ExpandStartup.java"
+"$JAVA/jar" --create --file "$OUT/local.expand_$VERSION.jar" --manifest "$BIN/META-INF/MANIFEST.MF" -C "$BIN" .
+# A bundle without plugin.xml at its root installs fine, logs nothing and contributes nothing.
+"$JAVA/jar" --list --file "$OUT/local.expand_$VERSION.jar" | grep -qx plugin.xml || {
+	echo "eclipse-dropin: no plugin.xml at the jar root" >&2
+	exit 1
+}
+
+mkdir -p "$INSTALL/dropins"
+rm -f "$INSTALL/dropins"/local.expand_*.jar
+cp "$OUT/local.expand_$VERSION.jar" "$INSTALL/dropins/"
+
+# p2 rewrites bundles.info on its own, but only after resolving this one: keep the entry in
+# sync so a version bump never leaves a dangling path behind.
+if [ -f "$INFO" ] && grep -q '^local.expand,' "$INFO"; then
+	sed -i.bak "s|^local.expand,.*|local.expand,$VERSION,../Eclipse/dropins/local.expand_$VERSION.jar,4,false|" "$INFO"
+	rm -f "$INFO.bak"
+fi
+
+echo "eclipse-dropin: installed local.expand $VERSION into $INSTALL/dropins"
+{{ end -}}

@@ -214,10 +214,13 @@ tracked `eclipse.ini`:
   them; they are harmless.
 - **Heap** is pinned in the same `eclipse.ini`: `-Xms1g -Xmx4g` (16 GB machine — the JVM's own
   ceiling was already 4 GB, the gain is committing 1 GB instead of starting at 8 MB).
-- **Fonts and the fully expanded Package Explorer** come from a small bundle the repo tracks
-  as a jar in `home/eclipse/.../dropins/`, sources in `scripts/eclipse-dropin/` (`build.sh`
-  rebuilds and installs it, and aborts if `plugin.xml` is not at the jar root — a bundle
-  without it installs cleanly, logs nothing and simply contributes no extension). The bundle runs on `org.eclipse.ui.startup` and:
+- **Fonts and the Package Explorer tree** come from a small local bundle that
+  `home/run_onchange_after_install-eclipse-dropin.sh.tmpl` compiles and copies into
+  `<install>/dropins/`. Nothing compiled is versioned: the Java source, the manifest and
+  `plugin.xml` live inside that script, so editing them makes chezmoi rebuild on the next
+  apply. The script aborts if `plugin.xml` is not at the jar root (a bundle without it installs
+  cleanly, logs nothing and contributes no extension) and keeps the `bundles.info` entry
+  pointing at the version it installs. The bundle runs on `org.eclipse.ui.startup` and:
   - writes the editor fonts (JetBrainsMono Nerd Font Mono, 12) into the workbench preference
     store on **every start, for every workspace** — a preferences file would not work, because
     those keys are read through `ScopedPreferenceStore`, which has no `ConfigurationScope`
@@ -234,8 +237,9 @@ tracked `eclipse.ini`:
   the preference listeners behind the editor fonts (they touch `StyledText`) throw
   `SWTException: Invalid thread access` otherwise — that showed up as a "Multiple problems have
   occurred" dialog at startup.
-  `bundles.info` is **not** versioned: p2's dropins reconcile rewrites it from the jars it
-  finds. Only one `local.expand_*.jar` belongs in `dropins/`.
+  Neither the jar nor `bundles.info` is versioned: p2's dropins reconcile rewrites the list
+  from the jars it finds, and the run_onchange script rebuilds the jar. Only one
+  `local.expand_*.jar` belongs in `dropins/`.
 - **The dark theme is not an Eclipse setting**: Eclipse's packaged themes are only `Dark`
   and `Light`, and on macOS it follows the system dark mode. The old "Classic" 3.x theme was
   removed from the platform (commit `8059976`). The current setup uses the community
