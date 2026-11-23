@@ -193,3 +193,31 @@ contains three files:
 - The Brewfile only contains **top-level packages**, not dependencies. When a package like `helmfile` is removed and its dependency `helm` should remain, `helm` must be explicitly installed (`brew install helm`) so it becomes a top-level package.
 - Packages that were once explicitly installed but are actually libraries (e.g., `gdbm`, `libffi`) should be uninstalled to keep the Brewfile clean. `brew autoremove` alone won't remove them if they're marked as "installed on request".
 - The `update-brewfile.sh` script should be run after any `brew install` or `brew uninstall` to keep the Brewfile in sync.
+
+## Eclipse
+
+Two things are worth knowing, because neither of them is a normal preference file:
+
+- **The sponsor popup at startup** is Oomph fetching a URL list. The list lives in
+  `~/.eclipse/org.eclipse.oomph.setup/setups/notificationURIs.txt` and points at
+  `https://www.eclipse.org/setups/notification/sponsor/`. The repo tracks it as
+  `readonly_empty_notificationURIs.txt`, so applying the dotfiles leaves it **empty and
+  read-only** and the popup never has anything to show. If it starts appearing again, the
+  app rewrote the file: re-run `chezmoi apply` on it.
+- **The dark theme is not an Eclipse setting**: Eclipse's packaged themes are only `Dark`
+  and `Light`, and on macOS it follows the system dark mode. The old "Classic" 3.x theme was
+  removed from the platform (commit `8059976`). The current setup uses the community
+  **Planet Themes** plugin (PyvesB, update site
+  `https://raw.githubusercontent.com/PyvesB/eclipse-planet-themes/updatesite`, theme `Moon`)
+  which has to be installed once by hand into `/Applications/Eclipse Java.app` — it is not
+  versioned here.
+
+Everything left that is worth setting lives **inside each workspace**, not in `$HOME`, so it
+cannot be tracked as a dotfile: run `scripts/eclipse-workspace-settings.sh` (no arguments
+covers `~/Developer/2dgame` and `~/eclipse-workspace`, or pass workspace paths). It sets the
+`Moon` theme and keeps Oomph out of the startup list. **Close Eclipse first**: it rewrites
+its own preferences on exit.
+
+Package Explorer nesting (`Package Presentation → Hierarchical`) has no preference behind
+it — it is view state (`layout=1` in the view's memento), so it is per-workspace and must be
+toggled once in the UI. Nothing to version.
