@@ -15,12 +15,19 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 ECLIPSE_INSTALL=${ECLIPSE_INSTALL:-$HOME/eclipse/java-2026-09/Eclipse.app/Contents/Eclipse}
 JAVA=${JAVA:-/Library/Java/JavaVirtualMachines/temurin-27.jdk/Contents/Home/bin}
 VERSION=$(sed -n 's/^Bundle-Version: //p' "$HERE/MANIFEST.MF")
-TMP=$(mktemp -d)
-JAR="$TMP/local.expand_$VERSION.jar"
-trap 'rm -rf "$TMP"' EXIT
+# Two temp dirs on purpose: the jar must not live inside the directory that gets packaged,
+# and plugin.xml has to sit at the bundle root (jar keeps the path it is given, so never pass
+# an absolute path).
+BIN=$(mktemp -d)
+OUT=$(mktemp -d)
+trap 'rm -rf "$BIN" "$OUT"' EXIT
+JAR="$OUT/local.expand_$VERSION.jar"
 
-"$JAVA/javac" --release 21 -nowarn -cp "$HOME/.p2/pool/plugins/*" -d "$TMP" "$HERE/ExpandStartup.java"
-"$JAVA/jar" --create --file "$JAR" --manifest "$HERE/MANIFEST.MF" "$HERE/plugin.xml" -C "$TMP" .
+"$JAVA/javac" --release 21 -nowarn -cp "$HOME/.p2/pool/plugins/*" -d "$BIN" "$HERE/ExpandStartup.java"
+cp "$HERE/plugin.xml" "$BIN/"
+"$JAVA/jar" --create --file "$JAR" --manifest "$HERE/MANIFEST.MF" -C "$BIN" .
+# A jar without plugin.xml at its root installs fine and contributes no extension: silent no-op.
+"$JAVA/jar" --list --file "$JAR" | grep -qx plugin.xml || { echo "ERROR: no plugin.xml at the jar root" >&2; exit 1; }
 
 mkdir -p "$ECLIPSE_INSTALL/dropins"
 rm -f "$ECLIPSE_INSTALL/dropins"/local.expand_*.jar

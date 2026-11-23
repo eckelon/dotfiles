@@ -216,7 +216,8 @@ tracked `eclipse.ini`:
   ceiling was already 4 GB, the gain is committing 1 GB instead of starting at 8 MB).
 - **Fonts and the fully expanded Package Explorer** come from a small bundle the repo tracks
   as a jar in `home/eclipse/.../dropins/`, sources in `scripts/eclipse-dropin/` (`build.sh`
-  rebuilds and installs it). The bundle runs on `org.eclipse.ui.startup` and:
+  rebuilds and installs it, and aborts if `plugin.xml` is not at the jar root — a bundle
+  without it installs cleanly, logs nothing and simply contributes no extension). The bundle runs on `org.eclipse.ui.startup` and:
   - writes the editor fonts (JetBrainsMono Nerd Font Mono, 12) into the workbench preference
     store on **every start, for every workspace** — a preferences file would not work, because
     those keys are read through `ScopedPreferenceStore`, which has no `ConfigurationScope`
